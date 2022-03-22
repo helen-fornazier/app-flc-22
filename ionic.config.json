@@ -1,0 +1,8 @@
+{
+  "name": "app-flc22",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "96e2c927"
+}
