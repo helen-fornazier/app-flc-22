@@ -5,7 +5,11 @@
     <ion-card>
         <ion-slides>
             <ion-slide>
-                <p>Texto teste 1</p>
+                <ion-text>
+                    <p>21h30    Palco Azul  O grande encontro<br/>
+                    22h30    Palco Lago  Baianasystem<br/>
+                    23h30    Palco Forró Mariana Aydar</p>
+                </ion-text>
             </ion-slide>
             <ion-slide>
                 <p>Texto teste 2</p>
