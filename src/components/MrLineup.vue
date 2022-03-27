@@ -1,4 +1,7 @@
 <template>
+    <ion-button shape=round size=small fill=clear>
+        <ion-icon :icon=chevronForwardOutline></ion-icon>
+    </ion-button>
     <ion-card>
         <ion-slides>
             <ion-slide>
@@ -12,11 +15,15 @@
             </ion-slide>
         </ion-slides>
     </ion-card>
+    <ion-button shape=round size=small fill=clear>
+        <ion-icon :icon=chevronBackOutline></ion-icon>
+    </ion-button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonCard, IonSlides, IonSlide } from '@ionic/vue';
+import { IonCard, IonSlides, IonSlide, IonIcon } from '@ionic/vue';
+import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'MrLineup',
@@ -24,7 +31,14 @@ export default defineComponent({
     IonCard,
     IonSlides,
     IonSlide,
-  }
+    IonIcon,
+  },
+  setup() {
+    return {
+        chevronForwardOutline,
+        chevronBackOutline,
+    };
+  },
 });
 </script>
 
