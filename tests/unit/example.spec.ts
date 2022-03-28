@@ -1,20 +1,16 @@
 import { mount } from '@vue/test-utils'
-import FolderPage from '@/views/FolderPage.vue'
+import MrPageMain from '@/views/MrPageMain.vue'
 
-describe('FolderPage.vue', () => {
-  it('renders folder view', () => {
+describe('MrPageMain.vue', () => {
+  it('renders main view', () => {
     const mockRoute = {
-      params: {
-        id: 'Outbox'
-      }
     }
-    const wrapper = mount(FolderPage, {
+    const wrapper = mount(MrPageMain, {
       global: {
         mocks: {
           $route: mockRoute
         }
       }
     })
-    expect(wrapper.text()).toMatch('Explore UI Components')
   })
 })
