@@ -53,8 +53,7 @@ export default defineComponent({
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
 }
 
 #container strong {
@@ -71,5 +70,9 @@ export default defineComponent({
 
 #container a {
   text-decoration: none;
+}
+
+ion-card {
+  background-color: white;
 }
 </style>
