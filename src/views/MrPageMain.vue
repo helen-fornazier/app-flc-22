@@ -7,7 +7,7 @@
       <MrComoChegar />
       <MrAds />
       <MrNivel />
-      <MrRanking />
+      <MrRank />
       <MrNoticias />
     </ion-content>
   </ion-page>
@@ -20,6 +20,8 @@ import MrHeader from '../components/MrHeader.vue'
 import MrLineup from '../components/MrLineup.vue'
 import MrComoChegar from '../components/MrComoChegar.vue'
 import MrAds from '../components/MrAds.vue'
+import MrNivel from '../components/MrNivel.vue'
+import MrRank from '../components/MrRank.vue'
 
 export default defineComponent({
   name: 'MrPageMain',
@@ -30,6 +32,8 @@ export default defineComponent({
     MrLineup,
     MrComoChegar,
     MrAds,
+    MrNivel,
+    MrRank,
   }
 });
 </script>
