@@ -22,6 +22,7 @@ import MrComoChegar from '../components/MrComoChegar.vue'
 import MrAds from '../components/MrAds.vue'
 import MrNivel from '../components/MrNivel.vue'
 import MrRank from '../components/MrRank.vue'
+import MrNoticias from '../components/MrNoticias.vue'
 
 export default defineComponent({
   name: 'MrPageMain',
@@ -34,6 +35,7 @@ export default defineComponent({
     MrAds,
     MrNivel,
     MrRank,
+    MrNoticias,
   }
 });
 </script>
