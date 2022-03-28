@@ -1,7 +1,12 @@
 <template>
+
+  <div class="backslidebutton">
     <ion-button shape=round size=small fill=clear>
-        <ion-icon :icon=chevronForwardOutline></ion-icon>
+        <ion-icon :icon=chevronBackOutline></ion-icon>
     </ion-button>
+  </div>
+
+  <div class="card">
     <ion-card>
         <ion-slides>
             <ion-slide>
@@ -19,9 +24,14 @@
             </ion-slide>
         </ion-slides>
     </ion-card>
+  </div>
+
+  <div class="forwardslidebutton">
     <ion-button shape=round size=small fill=clear>
-        <ion-icon :icon=chevronBackOutline></ion-icon>
+        <ion-icon :icon=chevronForwardOutline></ion-icon>
     </ion-button>
+  </div>
+
 </template>
 
 <script lang="ts">
@@ -48,31 +58,31 @@ export default defineComponent({
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
+.backslidebutton {
+    float:left;
+    //background:Red;
+    width:5%;
+    height:150px;
 }
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.card {
+    float:left;
+    //background:Green;
+    width:90%;
+    height:150px;
 }
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
+.forwardslidebutton {
+    float:right;
+    //background:blue;
+    width:5%;
+    height:150px;
 }
-
-#container a {
-  text-decoration: none;
-}
-
 ion-card {
   background-color: white;
+  height: 100%;
+  margin: 0;
+}
+ion-button {
+  position: relative;
+  top: 35%;
 }
 </style>
