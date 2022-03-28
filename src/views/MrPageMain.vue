@@ -20,7 +20,7 @@
               <MrAds />
             </ion-col>
           </ion-row>
-          <ion-row>
+            <ion-row>
             <ion-col>
               <MrNivel />
             </ion-col>

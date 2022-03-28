@@ -10,11 +10,11 @@
     <ion-card>
         <ion-slides>
             <ion-slide>
-                <ion-text>
-                    <p>21h30    Palco Azul  O grande encontro<br/>
-                    22h30    Palco Lago  Baianasystem<br/>
-                    23h30    Palco Forró Mariana Aydar</p>
-                </ion-text>
+                <ion-card-content>
+                    <p>21h30&nbsp;    Palco Azul&nbsp;  O grande encontro<br />
+                       22h30&nbsp;    Palco Lago&nbsp;  Baianasystem<br />
+                       23h30&nbsp;    Palco Forró&nbsp; Mariana Aydar</p>
+                </ion-card-content>
             </ion-slide>
             <ion-slide>
                 <p>Texto teste 2</p>
@@ -61,28 +61,34 @@ export default defineComponent({
 .backslidebutton {
     float:left;
     //background:Red;
-    width:5%;
-    height:150px;
+    width:10%;
+    height:115px;
 }
 .card {
     float:left;
     //background:Green;
-    width:90%;
-    height:150px;
+    width:80%;
+    height:115px;
 }
 .forwardslidebutton {
     float:right;
     //background:blue;
-    width:5%;
-    height:150px;
+    width:10%;
+    height:115px;
 }
 ion-card {
   background-color: white;
   height: 100%;
   margin: 0;
+  border-radius: 8px;
 }
 ion-button {
   position: relative;
   top: 35%;
+}
+p {
+  font-size: 15px;
+  line-height: 25px;
+  text-align: left;
 }
 </style>

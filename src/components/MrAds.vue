@@ -21,8 +21,8 @@
 import { defineComponent } from 'vue';
 import { IonButton, IonCard, IonSlides, IonSlide, IonIcon, IonImg } from '@ionic/vue';
 import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
-import ads1 from '../assets/ads_exemple.webp'
-import ads2 from '../assets/ads_exemple2.png'
+//import ads1 from '../assets/ads_exemple.webp'
+//import ads2 from '../assets/ads_exemple2.png'
 
 export default defineComponent({
   name: 'MrAds',
@@ -37,8 +37,8 @@ export default defineComponent({
     return {
         chevronForwardOutline,
         chevronBackOutline,
-        ads1,
-        ads2,
+        //ads1,
+        //ads2,
     };
   },
 });

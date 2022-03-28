@@ -15,3 +15,12 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+ion-card {
+  background-color: white;
+  height: 150px;
+  width: 170px;
+  border-radius: 8px;
+}
+</style>
