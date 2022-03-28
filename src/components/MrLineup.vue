@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonCard, IonSlides, IonSlide, IonIcon } from '@ionic/vue';
+import { IonButton, IonCard, IonSlides, IonSlide, IonIcon } from '@ionic/vue';
 import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
 
 export default defineComponent({
@@ -36,6 +36,7 @@ export default defineComponent({
     IonSlides,
     IonSlide,
     IonIcon,
+    IonButton,
   },
   setup() {
     return {
