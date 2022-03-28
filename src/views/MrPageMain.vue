@@ -18,6 +18,7 @@ import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import MrHeader from '../components/MrHeader.vue'
 import MrLineup from '../components/MrLineup.vue'
+import MrComoChegar from '../components/MrComoChegar.vue'
 
 export default defineComponent({
   name: 'MrPageMain',
@@ -26,6 +27,7 @@ export default defineComponent({
     IonPage,
     MrHeader,
     MrLineup,
+    MrComoChegar,
   }
 });
 </script>
