@@ -1,5 +1,6 @@
 <template>
-  <div>
+
+  <div class=container_box>
   <table style="width:100%">
   <tr>
     <th class=backarrow>
@@ -8,14 +9,17 @@
     </ion-button>
     </th>
 
-
     <th class=card>
       <ion-card>
-        bla<br/>
-        bla<br/>
-        bla<br/>
-        <ion-slides>
-        </ion-slides>
+      <swiper>
+        <swiper-slide>
+            <p>21h30&nbsp;    Palco Azul&nbsp;  O grande encontro<br />
+               22h30&nbsp;    Palco Lago&nbsp;  Baianasystem<br />
+               23h30&nbsp;    Palco Forró&nbsp; Mariana Aydar</p>
+          </swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+      </swiper>
       </ion-card>
     </th>
 
@@ -33,16 +37,21 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IonButton, IonIcon } from '@ionic/vue';
-import { IonCard, IonSlides, IonSlide } from '@ionic/vue';
+import { IonCard } from '@ionic/vue';
 import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+import 'swiper/css';
+import '@ionic/vue/css/ionic-swiper.css';
 
 export default defineComponent({
   name: 'MrLineup',
   components: {
     IonIcon,
     IonButton,
+    Swiper,
+    SwiperSlide,
     IonCard,
-    IonSlides,
   },
   setup() {
     return {
@@ -54,26 +63,30 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.container_box {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .backarrow {
-  background-color: green;
   width: 40px;
+  margin: 0;
 }
 .card {
-  background-color: red;
-  max-width: 99%;
+  margin: 0;
 }
 .forwardarrow {
-  background-color: blue;
   width: 40px;
+  margin: 0;
 }
 ion-card {
   background-color: white;
   border-radius: 8px;
+  margin: 0;
 }
 ion-button {
   position: relative;
   top: 35%;
-  background-color: black;
   width: 40px;
   margin: 0;
 }
@@ -82,4 +95,8 @@ p {
   line-height: 25px;
   text-align: left;
 }
+table {
+  table-layout:fixed;
+}
+
 </style>
