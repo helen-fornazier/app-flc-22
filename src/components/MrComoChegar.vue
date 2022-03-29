@@ -1,7 +1,18 @@
 <template>
-      <div class="ion-text-start">
-        <h4>Como chegar</h4>
-      </div>
+  <div class=container_box>
+
+  <table>
+      <tr class="first_row">
+        <th class=table_margin></th>
+        <th>
+          <div class=div_como_chegar><h4>Como chegar</h4></div>
+        </th>
+        <th class=table_margin></th>
+      </tr>
+
+      <tr>
+        <th></th>
+        <th>
 
       <ion-grid>
         <ion-row>
@@ -65,6 +76,11 @@
           </ion-row>
         </ion-grid>
 
+        </th>
+        <th></th>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -97,9 +113,6 @@ export default defineComponent({
 h4 {
   font-size: 12px;
   line-height: 15px;
-  position: relative;
-  left: 35px;
-  top: -10px;
 }
 p {
   font-size: 12px;
@@ -112,8 +125,26 @@ ion-button {
   --background: white;
 }
 ion-grid {
-  position: relative;
-  top: -20px;
-  width: 80%;
+  background-color: #7aab2c;
+}
+.table_margin {
+  width: 40px;
+  background-color: blue;
+  margin: 0 !important;
+}
+.div_como_chegar {
+  text-align: left;
+  background-color: purple;
+  max-width: 99%;
+  height: 20px !important;
+  margin: 0 !important;
+}
+table {
+  width: 100%;
+  table-layout:fixed;
+  margin: 0 !important;
+}
+.first_row {
+  background-color: yellow;
 }
 </style>
