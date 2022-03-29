@@ -1,52 +1,48 @@
 <template>
-
-  <div class="backslidebutton">
+  <div>
+  <table style="width:100%">
+  <tr>
+    <th class=backarrow>
     <ion-button shape=round size=small fill=clear>
         <ion-icon :icon=chevronBackOutline></ion-icon>
     </ion-button>
-  </div>
+    </th>
 
-  <div class="card">
-    <ion-card>
+
+    <th class=card>
+      <ion-card>
+        bla<br/>
+        bla<br/>
+        bla<br/>
         <ion-slides>
-            <ion-slide>
-                <ion-card-content>
-                    <p>21h30&nbsp;    Palco Azul&nbsp;  O grande encontro<br />
-                       22h30&nbsp;    Palco Lago&nbsp;  Baianasystem<br />
-                       23h30&nbsp;    Palco Forró&nbsp; Mariana Aydar</p>
-                </ion-card-content>
-            </ion-slide>
-            <ion-slide>
-                <p>Texto teste 2</p>
-            </ion-slide>
-            <ion-slide>
-                <p>Texto teste 3</p>
-            </ion-slide>
         </ion-slides>
-    </ion-card>
-  </div>
+      </ion-card>
+    </th>
 
-  <div class="forwardslidebutton">
+    <th class=forwardarrow>
     <ion-button shape=round size=small fill=clear>
         <ion-icon :icon=chevronForwardOutline></ion-icon>
     </ion-button>
+    </th>
+  </tr>
+  </table>
   </div>
 
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButton, IonCard, IonSlides, IonSlide, IonIcon } from '@ionic/vue';
+import { IonButton, IonIcon } from '@ionic/vue';
+import { IonCard, IonSlides, IonSlide } from '@ionic/vue';
 import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'MrLineup',
   components: {
-    IonCard,
-    IonSlides,
-    IonSlide,
     IonIcon,
     IonButton,
+    IonCard,
+    IonSlides,
   },
   setup() {
     return {
@@ -58,33 +54,28 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.backslidebutton {
-    float:left;
-    //background:Red;
-    width:10%;
-    height:115px;
+.backarrow {
+  background-color: green;
+  width: 40px;
 }
 .card {
-    float:left;
-    //background:Green;
-    width:80%;
-    height:115px;
+  background-color: red;
+  max-width: 99%;
 }
-.forwardslidebutton {
-    float:right;
-    //background:blue;
-    width:10%;
-    height:115px;
+.forwardarrow {
+  background-color: blue;
+  width: 40px;
 }
 ion-card {
   background-color: white;
-  height: 100%;
-  margin: 0;
   border-radius: 8px;
 }
 ion-button {
   position: relative;
   top: 35%;
+  background-color: black;
+  width: 40px;
+  margin: 0;
 }
 p {
   font-size: 15px;
