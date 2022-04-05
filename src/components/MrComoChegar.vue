@@ -18,56 +18,56 @@
         <ion-row>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon :icon=mapOutline></ion-icon>
             </ion-button>
             <p>Mapa</p>
           </ion-col>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon :icon=restaurantOutline></ion-icon>
             </ion-button>
             <p>Restaurantes</p>
           </ion-col>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon slot="icon-only" :icon=constructOutline></ion-icon>
             </ion-button>
             <p>Oficinas</p>
           </ion-col>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon :icon=triangleOutline></ion-icon>
             </ion-button>
             <p>Camping</p>
           </ion-col>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon :icon=mapOutline></ion-icon>
             </ion-button>
             <p>Mapa</p>
           </ion-col>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon :icon=restaurantOutline></ion-icon>
             </ion-button>
             <p>Restaurantes</p>
           </ion-col>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon slot="icon-only" :icon=constructOutline></ion-icon>
             </ion-button>
             <p>Oficinas</p>
           </ion-col>
 
           <ion-col>
-            <ion-button size=default>
+            <ion-button>
                 <ion-icon :icon=triangleOutline></ion-icon>
             </ion-button>
             <p>Camping</p>
@@ -125,26 +125,21 @@ ion-button {
   --background: white;
 }
 ion-grid {
-  background-color: #7aab2c;
 }
 .table_margin {
   width: 40px;
-  background-color: blue;
-  margin: 0 !important;
+  margin: 0;
 }
 .div_como_chegar {
   text-align: left;
-  background-color: purple;
   max-width: 99%;
-  height: 20px !important;
-  margin: 0 !important;
+  height: 20px;
+  margin: 0;
 }
 table {
   width: 100%;
-  table-layout:fixed;
-  margin: 0 !important;
+  margin: 0;
 }
 .first_row {
-  background-color: yellow;
 }
 </style>

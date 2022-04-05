@@ -66,7 +66,6 @@ export default defineComponent({
 .container_box {
   position: relative;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 .backarrow {
   width: 40px;
