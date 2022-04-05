@@ -33,35 +33,7 @@
 
           <ion-col>
             <ion-button>
-                <ion-icon slot="icon-only" :icon=constructOutline></ion-icon>
-            </ion-button>
-            <p>Oficinas</p>
-          </ion-col>
-
-          <ion-col>
-            <ion-button>
-                <ion-icon :icon=triangleOutline></ion-icon>
-            </ion-button>
-            <p>Camping</p>
-          </ion-col>
-
-          <ion-col>
-            <ion-button>
-                <ion-icon :icon=mapOutline></ion-icon>
-            </ion-button>
-            <p>Mapa</p>
-          </ion-col>
-
-          <ion-col>
-            <ion-button>
-                <ion-icon :icon=restaurantOutline></ion-icon>
-            </ion-button>
-            <p>Restaurantes</p>
-          </ion-col>
-
-          <ion-col>
-            <ion-button>
-                <ion-icon slot="icon-only" :icon=constructOutline></ion-icon>
+                <ion-icon :icon=constructOutline></ion-icon>
             </ion-button>
             <p>Oficinas</p>
           </ion-col>
