@@ -65,7 +65,6 @@ export default defineComponent({
 <style scoped>
 .container_box {
   position: relative;
-  margin-top: 10px;
 }
 .backarrow {
   width: 40px;

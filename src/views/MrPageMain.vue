@@ -4,6 +4,7 @@
     <MrHeader />
 
     <ion-content :fullscreen="true">
+              <div class="separator"></div>
               <MrLineup />
               <MrComoChegar />
               <MrAds />
