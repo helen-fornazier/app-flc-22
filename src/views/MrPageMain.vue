@@ -4,6 +4,7 @@
     <MrHeader />
 
     <ion-content :fullscreen="true">
+    <div id="container_view">
               <div class="separator"></div>
               <MrLineup />
               <MrComoChegar />
@@ -12,6 +13,7 @@
               <MrButtons />
               <div class="separator"></div>
               <MrNoticias />
+    </div>
     </ion-content>
     </div>
   </ion-page>
@@ -49,6 +51,10 @@ export default defineComponent({
   left: 0;
   right: 0;
   top: 0;
+}
+#container_view {
+  max-width: 500px;
+  margin: auto;
 }
 .separator {
   width: 100%;
