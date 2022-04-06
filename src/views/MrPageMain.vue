@@ -52,7 +52,7 @@ export default defineComponent({
   top: 0;
 }
 #container_view {
-  max-width: 500px;
+  max-width: 700px;
   margin: auto;
 }
 .separator {
