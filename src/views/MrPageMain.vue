@@ -11,7 +11,6 @@
               <MrAds />
               <div class="separator"></div>
               <MrButtons />
-              <div class="separator"></div>
               <MrNoticias />
     </div>
     </ion-content>
