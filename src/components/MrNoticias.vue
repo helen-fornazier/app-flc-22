@@ -4,7 +4,7 @@
         <th class=table_margin></th>
 
         <th>
-          <div class=titulo><h4>Ultimas atualizações</h4></div>
+          <div class=titulo><h4>Últimas atualizações</h4></div>
         </th>
 
         <th class=table_margin></th>
@@ -12,21 +12,23 @@
 
       <tr>
         <th></th>
+
         <th>
-            <ion-list>
-            <ion-item slots=start>
-                <ion-label>Show Racionais mudou de palco</ion-label>
-            </ion-item>
+        <ion-grid>
+          <ion-row><ion-col><ion-card>
+          <p>Show Racionais mudou de palco asdf asdf asdf asdfasdfasdf asdfasdf sdfasdfasdf asdfsdfasdf sadfasdfasdf asdfasdfdfdfsdf asdfasdf</p>
+          </ion-card></ion-col></ion-row>
 
-            <ion-item slots=start>
-                <ion-label>Show Racionais mudou de palco</ion-label>
-            </ion-item>
+          <ion-row><ion-col><ion-card>
+          <p>Show Racionais mudou de palco</p>
+          </ion-card></ion-col></ion-row>
 
-            <ion-item slots=start>
-                <ion-label>Show Racionais mudou de palco</ion-label>
-            </ion-item>
-            </ion-list>
+          <ion-row><ion-col><ion-card>
+          <p>Show Racionais mudou de palco</p>
+          </ion-card></ion-col></ion-row>
+        </ion-grid>
         </th>
+
         <th></th>
       </tr>
     </table>
@@ -34,13 +36,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonList, IonItem, IonCard } from '@ionic/vue';
+import { IonGrid, IonRow, IonCol, IonCard } from '@ionic/vue';
 
 export default defineComponent({
   name: 'MrRank',
   components: {
-    IonList,
-    IonItem,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCard,
   },
 });
 </script>
@@ -56,18 +60,32 @@ h4 {
   height: 20px;
   margin: 0;
 }
-table {
-  width: 100%;
-  margin: 0;
-}
 .table_margin {
   width: 30px;
   margin: 0 auto;
 }
-ion-list {
-    margin: 0;
+ion-card {
+  background-color: var(--ion-color-primary-contrast);
+  border-radius: 8px;
+  margin: 0;
+  padding-inline: 10px;
+  text-align: left;
 }
-ion-item {
-    margin: 0;
+ion-grid {
+  padding: 0;
+}
+ion-col {
+  padding-inline: 0;
+}
+table {
+  width: 100%;
+  margin: 0;
+  table-layout:fixed;
+}
+th {
+  margin: 0;
+}
+tr {
+  margin: 0;
 }
 </style>
