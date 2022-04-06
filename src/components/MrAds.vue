@@ -1,15 +1,14 @@
 <template>
 
-  <div class=container_box>
-  <table style="width:100%">
+  <table>
   <tr>
-    <th class=backarrow>
+    <th class=table_margin>
     <ion-button shape=round size=small fill=clear>
         <ion-icon :icon=chevronBackOutline></ion-icon>
     </ion-button>
     </th>
 
-    <th class=card>
+    <th>
         <ion-card>
             <ion-slides autoplay="400" loop="true" speed="3000">
                 <ion-slide>
@@ -22,14 +21,13 @@
         </ion-card>
     </th>
 
-    <th class=forwardarrow>
+    <th class=table_margin>
     <ion-button shape=round size=small fill=clear>
         <ion-icon :icon=chevronForwardOutline></ion-icon>
     </ion-button>
     </th>
   </tr>
   </table>
-  </div>
 
 </template>
 
@@ -64,30 +62,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.container_box {
-  position: relative;
-}
-.backarrow {
-  width: 40px;
-  margin: 0;
-}
-.card {
-  margin: 0;
-}
-.forwardarrow {
-  width: 40px;
-  margin: 0;
+.table_margin {
+  width: 20px;
+  margin: 0 auto;
 }
 ion-card {
   background-color: white;
   border-radius: 8px;
-  margin: 0;
+  margin: 0 auto;
+  max-height: 250px;
 }
 ion-button {
+  margin: auto;
   position: relative;
-  top: 35%;
-  width: 40px;
-  margin: 0;
+  left: -10px;
 }
 p {
   font-size: 15px;
@@ -95,10 +83,14 @@ p {
   text-align: left;
 }
 table {
+  width: 100%;
+  margin: 0;
   table-layout:fixed;
 }
-ion-card {
-    max-height: 250px;
+th {
+  margin: 0;
 }
-
+tr {
+  margin: 0;
+}
 </style>

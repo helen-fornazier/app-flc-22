@@ -1,58 +1,55 @@
 <template>
-  <div class=container_box>
-
   <table>
-      <tr class="first_row">
+      <tr>
         <th class=table_margin></th>
         <th>
-          <div class=div_como_chegar><h4>Como chegar</h4></div>
+          <div class=titulo><h4>Como chegar</h4></div>
         </th>
         <th class=table_margin></th>
       </tr>
 
       <tr>
         <th></th>
+
         <th>
+        <ion-grid>
+          <ion-row>
 
-      <ion-grid>
-        <ion-row>
+            <ion-col>
+              <ion-button>
+                  <ion-icon :icon=mapOutline></ion-icon>
+              </ion-button>
+              <p>Mapa</p>
+            </ion-col>
 
-          <ion-col>
-            <ion-button>
-                <ion-icon :icon=mapOutline></ion-icon>
-            </ion-button>
-            <p>Mapa</p>
-          </ion-col>
+            <ion-col>
+              <ion-button>
+                  <ion-icon :icon=restaurantOutline></ion-icon>
+              </ion-button>
+              <p>Restaurantes</p>
+            </ion-col>
 
-          <ion-col>
-            <ion-button>
-                <ion-icon :icon=restaurantOutline></ion-icon>
-            </ion-button>
-            <p>Restaurantes</p>
-          </ion-col>
+            <ion-col>
+              <ion-button>
+                  <ion-icon :icon=constructOutline></ion-icon>
+              </ion-button>
+              <p>Oficinas</p>
+            </ion-col>
 
-          <ion-col>
-            <ion-button>
-                <ion-icon :icon=constructOutline></ion-icon>
-            </ion-button>
-            <p>Oficinas</p>
-          </ion-col>
-
-          <ion-col>
-            <ion-button>
-                <ion-icon :icon=triangleOutline></ion-icon>
-            </ion-button>
-            <p>Camping</p>
-          </ion-col>
+            <ion-col>
+              <ion-button>
+                  <ion-icon :icon=triangleOutline></ion-icon>
+              </ion-button>
+              <p>Camping</p>
+            </ion-col>
 
           </ion-row>
         </ion-grid>
-
         </th>
+
         <th></th>
       </tr>
     </table>
-  </div>
 </template>
 
 <script lang="ts">
@@ -96,13 +93,11 @@ ion-icon {
 ion-button {
   --background: white;
 }
-ion-grid {
-}
 .table_margin {
-  width: 40px;
+  width: 20px;
   margin: 0;
 }
-.div_como_chegar {
+.titulo {
   text-align: left;
   max-width: 99%;
   height: 20px;
@@ -111,7 +106,5 @@ ion-grid {
 table {
   width: 100%;
   margin: 0;
-}
-.first_row {
 }
 </style>

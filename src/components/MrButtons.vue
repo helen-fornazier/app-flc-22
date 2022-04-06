@@ -1,6 +1,4 @@
 <template>
-  <div class=container_box>
-
   <table>
       <tr>
         <th class=table_margin></th>
@@ -27,7 +25,6 @@
         <th class=table_margin></th>
       </tr>
     </table>
-  </div>
 </template>
 
 <script lang="ts">
@@ -51,8 +48,8 @@ ion-card {
   padding-top: 50%;
 }
 .table_margin {
-  width: 40px;
-  margin: 0;
+  width: 20px;
+  margin: 0 auto;
 }
 table {
   width: 100%;
