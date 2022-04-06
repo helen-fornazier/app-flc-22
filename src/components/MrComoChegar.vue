@@ -16,28 +16,28 @@
           <ion-row>
 
             <ion-col>
-              <ion-button fill=clear>
+              <ion-button shape=round fill=clear size=small>
                   <ion-icon :icon=mapOutline fill=clear></ion-icon>
               </ion-button>
               <p>Mapa</p>
             </ion-col>
 
             <ion-col>
-              <ion-button fill=clear>
+              <ion-button shape=round fill=clear size=small>
                   <ion-icon :icon=restaurantOutline></ion-icon>
               </ion-button>
               <p>Restaurantes</p>
             </ion-col>
 
             <ion-col>
-              <ion-button fill=clear>
+              <ion-button shape=round fill=clear size=small>
                   <ion-icon :icon=constructOutline></ion-icon>
               </ion-button>
               <p>Oficinas</p>
             </ion-col>
 
             <ion-col>
-              <ion-button fill=clear>
+              <ion-button shape=round fill=clear size=small>
                   <ion-icon :icon=triangleOutline></ion-icon>
               </ion-button>
               <p>Camping</p>
@@ -45,7 +45,7 @@
 
 
             <ion-col>
-              <ion-button fill=clear>
+              <ion-button shape=round fill=clear size=small>
                   <ion-icon :icon=maleFemaleOutline></ion-icon>
               </ion-button>
               <p>Banheiros</p>
@@ -98,7 +98,11 @@ p {
   font-weight: normal;
 }
 ion-button {
+  margin: 0;
+  padding: 0;
   --background: var(--ion-color-primary-contrast);
+  width: 50px;
+  height: 50px;
 }
 .table_margin {
   width: 30px;
@@ -113,5 +117,15 @@ ion-button {
 table {
   width: 100%;
   margin: 0;
+  padding: 0;
+}
+ion-grid {
+  padding-inline: 0;
+}
+ion-row {
+  padding-inline: 0;
+}
+ion-col {
+  padding-inline: 0;
 }
 </style>
