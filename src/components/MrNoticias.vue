@@ -61,7 +61,7 @@ table {
   margin: 0;
 }
 .table_margin {
-  width: 20px;
+  width: 30px;
   margin: 0 auto;
 }
 ion-list {

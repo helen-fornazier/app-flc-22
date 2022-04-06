@@ -45,10 +45,10 @@ ion-card {
   border-radius: 8px;
   margin: 0;
   width: 100%;
-  padding-top: 50%;
+  padding-top: 40%;
 }
 .table_margin {
-  width: 20px;
+  width: 30px;
   margin: 0 auto;
 }
 table {
@@ -56,6 +56,6 @@ table {
   margin: 0;
 }
 .button_margin {
-  width: 10px;
+  width: 20px;
 }
 </style>

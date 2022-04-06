@@ -84,14 +84,15 @@ h4 {
   line-height: 15px;
 }
 p {
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 8px;
+  line-height: 10px;
+  font-weight: normal;
 }
 ion-button {
-  --background: white;
+  --background: var(--ion-color-primary-contrast);
 }
 .table_margin {
-  width: 20px;
+  width: 30px;
   margin: 0;
 }
 .titulo {

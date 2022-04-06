@@ -62,7 +62,7 @@ export default defineComponent({
 
 <style scoped>
 .table_margin {
-  width: 20px;
+  width: 30px;
   margin: 0 auto;
 }
 ion-card {
@@ -73,11 +73,11 @@ ion-card {
 ion-button {
   margin: auto;
   position: relative;
-  left: -10px;
+  left: -6px;
 }
 p {
-  font-size: 15px;
-  line-height: 25px;
+  font-size: 12px;
+  line-height: 22px;
   text-align: left;
 }
 table {
