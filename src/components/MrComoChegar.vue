@@ -43,6 +43,14 @@
               <p>Camping</p>
             </ion-col>
 
+
+            <ion-col>
+              <ion-button fill=clear>
+                  <ion-icon :icon=maleFemaleOutline></ion-icon>
+              </ion-button>
+              <p>Banheiros</p>
+            </ion-col>
+
           </ion-row>
         </ion-grid>
         </th>
@@ -56,7 +64,7 @@
 import { defineComponent } from 'vue';
 import { IonButton, IonIcon } from '@ionic/vue';
 import { IonGrid, IonCol, IonRow,  IonNote } from '@ionic/vue';
-import { mapOutline, restaurantOutline, constructOutline, triangleOutline } from 'ionicons/icons';
+import { mapOutline, restaurantOutline, constructOutline, triangleOutline, maleFemaleOutline } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'MrLineup',
@@ -73,6 +81,7 @@ export default defineComponent({
         restaurantOutline,
         constructOutline,
         triangleOutline,
+        maleFemaleOutline,
     };
   },
 });
