@@ -67,7 +67,6 @@ export default defineComponent({
   margin: 0 auto;
 }
 ion-card {
-  background-color: white;
   border-radius: 8px;
   margin: 0 auto;
   max-height: 250px;

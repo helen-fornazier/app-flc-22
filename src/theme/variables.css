@@ -10,8 +10,8 @@ http://ionicframework.com/docs/theming/ */
   /** primary **/
   --ion-color-primary: #7aab2c;
   --ion-color-primary-rgb: 122, 171, 44;
-  --ion-color-primary-contrast: #000000;
-  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #6b9627;
   --ion-color-primary-tint: #87b341;
 

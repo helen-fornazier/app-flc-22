@@ -41,7 +41,7 @@ export default defineComponent({
 
 <style scoped>
 ion-card {
-  background-color: white;
+  background-color: var(--ion-color-primary-contrast);
   border-radius: 8px;
   margin: 0;
   width: 100%;

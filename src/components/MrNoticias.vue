@@ -69,6 +69,5 @@ ion-list {
 }
 ion-item {
     margin: 0;
-    background-color: white;
 }
 </style>

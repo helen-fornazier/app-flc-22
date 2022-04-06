@@ -66,7 +66,7 @@ export default defineComponent({
   margin: 0 auto;
 }
 ion-card {
-  background-color: white;
+  background-color: var(--ion-color-primary-contrast);
   border-radius: 8px;
   margin: 0 auto;
 }

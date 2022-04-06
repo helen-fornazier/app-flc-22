@@ -16,28 +16,28 @@
           <ion-row>
 
             <ion-col>
-              <ion-button>
-                  <ion-icon :icon=mapOutline></ion-icon>
+              <ion-button fill=clear>
+                  <ion-icon :icon=mapOutline fill=clear></ion-icon>
               </ion-button>
               <p>Mapa</p>
             </ion-col>
 
             <ion-col>
-              <ion-button>
+              <ion-button fill=clear>
                   <ion-icon :icon=restaurantOutline></ion-icon>
               </ion-button>
               <p>Restaurantes</p>
             </ion-col>
 
             <ion-col>
-              <ion-button>
+              <ion-button fill=clear>
                   <ion-icon :icon=constructOutline></ion-icon>
               </ion-button>
               <p>Oficinas</p>
             </ion-col>
 
             <ion-col>
-              <ion-button>
+              <ion-button fill=clear>
                   <ion-icon :icon=triangleOutline></ion-icon>
               </ion-button>
               <p>Camping</p>
@@ -86,9 +86,6 @@ h4 {
 p {
   font-size: 12px;
   line-height: 15px;
-}
-ion-icon {
-  color: #7aab2c;
 }
 ion-button {
   --background: white;
