@@ -10,14 +10,19 @@
 
     <th>
         <ion-card>
+            <div class="keep_aspect_ratio">
             <ion-slides autoplay="400" loop="true" speed="3000">
+
                 <ion-slide>
-                    <ion-img :src="ads1"></ion-img>
+                  <ion-img :src="ads1"></ion-img>
                 </ion-slide>
+
                 <ion-slide>
-                    <ion-img :src="ads2"></ion-img>
+                  <ion-img :src="ads2"></ion-img>
                 </ion-slide>
+
             </ion-slides>
+            </div>
         </ion-card>
     </th>
 
@@ -68,8 +73,14 @@ export default defineComponent({
 }
 ion-card {
   border-radius: 8px;
-  margin: 0 auto;
-  max-height: 100px;
+  margin: 0;
+}
+.keep_aspect_ratio {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 0 !important;
+  padding-bottom: 25% !important;
 }
 ion-button {
   margin: auto;
