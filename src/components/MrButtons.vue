@@ -1,66 +1,60 @@
 <template>
-  <table>
-      <tr>
-        <th class=table_margin></th>
-
-        <th>
-          <div class="mr-button">
-          <ion-card>
-              <ion-card-content>
-              <h1>Nível</h1>
-              </ion-card-content>
-          </ion-card>
-          </div>
-        </th>
-
-        <th class="button_margin">
-        </th>
-
-        <th>
-          <div class="mr-button">
-          <ion-card>
-              <ion-card-content>
-              <h1>Rank</h1>
-              </ion-card-content>
-          </ion-card>
-          </div>
-        </th>
-
-        <th class=table_margin></th>
-      </tr>
-    </table>
+    <div class="buttons-container">
+      <div class="buttons-row">
+        <div class="button-card">
+          <span class="button-card-text">Nível</span>
+        </div>
+        <div class="button-card margin-left">
+          <span class="button-card-text">Ranking</span>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonCard, IonCardContent } from '@ionic/vue';
 
 export default defineComponent({
   name: 'MrButtons',
-  components: {
-    IonCard,
-    IonCardContent,
-  },
 });
 </script>
 
 <style scoped>
-ion-card {
+.buttons-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.buttons-row {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin: 0 30px;
+}
+.button-card {
+  align-items: end;
+  justify-content: center;
+  display: flex;
+  height: 20.5vh;
   background-color: var(--ion-color-primary-contrast);
   border-radius: 8px;
-  margin: 0;
   width: 100%;
-  padding-top: 40%;
+  margin-right: 10px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
 }
-.table_margin {
-  width: 30px;
-  margin: 0 auto;
+.margin-left {
+  margin-right: 0px;
+  margin-left: 10px;
 }
-table {
-  width: 100%;
-  margin: 0;
-}
-.button_margin {
-  width: 20px;
+.button-card-text {
+  font-size: 24px;
+  font-weight: normal;
+  color: rgb(115, 115, 115);
+  padding-top: 13px;
+  padding-bottom: 13px;
+  line-height: 1.5;
 }
 </style>
