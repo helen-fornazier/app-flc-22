@@ -6,7 +6,9 @@
         <th>
           <div class="mr-button">
           <ion-card>
+              <ion-card-content>
               <h1>Nível</h1>
+              </ion-card-content>
           </ion-card>
           </div>
         </th>
@@ -17,7 +19,9 @@
         <th>
           <div class="mr-button">
           <ion-card>
+              <ion-card-content>
               <h1>Rank</h1>
+              </ion-card-content>
           </ion-card>
           </div>
         </th>
@@ -29,12 +33,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonCard } from '@ionic/vue';
+import { IonCard, IonCardContent } from '@ionic/vue';
 
 export default defineComponent({
   name: 'MrButtons',
   components: {
     IonCard,
+    IonCardContent,
   },
 });
 </script>
