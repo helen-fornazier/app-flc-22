@@ -105,7 +105,7 @@ ion-button {
   height: 50px;
 }
 .table_margin {
-  width: 30px;
+  width: var(--mr-side-margin);
   margin: 0;
 }
 .titulo {

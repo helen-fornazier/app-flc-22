@@ -3,7 +3,10 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
-  /** backgroun **/
+  /** side margin **/
+    --mr-side-margin: 30px;
+
+  /** background **/
     --ion-background-color: #f2f2f2;
     --ion-background-color-rgb: 242, 242, 242;
 

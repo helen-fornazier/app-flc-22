@@ -32,7 +32,7 @@ export default defineComponent({
   justify-content: center;
   display: flex;
   width: 100%;
-  margin: 0 30px;
+  margin: 0 var(--mr-side-margin);
 }
 .button-card {
   align-items: end;

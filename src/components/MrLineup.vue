@@ -62,7 +62,7 @@ export default defineComponent({
 
 <style scoped>
 .table_margin {
-  width: 30px;
+  width: var(--mr-side-margin);
   margin: 0 auto;
 }
 ion-card {
