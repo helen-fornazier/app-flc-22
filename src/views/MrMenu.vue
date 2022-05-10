@@ -2,8 +2,8 @@
     <ion-menu content-id="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ion-list-header>Fulano</ion-list-header>
+          <ion-note>última atualização data/hora</ion-note>
 
           <ion-menu-toggle auto-hide="false" v-for="(p, i) in appPages" :key="i">
             <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
@@ -13,14 +13,6 @@
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-            <ion-icon slot="start" :ios="bookmarkOutline" :md="bookmarkSharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
       </ion-content>
     </ion-menu>
 </template>
@@ -29,7 +21,7 @@
 import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote } from '@ionic/vue';
 import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { archiveOutline, archiveSharp, bookmarkOutline, bookmarkSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { archiveOutline, archiveSharp, bookmarkOutline, bookmarkSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp, syncOutline, podiumOutline, informationCircleOutline, giftOutline, navigateOutline, calendarOutline } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'App',
@@ -48,41 +40,41 @@ export default defineComponent({
     const selectedIndex = ref(0);
     const appPages = [
       {
-        title: 'Inbox',
-        url: '/folder/Inbox',
-        iosIcon: mailOutline,
-        mdIcon: mailSharp
+        title: 'Minha Reciclagem',
+        url: '',
+        iosIcon: syncOutline,
+        mdIcon: syncOutline
       },
       {
-        title: 'Outbox',
-        url: '/folder/Outbox',
-        iosIcon: paperPlaneOutline,
-        mdIcon: paperPlaneSharp
+        title: 'Ranking',
+        url: '',
+        iosIcon: podiumOutline,
+        mdIcon: podiumOutline
       },
       {
-        title: 'Favorites',
-        url: '/folder/Favorites',
-        iosIcon: heartOutline,
-        mdIcon: heartSharp
+        title: 'Mapa',
+        url: 'mapa',
+        iosIcon: navigateOutline,
+        mdIcon: navigateOutline
       },
       {
-        title: 'Archived',
-        url: '/folder/Archived',
-        iosIcon: archiveOutline,
-        mdIcon: archiveSharp
+        title: 'Programação',
+        url: '',
+        iosIcon: calendarOutline,
+        mdIcon: calendarOutline
       },
       {
-        title: 'Trash',
-        url: '/folder/Trash',
-        iosIcon: trashOutline,
-        mdIcon: trashSharp
+        title: 'Prêmios',
+        url: '',
+        iosIcon: giftOutline,
+        mdIcon: giftOutline
       },
       {
-        title: 'Spam',
-        url: '/folder/Spam',
-        iosIcon: warningOutline,
-        mdIcon: warningSharp
-      }
+        title: 'Sobre',
+        url: '',
+        iosIcon: informationCircleOutline,
+        mdIcon: informationCircleOutline
+      },
     ];
     const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
     
@@ -111,6 +103,12 @@ export default defineComponent({
       trashSharp, 
       warningOutline, 
       warningSharp,
+      syncOutline,
+      podiumOutline,
+      informationCircleOutline,
+      giftOutline,
+      navigateOutline,
+      calendarOutline,
       isSelected: (url: string) => url === route.path ? 'selected' : ''
     }
   }
