@@ -26,6 +26,8 @@ import './theme/variables.css';
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
+
+app.config.unwrapInjectedRef = true;
   
 router.isReady().then(() => {
   app.mount('#app');

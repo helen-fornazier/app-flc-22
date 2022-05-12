@@ -2,7 +2,7 @@
     <ion-menu content-id="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Fulano</ion-list-header>
+          <ion-list-header> Olá {{ data_content.user.nome }}, </ion-list-header>
           <ion-note>última atualização data/hora</ion-note>
 
           <ion-menu-toggle auto-hide="false" v-for="(p, i) in appPages" :key="i">
@@ -36,6 +36,7 @@ export default defineComponent({
     IonMenuToggle, 
     IonNote, 
   },
+  inject: ['data_content'],
   setup() {
     const selectedIndex = ref(0);
     const appPages = [
