@@ -15,17 +15,12 @@
 
         <th>
         <ion-grid>
-          <ion-row><ion-col><ion-card>
-          <p>Show Racionais mudou de palco asdf asdf asdf asdfasdfasdf asdfasdf sdfasdfasdf asdfsdfasdf sadfasdfasdf asdfasdfdfdfsdf asdfasdf</p>
-          </ion-card></ion-col></ion-row>
-
-          <ion-row><ion-col><ion-card>
-          <p>Show Racionais mudou de palco</p>
-          </ion-card></ion-col></ion-row>
-
-          <ion-row><ion-col><ion-card>
-          <p>Show Racionais mudou de palco</p>
-          </ion-card></ion-col></ion-row>
+          <ion-row v-for="noticia in data_content.noticias" :key="noticia.id">
+            <ion-col><ion-card>
+            <p>{{ noticia.data }}: {{ noticia.titulo }} </p>
+            <p>{{ noticia.descricao }}</p>
+            </ion-card></ion-col>
+          </ion-row>
         </ion-grid>
         </th>
 
@@ -46,6 +41,7 @@ export default defineComponent({
     IonCol,
     IonCard,
   },
+  inject: ['data_content'],
 });
 </script>
 
