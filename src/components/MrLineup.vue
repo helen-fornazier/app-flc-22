@@ -2,6 +2,13 @@
 
   <table>
   <tr>
+    <th class=table_margin></th>
+    <th>
+      <div class=titulo><h4>Rolando agora</h4></div>
+    </th>
+    <th class=table_margin></th>
+  </tr>
+  <tr>
     <th class="table_margin">
     <ion-button shape=round size=small fill=clear>
         <ion-icon :icon=chevronBackOutline></ion-icon>
@@ -90,6 +97,16 @@ th {
   margin: 0;
 }
 tr {
+  margin: 0;
+}
+h4 {
+  font-size: 12px;
+  line-height: 15px;
+}
+.titulo {
+  text-align: left;
+  max-width: 99%;
+  height: 20px;
   margin: 0;
 }
 </style>

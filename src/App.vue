@@ -47,6 +47,9 @@ function get_prog_now(programacoes) {
     }
     prog_now_chunked.push(chunk);
   }
+  if (prog_now_chunked.length == 0)
+    return [[{nome: "Nada rolando"}, {nome: "Relaxa"}, {nome: "Pega uma breja"}]];
+
   return prog_now_chunked;
 }
 

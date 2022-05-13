@@ -5,7 +5,6 @@
 
     <ion-content :fullscreen="true">
     <div id="container_view">
-              <div class="separator"></div>
               <MrLineup />
               <MrComoChegar />
               <MrAds />
