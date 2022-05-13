@@ -1,7 +1,8 @@
 <template>
   <ion-app>
-    <ion-split-pane content-id="main-content">
-      <MrMenu />
+    <MrLogin v-if="!telefone" @telefone="(tel) => telefone = tel"/>
+    <ion-split-pane v-else content-id="main-content">
+      <MrMenu @logout="telefone = ''" />
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>
   </ion-app>
@@ -11,9 +12,10 @@
 import { defineComponent, computed } from 'vue';
 import { IonRouterOutlet, IonSplitPane, IonApp } from '@ionic/vue';
 import MrMenu from './views/MrMenu.vue'
+import MrLogin from './views/MrLogin.vue'
 
-async function fetch_userdata() {
-  const response = await fetch("https://www.mundorecicladores.com.br/_functions/userdata");
+async function fetch_userdata(telefone) {
+  const response = await fetch("https://www.mundorecicladores.com.br/_functions/userdata/" + telefone);
   const json = await response.json();
   console.log("json", json);
   return json;
@@ -60,9 +62,11 @@ export default defineComponent({
     IonRouterOutlet, 
     IonSplitPane,
     IonApp,
+    MrLogin,
   },
   data() {
     return {
+      telefone: "",
       data_content: {
         user: {
           pts: 0,
@@ -81,13 +85,14 @@ export default defineComponent({
   provide() {
     return {
       data_content: computed(() => this.data_content),
-      prog_now: computed(() => this.prog_now)
+      prog_now: computed(() => this.prog_now),
+      saved_telefone: computed(() => this.telefone)
     }
   },
   async mounted () {
-    this.data_content = await fetch_userdata();
+    this.data_content = await fetch_userdata(this.telefone);
     setInterval(async () => {
-      this.data_content = await fetch_userdata();
+      this.data_content = await fetch_userdata(this.telefone);
     }, 3000);
 
     this.prog_now = get_prog_now(this.data_content.programacao);

@@ -4,6 +4,7 @@
         <ion-list id="inbox-list">
           <ion-list-header> Olá {{ data_content.user.nome }}, </ion-list-header>
           <ion-note>última atualização data/hora</ion-note>
+          <button @click="$emit('logout')">Logout</button>
 
           <ion-menu-toggle auto-hide="false" v-for="(p, i) in appPages" :key="i">
             <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
