@@ -10,7 +10,10 @@
 
     <th>
         <ion-card>
-          <swiper>
+          <swiper
+            :autoplay="{delay:4500, disableOnInteraction: false}"
+            :modules="modules"
+            >
             <swiper-slide v-for="ads in slowdata.ads" :key="ads.id">
               <div class="keep_aspect_ratio">
                 <ion-img :src="ads"></ion-img>
@@ -35,6 +38,13 @@ import { defineComponent, computed } from 'vue';
 import { IonButton, IonCard, IonIcon, IonImg } from '@ionic/vue';
 import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import '@ionic/vue/css/ionic-swiper.css';
+import "swiper/css/autoplay";
+
 
 export default defineComponent({
   name: 'MrAds',
@@ -51,6 +61,7 @@ export default defineComponent({
     return {
         chevronForwardOutline,
         chevronBackOutline,
+        modules: [Autoplay]
     };
   },
 });

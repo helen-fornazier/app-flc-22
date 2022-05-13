@@ -17,7 +17,10 @@
 
     <th>
       <ion-card>
-      <swiper>
+      <swiper
+        :autoplay="{delay:4500, disableOnInteraction: false}"
+        :modules="modules"
+        >
         <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
             <div >
               <p class="programacao" v-for="prog in chunk" :key="prog.id">
@@ -45,9 +48,12 @@ import { IonButton, IonIcon } from '@ionic/vue';
 import { IonCard } from '@ionic/vue';
 import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay } from "swiper";
 
-import 'swiper/css';
+// Import Swiper styles
+import "swiper/css";
 import '@ionic/vue/css/ionic-swiper.css';
+import "swiper/css/autoplay";
 
 export default defineComponent({
   name: 'MrLineup',
@@ -63,6 +69,7 @@ export default defineComponent({
     return {
         chevronForwardOutline,
         chevronBackOutline,
+        modules: [Autoplay]
     }
   },
 });
