@@ -11,13 +11,13 @@
     <th>
       <ion-card>
       <swiper>
-        <swiper-slide>
-            <p>21h30&nbsp;    Palco Azul&nbsp;  O grande encontro<br />
-               22h30&nbsp;    Palco Lago&nbsp;  Baianasystem<br />
-               23h30&nbsp;    Palco Forró&nbsp; Mariana Aydar</p>
+        <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
+            <div >
+              <p class="programacao" v-for="prog in chunk" :key="prog.id">
+                {{ prog.inicio }}&nbsp;{{ prog.local }}&nbsp;{{ prog.nome }}
+              </p>
+            </div>
           </swiper-slide>
-        <swiper-slide>Slide 2</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
       </swiper>
       </ion-card>
     </th>
@@ -51,11 +51,12 @@ export default defineComponent({
     SwiperSlide,
     IonCard,
   },
+  inject: ['data_content', 'prog_now'],
   setup() {
     return {
         chevronForwardOutline,
         chevronBackOutline,
-    };
+    }
   },
 });
 </script>
@@ -75,9 +76,9 @@ ion-button {
   position: relative;
   left: -6px;
 }
-p {
+.programacao {
   font-size: 12px;
-  line-height: 22px;
+  line-height: 10px;
   text-align: left;
 }
 table {

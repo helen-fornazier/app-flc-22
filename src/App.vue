@@ -19,6 +19,37 @@ async function fetch_userdata() {
   return json;
 }
 
+function get_prog_now(programacoes) {
+  let now = new Date();
+  let margin_min = 10;
+  let prog_now: any[] = [];
+  let prog_now_chunked: any[] = [];
+
+  for (var i = 0; i < programacoes.length; i++) {
+      let prog = programacoes[i];
+      let inicio = new Date(prog.inicio);
+      inicio.setMinutes(inicio.getMinutes() - margin_min)
+      let fim = new Date(prog.inicio)
+      fim.setMinutes(fim.getMinutes() + prog.duracao_min + margin_min)
+
+      //console.log("Analisando", prog, inicio.toLocaleString(), fim.toLocaleString(), now.toLocaleString(), now > inicio, now < fim);
+      if (now > inicio && now < fim) {
+        prog_now.push(prog);
+      }
+  }
+
+  // Group by chunk of 3
+  let chunk_size = 3;
+  for (i = 0; i < Math.ceil(prog_now.length/chunk_size); i++) {
+    let chunk: any[] = [];
+    for (var j = 0; j < chunk_size && i * chunk_size + j < prog_now.length; j++) {
+      chunk.push(prog_now[i * chunk_size + j]);
+    }
+    prog_now_chunked.push(chunk);
+  }
+  return prog_now_chunked;
+}
+
 export default defineComponent({
   name: 'App',
   components: {
@@ -38,18 +69,25 @@ export default defineComponent({
         noticias: [],
         programacao: [],
         mapa: [],
-      }
+      },
+      prog_now: [{}],
     }
   },
   provide() {
     return {
-      data_content: computed(() => this.data_content)
+      data_content: computed(() => this.data_content),
+      prog_now: computed(() => this.prog_now)
     }
   },
   async mounted () {
     this.data_content = await fetch_userdata();
     setInterval(async () => {
       this.data_content = await fetch_userdata();
+    }, 3000);
+
+    this.prog_now = get_prog_now(this.data_content.programacao);
+    setInterval(() => {
+      this.prog_now = get_prog_now(this.data_content.programacao);
     }, 3000)
   }
 });
