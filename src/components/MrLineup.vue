@@ -58,7 +58,7 @@ export default defineComponent({
     SwiperSlide,
     IonCard,
   },
-  inject: ['data_content', 'prog_now'],
+  inject: ['prog_now'],
   setup() {
     return {
         chevronForwardOutline,

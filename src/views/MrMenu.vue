@@ -2,7 +2,7 @@
     <ion-menu content-id="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header> Olá {{ data_content.user.nome }}, </ion-list-header>
+          <ion-list-header> Olá {{ fastdata.user.nome }}, </ion-list-header>
           <ion-note>última atualização data/hora</ion-note>
           <button @click="$emit('logout')">Logout</button>
 
@@ -37,7 +37,7 @@ export default defineComponent({
     IonMenuToggle, 
     IonNote, 
   },
-  inject: ['data_content'],
+  inject: ['fastdata'],
   setup() {
     const selectedIndex = ref(0);
     const appPages = [

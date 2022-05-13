@@ -15,7 +15,7 @@
 
         <th>
         <ion-grid>
-          <ion-row v-for="noticia in data_content.noticias" :key="noticia.id">
+          <ion-row v-for="noticia in fastdata.noticias" :key="noticia.id">
             <ion-col><ion-card>
             <p>{{ noticia.data }}: {{ noticia.titulo }} </p>
             <p>{{ noticia.descricao }}</p>
@@ -41,7 +41,7 @@ export default defineComponent({
     IonCol,
     IonCard,
   },
-  inject: ['data_content'],
+  inject: ['fastdata'],
 });
 </script>
 

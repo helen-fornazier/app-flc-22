@@ -11,7 +11,7 @@
     <th>
         <ion-card>
           <swiper>
-            <swiper-slide v-for="ads in data_content.ads" :key="ads.id">
+            <swiper-slide v-for="ads in slowdata.ads" :key="ads.id">
               <div class="keep_aspect_ratio">
                 <ion-img :src="ads"></ion-img>
               </div>
@@ -46,7 +46,7 @@ export default defineComponent({
     Swiper,
     SwiperSlide,
   },
-  inject: ['data_content'],
+  inject: ['slowdata'],
   setup() {
     return {
         chevronForwardOutline,

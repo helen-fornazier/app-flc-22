@@ -6,7 +6,7 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
 
-        <ion-title size=small><b>Nível {{ data_content.user.nivel }} - Recicla pontos</b></ion-title>
+        <ion-title size=small><b>Nível {{ fastdata.user.nivel }} - Recicla pontos</b></ion-title>
 
         <ion-buttons slot="end">
           <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
@@ -40,7 +40,7 @@ export default defineComponent({
     IonToolbar,
     IonIcon,
   },
-  inject: ['data_content'],
+  inject: ['fastdata'],
   setup() {
     return {
       personCircle,

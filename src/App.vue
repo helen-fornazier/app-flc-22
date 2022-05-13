@@ -1,8 +1,8 @@
 <template>
   <ion-app>
-    <MrLogin v-if="!telefone" @telefone="(tel) => telefone = tel"/>
+    <MrLogin v-if="!telefone" @telefone="update_telefone"/>
     <ion-split-pane v-else content-id="main-content">
-      <MrMenu @logout="telefone = ''" />
+      <MrMenu @logout="logout" />
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>
   </ion-app>
@@ -13,11 +13,16 @@ import { defineComponent, computed } from 'vue';
 import { IonRouterOutlet, IonSplitPane, IonApp } from '@ionic/vue';
 import MrMenu from './views/MrMenu.vue'
 import MrLogin from './views/MrLogin.vue'
+import { Storage } from '@ionic/storage';
 
-async function fetch_userdata(telefone) {
-  const response = await fetch("https://www.mundorecicladores.com.br/_functions/userdata/" + telefone);
+const store = new Storage();
+
+async function fetch_userdata(url, store_key) {
+  //const response = await fetch("https://www.mundorecicladores.com.br/_functions/userdata/" + telefone);
+  const response = await fetch(url);
   const json = await response.json();
   console.log("json", json);
+  await store.set(store_key, JSON.stringify(json));
   return json;
 }
 
@@ -50,9 +55,52 @@ function get_prog_now(programacoes) {
     prog_now_chunked.push(chunk);
   }
   if (prog_now_chunked.length == 0)
-    return [[{nome: "Nada rolando"}, {nome: "Relaxa"}, {nome: "Pega uma breja"}]];
+    return [[{nome: "Nada rolando"}, {nome: "Relaxa"}, {nome: "Curte a natureza"}]];
 
   return prog_now_chunked;
+}
+
+async function retrieve_saveddata(c) {
+    // Retrieved saved data
+    await store.create();
+    //await store.clear();
+
+    let s_tel = await store.get('telefone');
+    let s_fastdata = await store.get('fastdata');
+    let s_slowdata = await store.get('slowdata');
+
+    if (s_tel)
+      c.telefone = s_tel;
+
+    if (s_fastdata) {
+      try {
+        c.fastdata = JSON.parse(s_fastdata);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    if (s_slowdata) {
+      try {
+        c.slowdata = JSON.parse(s_slowdata);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+}
+
+async function pool_data(c) {
+    const base_url = "https://www.mundorecicladores.com.br/_functions/"
+
+    c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.telefone, "fastdata");
+    setInterval(async () => {
+      c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.telefone, "fastdata");
+    }, 3*1000);
+
+    c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.telefone, "slowdata");
+    setInterval(async () => {
+      c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.telefone, "fastdata");
+    }, 10*1000);
 }
 
 export default defineComponent({
@@ -67,14 +115,17 @@ export default defineComponent({
   data() {
     return {
       telefone: "",
-      data_content: {
+      fastdata: {
         user: {
+          nome: '',
           pts: 0,
           nivel: 0,
           tot_kg: 0,
+          coleta: [],
         },
-        coleta: [],
         noticias: [],
+      },
+      slowdata: {
         programacao: [],
         mapa: [],
         ads: [],
@@ -84,21 +135,36 @@ export default defineComponent({
   },
   provide() {
     return {
-      data_content: computed(() => this.data_content),
+      fastdata: computed(() => this.fastdata),
+      slowdata: computed(() => this.slowdata),
       prog_now: computed(() => this.prog_now),
-      saved_telefone: computed(() => this.telefone)
     }
   },
-  async mounted () {
-    this.data_content = await fetch_userdata(this.telefone);
-    setInterval(async () => {
-      this.data_content = await fetch_userdata(this.telefone);
-    }, 3000);
+  async created() {
+    await retrieve_saveddata(this);
+    await pool_data(this);
 
-    this.prog_now = get_prog_now(this.data_content.programacao);
+    this.prog_now = get_prog_now(this.slowdata.programacao);
     setInterval(() => {
-      this.prog_now = get_prog_now(this.data_content.programacao);
-    }, 3000)
+      this.prog_now = get_prog_now(this.slowdata.programacao);
+    }, 1*60*1000)
+  },
+  methods: {
+    update_telefone(tel) {
+      this.telefone = tel;
+      store.set('telefone', tel);
+    },
+    logout() {
+      this.telefone = '';
+      this.fastdata.user = {
+        nome: '',
+        pts: 0,
+        nivel: 0,
+        tot_kg: 0,
+        coleta: [],
+      };
+      store.remove('fastdata');
+    },
   }
 });
 </script>
