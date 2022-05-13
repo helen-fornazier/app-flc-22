@@ -10,19 +10,13 @@
 
     <th>
         <ion-card>
-            <div class="keep_aspect_ratio">
-            <ion-slides autoplay="400" loop="true" speed="3000">
-
-                <ion-slide>
-                  <ion-img :src="ads1"></ion-img>
-                </ion-slide>
-
-                <ion-slide>
-                  <ion-img :src="ads2"></ion-img>
-                </ion-slide>
-
-            </ion-slides>
-            </div>
+          <swiper>
+            <swiper-slide v-for="ads in data_content.ads" :key="ads.id">
+              <div class="keep_aspect_ratio">
+                <ion-img :src="ads"></ion-img>
+              </div>
+            </swiper-slide>
+          </swiper>
         </ion-card>
     </th>
 
@@ -38,29 +32,25 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { IonButton, IonCard, IonSlides, IonSlide, IonIcon, IonImg } from '@ionic/vue';
+import { IonButton, IonCard, IonIcon, IonImg } from '@ionic/vue';
 import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
-//import ads1 from '@/assets/ads_exemple.webp'
-//import ads2 from '@/assets/ads_exemple2.png'
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export default defineComponent({
   name: 'MrAds',
   components: {
     IonCard,
-    IonSlides,
-    IonSlide,
     IonIcon,
     IonButton,
     IonImg,
+    Swiper,
+    SwiperSlide,
   },
+  inject: ['data_content'],
   setup() {
-    const ads1 = computed(() => require('@/assets/ads_exemple.webp'));
-    const ads2 = computed(() => require('@/assets/ads_exemple2.png'));
     return {
         chevronForwardOutline,
         chevronBackOutline,
-        ads1,
-        ads2,
     };
   },
 });
@@ -76,11 +66,11 @@ ion-card {
   margin: 0;
 }
 .keep_aspect_ratio {
-  padding: 0 !important;
-  margin: 0 !important;
-  width: 100% !important;
-  height: 0 !important;
-  padding-bottom: 25% !important;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 0;
+  padding-bottom: 25%;
 }
 ion-button {
   margin: auto;

@@ -69,6 +69,7 @@ export default defineComponent({
         noticias: [],
         programacao: [],
         mapa: [],
+        ads: [],
       },
       prog_now: [{}],
     }
