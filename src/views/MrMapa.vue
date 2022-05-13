@@ -3,11 +3,14 @@
     <div id="container">
     <MrHeader />
 
-    <ion-content :fullscreen="true" :scroll-x="true" :scroll-y="true">
-    <div id="container_view">
-        <ion-img :src="mapa"></ion-img>
-    </div>
-    </ion-content>
+      <swiper :zoom="true" :modules="modules" class="mySwiper">
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+              <img :src="mapa">
+          </div>
+        </swiper-slide>
+
+      </swiper>
     </div>
   </ion-page>
 </template>
@@ -16,28 +19,35 @@
 import { defineComponent, computed } from 'vue';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonImg } from '@ionic/vue';
 import MrHeader from '@/components/MrHeader.vue'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Zoom } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import '@ionic/vue/css/ionic-swiper.css';
+import "swiper/css/zoom";
 
 export default defineComponent({
   name: 'MrPageMain',
   components: {
-    IonContent,
     IonPage,
     MrHeader,
-    IonImg,
+    Swiper,
+    SwiperSlide,
   },
   setup() {
     const mapa = computed(() => require('@/assets/mapa-teste.png'));
+    const you = computed(() => require('@/assets/blue-arrow.png'));
     return {
         mapa,
+        you,
+        modules: [Zoom]
     };
   },
 });
 </script>
 
 <style scoped>
-ion-content {
-  --padding-bottom: 0;
-}
 #container {
   text-align: center;
   position: absolute;
@@ -45,12 +55,14 @@ ion-content {
   right: 0;
   top: 0;
 }
-#container_view {
-  width: 1000px;
-  margin: auto;
+#you {
+  width: 20px;
+  position: absolute;
+  left: 10px;
+  top: 0;
+  transform: rotate(45deg);
 }
-.separator {
-  width: 100%;
-  height: 20px;
+.mySwiper {
+  height: 92vh;
 }
 </style>
