@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { IonRouterOutlet, IonSplitPane } from '@ionic/vue';
+import { IonRouterOutlet, IonSplitPane, IonApp } from '@ionic/vue';
 import MrMenu from './views/MrMenu.vue'
 
 async function fetch_userdata() {
@@ -56,6 +56,7 @@ export default defineComponent({
     MrMenu,
     IonRouterOutlet, 
     IonSplitPane,
+    IonApp,
   },
   data() {
     return {
