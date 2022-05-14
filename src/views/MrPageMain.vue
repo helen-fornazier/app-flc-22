@@ -9,7 +9,7 @@
               <MrComoChegar />
               <MrAds />
               <div class="separator"></div>
-              <MrButtons />
+              <MrReciclometro />
               <MrNoticias />
     </div>
     </ion-content>
@@ -24,7 +24,7 @@ import MrHeader from '@/components/MrHeader.vue'
 import MrLineup from '@/components/MrLineup.vue'
 import MrComoChegar from '@/components/MrComoChegar.vue'
 import MrAds from '@/components/MrAds.vue'
-import MrButtons from '@/components/MrButtons.vue'
+import MrReciclometro from '@/components/MrReciclometro.vue'
 import MrNoticias from '@/components/MrNoticias.vue'
 
 export default defineComponent({
@@ -36,7 +36,7 @@ export default defineComponent({
     MrLineup,
     MrComoChegar,
     MrAds,
-    MrButtons,
+    MrReciclometro,
     MrNoticias,
   }
 });
