@@ -22,7 +22,7 @@
 import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote } from '@ionic/vue';
 import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { archiveOutline, archiveSharp, bookmarkOutline, bookmarkSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp, syncOutline, podiumOutline, informationCircleOutline, giftOutline, navigateOutline, calendarOutline } from 'ionicons/icons';
+import { archiveOutline, archiveSharp, bookmarkOutline, bookmarkSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp, syncOutline, podiumOutline, informationCircleOutline, giftOutline, navigateOutline, mapOutline, calendarOutline } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'App',
@@ -54,16 +54,10 @@ export default defineComponent({
         mdIcon: podiumOutline
       },
       {
-        title: 'Mapa',
-        url: 'mapa',
-        iosIcon: navigateOutline,
-        mdIcon: navigateOutline
-      },
-      {
-        title: 'Programação',
-        url: '',
-        iosIcon: calendarOutline,
-        mdIcon: calendarOutline
+        title: 'Guia Digital',
+        url: 'guia',
+        iosIcon: mapOutline,
+        mdIcon: mapOutline
       },
       {
         title: 'Prêmios',
@@ -110,6 +104,7 @@ export default defineComponent({
       informationCircleOutline,
       giftOutline,
       navigateOutline,
+      mapOutline,
       calendarOutline,
       isSelected: (url: string) => url === route.path ? 'selected' : ''
     }
