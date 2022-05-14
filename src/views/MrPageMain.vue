@@ -4,6 +4,8 @@
 
     <ion-content :fullscreen="true">
     <div id="container_view">
+              <div class="separator"></div>
+              <MrMiniPerfil />
               <MrLineup />
               <MrComoChegar />
               <MrAds />
@@ -24,6 +26,7 @@ import MrComoChegar from '@/components/MrComoChegar.vue'
 import MrAds from '@/components/MrAds.vue'
 import MrReciclometro from '@/components/MrReciclometro.vue'
 import MrNoticias from '@/components/MrNoticias.vue'
+import MrMiniPerfil from '@/components/MrMiniPerfil.vue'
 
 export default defineComponent({
   name: 'MrPageMain',
@@ -35,6 +38,7 @@ export default defineComponent({
     MrAds,
     MrReciclometro,
     MrNoticias,
+    MrMiniPerfil,
   }
 });
 </script>
