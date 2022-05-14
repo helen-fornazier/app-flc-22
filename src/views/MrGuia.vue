@@ -1,7 +1,6 @@
 <template>
   <ion-page>
     <div id="container">
-    <MrHeader />
 
     <ion-content :fullscreen="true">
     <div id="container_view">
@@ -25,7 +24,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IonContent, IonPage } from '@ionic/vue';
-import MrHeader from '@/components/MrHeader.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Zoom } from "swiper";
 
@@ -39,7 +37,6 @@ export default defineComponent({
   components: {
     IonContent,
     IonPage,
-    MrHeader,
     Swiper,
     SwiperSlide,
   },

@@ -1,7 +1,6 @@
 <template>
   <ion-page>
     <div id="container">
-    <MrHeader />
 
     <ion-content :fullscreen="true">
     <div id="container_view">
@@ -20,7 +19,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import MrHeader from '@/components/MrHeader.vue'
 import MrLineup from '@/components/MrLineup.vue'
 import MrComoChegar from '@/components/MrComoChegar.vue'
 import MrAds from '@/components/MrAds.vue'
@@ -32,7 +30,6 @@ export default defineComponent({
   components: {
     IonContent,
     IonPage,
-    MrHeader,
     MrLineup,
     MrComoChegar,
     MrAds,
