@@ -5,7 +5,7 @@ import MrTabs from '../components/MrTabs.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/tabs/inicio'
   },
   {
     path: '/tabs/',
@@ -13,18 +13,18 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
+        redirect: '/tabs/inicio'
       },
       {
-        path: 'tab1',
+        path: 'inicio',
         component: () => import('@/views/MrPageMain.vue')
       },
       {
-        path: 'tab2',
+        path: 'guia',
         component: () => import('@/views/MrGuia.vue')
       },
       {
-        path: 'tab3',
+        path: 'perfil',
         component: () => import('@/views/MrPageMain.vue')
       }
     ]
