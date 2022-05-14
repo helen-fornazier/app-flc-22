@@ -43,6 +43,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+ion-content {
+  --padding-bottom: 0;
+}
 #container {
   text-align: center;
   position: absolute;
