@@ -18,7 +18,7 @@
     <th>
       <ion-card>
       <swiper
-        :autoplay="{delay:4500, disableOnInteraction: false}"
+        :autoplay="{delay:4500, disableOnInteraction: true}"
         :modules="modules"
         >
         <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
