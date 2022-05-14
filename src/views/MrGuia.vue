@@ -6,7 +6,9 @@
     <ion-content :fullscreen="true">
     <div id="container_view">
 
-      <swiper :zoom="true" :modules="modules" class="mySwiper">
+      <swiper
+      :zoom="{enabled:true, maxRatio: 6}"
+      :modules="modules" class="mySwiper">
         <swiper-slide>
           <div class="swiper-zoom-container">
               <img src="assets/guia-digital.png">
