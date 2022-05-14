@@ -75,7 +75,6 @@ async function retrieve_saveddata(c) {
     if (s_fastdata) {
       try {
         c.fastdata = JSON.parse(s_fastdata);
-        console.log(c.fastdata);
       } catch (error) {
         console.log(error);
       }

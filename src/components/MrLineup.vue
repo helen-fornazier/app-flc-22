@@ -15,17 +15,11 @@
     <th>
       <ion-card>
       <swiper
-        :style="{
-          '--swiper-pagination-color': 'var(--ion-color-primary)',
-        }"
         :autoplay="{delay:4500, disableOnInteraction: true}"
-        :pagination="{
-          clickable: true,
-        }"
         :modules="modules"
         >
         <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
-            <div class="swiper-pagination-bullets">
+            <div >
               <p class="programacao" v-for="prog in chunk" :key="prog.id">
                 {{ prog.inicio }}&nbsp;{{ prog.local }}&nbsp;{{ prog.nome }}
               </p>
@@ -46,13 +40,12 @@
 import { defineComponent } from 'vue';
 import { IonCard } from '@ionic/vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay, Pagination, Scrollbar } from "swiper";
+import { Autoplay } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import '@ionic/vue/css/ionic-swiper.css';
 import "swiper/css/autoplay";
-import "swiper/css/pagination";
 
 export default defineComponent({
   name: 'MrLineup',
@@ -64,7 +57,7 @@ export default defineComponent({
   inject: ['prog_now'],
   setup() {
     return {
-        modules: [Autoplay, Pagination]
+        modules: [Autoplay]
     }
   },
 });

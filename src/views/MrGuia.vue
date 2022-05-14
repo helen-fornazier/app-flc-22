@@ -11,7 +11,7 @@
       :modules="modules" class="mySwiper">
         <swiper-slide>
           <div class="swiper-zoom-container">
-              <img>
+              <img src="assets/guia-digital.png">
           </div>
         </swiper-slide>
       </swiper>
@@ -28,7 +28,6 @@ import { IonContent, IonPage } from '@ionic/vue';
 import MrHeader from '@/components/MrHeader.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Zoom } from "swiper";
-import mergeImages from 'merge-images';
 
 // Import Swiper styles
 import "swiper/css";
@@ -49,11 +48,6 @@ export default defineComponent({
         modules: [Zoom]
     };
   },
-  mounted() {
-    mergeImages(['assets/guia-digital.png',
-                {src:'assets/blue-arrow.png', x:200, y:20, width:10, heigh:10}])
-      .then(b64 => this.$el.querySelector('img').src = b64);
-  }
 });
 </script>
 
