@@ -3,9 +3,7 @@
     <ion-content :fullscreen="true">
     <form>
         <input type="text" v-model="telefone"> 
-        <button type="submit" @click="submit">
-            Submit
-        </button>
+        <button type="submit" @click="submit">Submit</button>
     </form>
     </ion-content>
   </ion-page>
