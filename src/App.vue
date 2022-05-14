@@ -1,17 +1,13 @@
 <template>
   <ion-app>
     <MrLogin v-if="!telefone" @telefone="update_telefone"/>
-    <ion-split-pane v-else content-id="main-content">
-      <MrMenu @logout="logout" />
-      <ion-router-outlet id="main-content"></ion-router-outlet>
-    </ion-split-pane>
+    <ion-router-outlet v-else/>
   </ion-app>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { IonRouterOutlet, IonSplitPane, IonApp } from '@ionic/vue';
-import MrMenu from './views/MrMenu.vue'
+import { IonRouterOutlet, IonApp } from '@ionic/vue';
 import MrLogin from './views/MrLogin.vue'
 import { Storage } from '@ionic/storage';
 
@@ -106,9 +102,7 @@ async function pool_data(c) {
 export default defineComponent({
   name: 'App',
   components: {
-    MrMenu,
     IonRouterOutlet, 
-    IonSplitPane,
     IonApp,
     MrLogin,
   },
