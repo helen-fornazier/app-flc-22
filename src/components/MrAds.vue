@@ -3,9 +3,6 @@
   <table>
   <tr>
     <th class=table_margin>
-    <ion-button shape=round size=small fill=clear>
-        <ion-icon :icon=chevronBackOutline></ion-icon>
-    </ion-button>
     </th>
 
     <th>
@@ -24,9 +21,6 @@
     </th>
 
     <th class=table_margin>
-    <ion-button shape=round size=small fill=clear>
-        <ion-icon :icon=chevronForwardOutline></ion-icon>
-    </ion-button>
     </th>
   </tr>
   </table>
@@ -35,8 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { IonButton, IonCard, IonIcon, IonImg } from '@ionic/vue';
-import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
+import { IonCard, IonImg } from '@ionic/vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from "swiper";
 
@@ -50,8 +43,6 @@ export default defineComponent({
   name: 'MrAds',
   components: {
     IonCard,
-    IonIcon,
-    IonButton,
     IonImg,
     Swiper,
     SwiperSlide,
@@ -59,8 +50,6 @@ export default defineComponent({
   inject: ['slowdata'],
   setup() {
     return {
-        chevronForwardOutline,
-        chevronBackOutline,
         modules: [Autoplay]
     };
   },

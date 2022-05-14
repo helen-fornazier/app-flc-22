@@ -10,9 +10,6 @@
   </tr>
   <tr>
     <th class="table_margin">
-    <ion-button shape=round size=small fill=clear>
-        <ion-icon :icon=chevronBackOutline></ion-icon>
-    </ion-button>
     </th>
 
     <th>
@@ -32,10 +29,7 @@
       </ion-card>
     </th>
 
-    <th class="forwardarrow table_margin">
-    <ion-button shape=round size=small fill=clear>
-        <ion-icon :icon=chevronForwardOutline></ion-icon>
-    </ion-button>
+    <th class="table_margin">
     </th>
   </tr>
   </table>
@@ -44,9 +38,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButton, IonIcon } from '@ionic/vue';
 import { IonCard } from '@ionic/vue';
-import { chevronForwardOutline, chevronBackOutline } from 'ionicons/icons';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from "swiper";
 
@@ -58,8 +50,6 @@ import "swiper/css/autoplay";
 export default defineComponent({
   name: 'MrLineup',
   components: {
-    IonIcon,
-    IonButton,
     Swiper,
     SwiperSlide,
     IonCard,
@@ -67,8 +57,6 @@ export default defineComponent({
   inject: ['prog_now'],
   setup() {
     return {
-        chevronForwardOutline,
-        chevronBackOutline,
         modules: [Autoplay]
     }
   },
