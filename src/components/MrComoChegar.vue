@@ -100,9 +100,12 @@ p {
 ion-button {
   margin: 0;
   padding: 0;
-  --background: var(--ion-color-primary-contrast);
+  --background: var(--ion-color-primary);
   width: 50px;
   height: 50px;
+}
+ion-icon {
+  color: var(--ion-color-primary-contrast);
 }
 .table_margin {
   width: var(--mr-side-margin);
