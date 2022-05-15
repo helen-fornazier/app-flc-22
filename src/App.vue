@@ -114,6 +114,7 @@ export default defineComponent({
           nome: '',
           pts: 0,
           nivel: 0,
+          proximo_nivel: 0,
           tot_kg: 0,
           coleta: [],
         },

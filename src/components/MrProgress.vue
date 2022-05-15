@@ -26,27 +26,31 @@ export default defineComponent({
   components: {
     Doughnut
   },
-  setup(props) {
-    const chartData = {
-      datasets: [
-        {
-          backgroundColor: ['#41B883', '#FFFFFF'],
-          data: [60, 20]
-        }
-      ]
-    }
-
+  inject: ["fastdata"],
+  setup() {
     const chartOptions = {
       responsive: true,
       maintainAspectRatio: true,
       cutout: "90%",
       borderWidth: 0,
     }
-
     return {
-        chartData,
         chartOptions,
     };
+  },
+  computed: {
+    chartData() {
+      const pts = this.fastdata.user.pts;
+      const missing = this.fastdata.user.proximo_nivel - pts;
+      return {
+        datasets: [
+          {
+            backgroundColor: ['#41B883', '#e4e0d8'],
+            data: [pts, missing]
+          }
+        ]
+      }
+    }
   }
 })
 </script>
