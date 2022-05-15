@@ -3,6 +3,7 @@
       <div class="row">
         <div class="card">
             <div class="icon">
+                <div class="chart"><MrProgress /></div>
                 <ion-button shape=round fill=clear size=small>
                     <ion-icon :icon=personOutline fill=clear></ion-icon>
                 </ion-button>
@@ -22,12 +23,14 @@
 import { defineComponent } from 'vue';
 import { IonButton, IonIcon } from '@ionic/vue';
 import { personOutline } from 'ionicons/icons';
+import MrProgress from '@/components/MrProgress'
 
 export default defineComponent({
   name: 'MrMiniPerfil',
   components: {
     IonIcon,
     IonButton,
+    MrProgress,
   },
   inject: ["fastdata"],
   setup() {
@@ -71,13 +74,29 @@ ion-button {
 }
 ion-icon {
   color: var(--ion-color-primary-contrast);
+  z-index: 20;
 }
 .text {
-    text-align: left;
-    margin-left: 10px;
+  text-align: left;
+  margin-left: 10px;
 }
 .perfil-text {
   font-size: 8px;
   font-weight: normal;
+}
+.icon {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.chart {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  top: 0;
+  z-index: 60;
 }
 </style>
