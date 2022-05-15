@@ -95,7 +95,7 @@ async function pool_data(c) {
 
     c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.telefone, "slowdata");
     setInterval(async () => {
-      c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.telefone, "fastdata");
+      c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.telefone, "slowdata");
     }, 10*1000);
 }
 
