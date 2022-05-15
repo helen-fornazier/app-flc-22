@@ -1,7 +1,6 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="card">
+    <MrCard>
+        <div class=content>
             <div class="icon">
                 <div class="chart"><MrProgress /></div>
                 <ion-button shape=round fill=clear size=small>
@@ -15,15 +14,15 @@
                 </p>
             </div>
         </div>
-      </div>
-    </div>
+    </MrCard>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IonButton, IonIcon } from '@ionic/vue';
 import { personOutline } from 'ionicons/icons';
-import MrProgress from '@/components/MrProgress'
+import MrProgress from '@/components/MrProgress.vue';
+import MrCard from '@/components/MrCard.vue';
 
 export default defineComponent({
   name: 'MrMiniPerfil',
@@ -31,6 +30,7 @@ export default defineComponent({
     IonIcon,
     IonButton,
     MrProgress,
+    MrCard,
   },
   inject: ["fastdata"],
   setup() {
@@ -42,28 +42,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.container {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  width: 100%;
-}
-.row {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  width: 100%;
-  margin: 0 var(--mr-side-margin);
-}
-.card {
+.content {
   align-items: center;
   justify-content: left;
   display: flex;
-  background-color: var(--ion-color-primary-contrast);
   padding-left: 10px;
-  border-radius: 8px;
   width: 100%;
-  box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
 }
 ion-button {
   margin: 0;
