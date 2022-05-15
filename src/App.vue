@@ -1,6 +1,6 @@
 <template>
   <ion-app>
-    <MrLogin v-if="!telefone" @telefone="update_telefone"/>
+    <MrLogin v-if="!fastdata.user.tel" @telefone="update_telefone"/>
     <ion-router-outlet v-else/>
   </ion-app>
 </template>
@@ -61,12 +61,8 @@ async function retrieve_saveddata(c) {
     await store.create();
     //await store.clear();
 
-    let s_tel = await store.get('telefone');
     let s_fastdata = await store.get('fastdata');
     let s_slowdata = await store.get('slowdata');
-
-    if (s_tel)
-      c.telefone = s_tel;
 
     if (s_fastdata) {
       try {
@@ -88,14 +84,14 @@ async function retrieve_saveddata(c) {
 async function pool_data(c) {
     const base_url = "https://www.mundorecicladores.com.br/_functions/"
 
-    c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.telefone, "fastdata");
+    c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.fastdata.user.tel, "fastdata");
     setInterval(async () => {
-      c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.telefone, "fastdata");
+      c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.fastdata.user.tel, "fastdata");
     }, 3*1000);
 
-    c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.telefone, "slowdata");
+    c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.fastdata.user.tel, "slowdata");
     setInterval(async () => {
-      c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.telefone, "slowdata");
+      c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.fastdata.user.tel, "slowdata");
     }, 10*1000);
 }
 
@@ -108,10 +104,10 @@ export default defineComponent({
   },
   data() {
     return {
-      telefone: "",
       fastdata: {
         user: {
           nome: '',
+          tel: '',
           pts: 0,
           nivel: 0,
           proximo_nivel: 0,
@@ -146,13 +142,12 @@ export default defineComponent({
   },
   methods: {
     update_telefone(tel) {
-      this.telefone = tel;
-      store.set('telefone', tel);
+      this.fastdata.user.tel = tel;
     },
     logout() {
-      this.telefone = '';
       this.fastdata.user = {
         nome: '',
+        tel: '',
         pts: 0,
         nivel: 0,
         tot_kg: 0,
