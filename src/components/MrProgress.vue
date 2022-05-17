@@ -18,6 +18,8 @@ import {
   CategoryScale,
   Plugin
 } from 'chart.js'
+import { useCssVar } from '@vueuse/core'
+import { ref } from 'vue'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
@@ -42,10 +44,12 @@ export default defineComponent<{fastdata: any}>({
     chartData() {
       const pts = this.fastdata.user.pts;
       const missing = this.fastdata.user.proximo_nivel - pts;
+      const color_pts = useCssVar(ref('--ion-color-secondary'), ref(null)).value;
+      const color_missing = useCssVar(ref('--ion-background-color'), ref(null)).value;
       return {
         datasets: [
           {
-            backgroundColor: ['#41B883', '#e4e0d8'],
+            backgroundColor: [color_pts, color_missing],
             data: [pts, missing]
           }
         ]
