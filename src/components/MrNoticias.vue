@@ -1,37 +1,21 @@
 <template>
-  <table>
-      <tr>
-        <th class=table_margin></th>
-
-        <th>
-          <div class=titulo><h4>Últimas atualizações</h4></div>
-        </th>
-
-        <th class=table_margin></th>
-      </tr>
-
-      <tr>
-        <th></th>
-
-        <th>
-        <ion-grid>
-          <ion-row v-for="noticia in fastdata.noticias" :key="noticia.id">
-            <ion-col><ion-card>
-            <p>{{ noticia.data }}: {{ noticia.titulo }} </p>
-            <p>{{ noticia.descricao }}</p>
-            </ion-card></ion-col>
+    <div class=titulo><h4>Ultimas atualizações</h4></div>
+    <ion-grid>
+      <ion-row v-for="noticia in fastdata.noticias" :key="noticia.id">
+        <ion-col>
+        <MrCard>
+          <p>{{ noticia.data }}: {{ noticia.titulo }} <br/>
+          {{ noticia.descricao }}</p>
+        </MrCard>
+        </ion-col>
           </ion-row>
-        </ion-grid>
-        </th>
-
-        <th></th>
-      </tr>
-    </table>
+      </ion-grid>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonGrid, IonRow, IonCol, IonCard } from '@ionic/vue';
+import { IonGrid, IonRow, IonCol } from '@ionic/vue';
+import MrCard from '@/components/MrCard.vue';
 
 export default defineComponent({
   name: 'MrRank',
@@ -39,7 +23,7 @@ export default defineComponent({
     IonGrid,
     IonRow,
     IonCol,
-    IonCard,
+    MrCard,
   },
   inject: ['fastdata'],
 });
@@ -55,10 +39,7 @@ h4 {
   max-width: 99%;
   height: 20px;
   margin: 0;
-}
-.table_margin {
-  width: var(--mr-side-margin);
-  margin: 0 auto;
+  margin-left: var(--mr-side-margin)
 }
 ion-card {
   background-color: var(--ion-color-primary-contrast);
@@ -72,16 +53,5 @@ ion-grid {
 }
 ion-col {
   padding-inline: 0;
-}
-table {
-  width: 100%;
-  margin: 0;
-  table-layout:fixed;
-}
-th {
-  margin: 0;
-}
-tr {
-  margin: 0;
 }
 </style>
