@@ -21,7 +21,7 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
-export default defineComponent({
+export default defineComponent<{fastdata: any}>({
   name: 'MrProgress',
   components: {
     Doughnut
