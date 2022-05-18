@@ -1,6 +1,6 @@
 <template>
-  <div class=titulo><h4>Rolando agora</h4></div>
   <MrCard>
+    <div class=card-header>Rolando agora</div>
       <swiper
         :autoplay="{delay:4500, disableOnInteraction: true}"
         :modules="modules"
@@ -59,10 +59,14 @@ h4 {
   line-height: 15px;
 }
 .titulo {
-  text-align: left;
-  max-width: 99%;
-  height: 20px;
-  margin: 0;
   margin-left: var(--mr-side-margin)
+}
+.card-header {
+  font-size: 12px;
+  line-height: 40px;
+  background-color: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  width: 100%;
+  font-weight: bold;
 }
 </style>
