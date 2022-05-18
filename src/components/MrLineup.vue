@@ -1,18 +1,28 @@
 <template>
   <MrCard>
     <div class=card-header>Rolando agora</div>
-      <swiper
-        :autoplay="{delay:4500, disableOnInteraction: true}"
-        :modules="modules"
-        >
-        <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
-            <div >
-              <p class="programacao" v-for="prog in chunk" :key="prog.id">
-                {{ prog.inicio }}&nbsp;{{ prog.local }}&nbsp;{{ prog.nome }}
-              </p>
-            </div>
-          </swiper-slide>
-      </swiper>
+
+    <div class=linup-table>
+    <table>
+      <tr class="line-header">
+        <th>Atração</th>
+        <th>Horário</th>
+        <th>Local</th>
+      </tr>
+    </table>
+    </div>
+    <!--swiper
+      :autoplay="{delay:4500, disableOnInteraction: true}"
+      :modules="modules"
+      >
+      <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
+          <div>
+            <p class="programacao" v-for="prog in chunk" :key="prog.id">
+              {{ prog.inicio }}&nbsp;{{ prog.local }}&nbsp;{{ prog.nome }}
+            </p>
+          </div>
+        </swiper-slide>
+    </swiper-->
   </MrCard>
 </template>
 
@@ -30,8 +40,8 @@ import "swiper/css/autoplay";
 export default defineComponent({
   name: 'MrLineup',
   components: {
-    Swiper,
-    SwiperSlide,
+    //Swiper,
+    //SwiperSlide,
     MrCard,
   },
   inject: ['prog_now'],
@@ -44,11 +54,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-ion-button {
-  margin: auto;
-  position: relative;
-  left: -6px;
-}
 .programacao {
   font-size: 12px;
   line-height: 10px;
@@ -58,9 +63,6 @@ h4 {
   font-size: 12px;
   line-height: 15px;
 }
-.titulo {
-  margin-left: var(--mr-side-margin)
-}
 .card-header {
   font-size: 12px;
   line-height: 40px;
@@ -68,5 +70,25 @@ h4 {
   color: var(--ion-color-primary-contrast);
   width: 100%;
   font-weight: bold;
+}
+table {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+tr {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.line-header {
+  background-color: var(--ion-color-secondary);
+  color: var(--ion-color-secondary-contrast);
+  font-size: 18px;
+  line-height: 25px;
+}
+.linup-table {
+  width: 100%;
+  padding: 10px;
 }
 </style>
