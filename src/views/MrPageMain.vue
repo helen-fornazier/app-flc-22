@@ -4,12 +4,10 @@
 
     <ion-content :fullscreen="true">
     <div id="container_view">
-              <div class="separator"></div>
               <MrMiniPerfil />
               <MrLineup />
               <MrComoChegar />
               <MrAds />
-              <div class="separator"></div>
               <MrNoticias />
     </div>
     </ion-content>
