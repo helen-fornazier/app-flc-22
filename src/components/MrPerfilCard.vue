@@ -11,7 +11,10 @@
         <div class="progress">
             <div class="chart"><MrProgress /></div>
             <ion-button class="progress-button" shape=round fill=clear size=small>
-                50/100
+                <div class="vertical">
+                <span class="pts">50</span>
+                <span class="missing-pts">/100</span>
+                </div>
             </ion-button>
         </div>
         <div class="progress-text">Alcance o nível 3 acumulando mais 50 pontos.</div>
@@ -50,15 +53,25 @@ export default defineComponent({
   color: var(--ion-color-secondary-contrast);
   width: 100%;
 }
-span {
-    font-size: 20px;
-    color: var(--ion-color-primary);
-    font-weight: bold;
+.pts {
+  font-size: 25px;
+  color: var(--ion-color-primary);
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0px;
+}
+.missing-pts {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0px;
 }
 ion-button {
   margin: 0;
   padding: 0;
   --background: var(--ion-background-color);
+  color: var(--ion-color-medium);
 }
 .icon-button {
   width: 60px;
@@ -81,8 +94,11 @@ ion-icon {
   height: 40px;
 }
 .main-text {
-    width: 100%;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--ion-color-primary);
+  font-weight: bold;
 }
 .progress {
   align-items: center;
@@ -96,13 +112,17 @@ ion-icon {
   text-align: left;
   margin-inline: 30px;
 }
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
 .horizontal {
-    display: flex;
-    flex-direction: row;
-    margin-inline: 25px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-inline: 25px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 .chart {
   height: 90px;
