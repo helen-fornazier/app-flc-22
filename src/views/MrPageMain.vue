@@ -10,7 +10,6 @@
               <MrComoChegar />
               <MrAds />
               <div class="separator"></div>
-              <MrReciclometro />
               <MrNoticias />
     </div>
     </ion-content>
@@ -24,7 +23,6 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import MrLineup from '@/components/MrLineup.vue'
 import MrComoChegar from '@/components/MrComoChegar.vue'
 import MrAds from '@/components/MrAds.vue'
-import MrReciclometro from '@/components/MrReciclometro.vue'
 import MrNoticias from '@/components/MrNoticias.vue'
 import MrMiniPerfil from '@/components/MrMiniPerfil.vue'
 
@@ -36,7 +34,6 @@ export default defineComponent({
     MrLineup,
     MrComoChegar,
     MrAds,
-    MrReciclometro,
     MrNoticias,
     MrMiniPerfil,
   }
