@@ -34,6 +34,7 @@ ion-card {
   background-color: var(--ion-color-primary-contrast);
   border-radius: 8px;
   width: 100%;
+  color: var(--ion-color-dark)
 }
 ion-card-content {
   margin: 0;
