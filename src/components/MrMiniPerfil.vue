@@ -59,6 +59,8 @@ ion-button {
 ion-icon {
   color: var(--ion-color-primary-contrast);
   z-index: 20;
+  font-size: 64px;
+  --ionicon-stroke-width: 50px;
 }
 .text {
   text-align: left;
