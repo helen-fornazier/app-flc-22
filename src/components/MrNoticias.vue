@@ -3,10 +3,10 @@
     <ion-grid>
       <ion-row v-for="noticia in fastdata.noticias" :key="noticia.id">
         <ion-col>
-        <MrCard>
-          <p>{{ noticia.data }}: {{ noticia.titulo }} <br/>
-          {{ noticia.descricao }}</p>
-        </MrCard>
+          <MrCard>
+            <div class=card-header>{{ noticia.data }}: {{ noticia.titulo }}</div>
+            <div class="descricao">{{ noticia.descricao }} asdf oasidfu oaisduf oius lkj sdfl;aksjdf iu awdf;klj asdf;oiuas dfl asdflkj asdf osdiuf klj asdfoiu j</div>
+          </MrCard>
         </ion-col>
           </ion-row>
       </ion-grid>
@@ -41,17 +41,23 @@ h4 {
   margin: 0;
   margin-left: var(--mr-side-margin)
 }
-ion-card {
-  background-color: var(--ion-color-primary-contrast);
-  border-radius: 8px;
-  margin: 0;
-  padding-inline: 10px;
-  text-align: left;
-}
 ion-grid {
-  padding: 0;
+  --ion-grid-padding: 0;
 }
 ion-col {
-  padding-inline: 0;
+  --ion-grid-column-padding: 0;
+}
+.card-header {
+  font-size: 12px;
+  line-height: 25px;
+  background-color: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  width: 100%;
+  font-weight: bold;
+}
+.descricao {
+  font-size: 12px;
+  margin: 10px;
+  text-align: justify;
 }
 </style>
