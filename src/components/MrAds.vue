@@ -49,6 +49,6 @@ export default defineComponent({
   margin: 0;
   width: 100%;
   height: 0;
-  padding-bottom: 25%;
+  padding-bottom: 40%;
 }
 </style>
