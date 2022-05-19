@@ -18,12 +18,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IonContent, IonPage, } from '@ionic/vue';
+import MrPerfilCard from '@/components/MrPerfilCard.vue'
 
 export default defineComponent({
   name: 'MrPageMain',
   components: {
     IonContent,
     IonPage,
+    MrPerfilCard,
   }
 });
 </script>
