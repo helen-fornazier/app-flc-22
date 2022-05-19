@@ -4,6 +4,7 @@
     <div class=linup-table>
       <swiper
       :autoplay="{delay:4500, disableOnInteraction: true}"
+      :pagination="true"
       :modules="modules"
       >
         <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
@@ -33,13 +34,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 import MrCard from '@/components/MrCard.vue';
 
 // Import Swiper styles
 import "swiper/css";
 import '@ionic/vue/css/ionic-swiper.css';
 import "swiper/css/autoplay";
+import "swiper/css/pagination";
 
 export default defineComponent({
   name: 'MrLineup',
@@ -51,7 +53,7 @@ export default defineComponent({
   inject: ['prog_now'],
   setup() {
     return {
-        modules: [Autoplay]
+        modules: [Autoplay, Pagination]
     }
   },
 });
@@ -79,6 +81,7 @@ table {
   width: 100%;
   align-items: center;
   justify-content: center;
+  margin-bottom: 25px;
 }
 tr {
   width: 100%;
