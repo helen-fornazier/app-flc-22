@@ -2,11 +2,20 @@
   <MrCard>
     <div class=card-header></div>
     <div class="icon">
-        <ion-button shape=round fill=clear size=small>
+        <ion-button class="icon-button" shape=round fill=clear size=small>
             <ion-icon :icon=personOutline fill=clear></ion-icon>
         </ion-button>
     </div>
-    <span class="main-text">{{ fastdata.user.nome}}, você está no nível {{ fastdata.user.nivel }}</span>
+    <div class="main-text"><span>{{ fastdata.user.nome}}, você está no nível {{ fastdata.user.nivel }}</span></div>
+    <div class="horizontal">
+        <div class="progress">
+            <div class="chart"><MrProgress /></div>
+            <ion-button class="progress-button" shape=round fill=clear size=small>
+                50/100
+            </ion-button>
+        </div>
+        <div class="progress-text">Alcance o nível 3 acumulando mais 50 pontos.</div>
+    </div>
   </MrCard>
 </template>
 
@@ -23,6 +32,7 @@ export default defineComponent({
     MrCard,
     IonButton,
     IonIcon,
+    MrProgress,
   },
   inject: ["fastdata"],
   setup() {
@@ -49,10 +59,17 @@ ion-button {
   margin: 0;
   padding: 0;
   --background: var(--ion-background-color);
+}
+.icon-button {
   width: 60px;
   height: 60px;
   position: relative;
   top: -30px
+}
+.progress-button {
+  width: 70px;
+  height: 70px;
+  position: relative;
 }
 ion-icon {
   color: var(--ion-color-primary);
@@ -62,5 +79,36 @@ ion-icon {
 }
 .icon {
   height: 40px;
+}
+.main-text {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.progress {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+.progress-text {
+  display: flex;
+  position: relative;
+  text-align: left;
+  margin-inline: 30px;
+}
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    margin-inline: 25px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.chart {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  top: -15px;
+  z-index: 60;
 }
 </style>
