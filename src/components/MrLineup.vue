@@ -1,28 +1,32 @@
 <template>
   <MrCard>
     <div class=card-header>Rolando agora</div>
-
     <div class=linup-table>
-    <table>
-      <tr class="line-header">
-        <th>Atração</th>
-        <th>Horário</th>
-        <th>Local</th>
-      </tr>
-    </table>
-    </div>
-    <!--swiper
+      <swiper
       :autoplay="{delay:4500, disableOnInteraction: true}"
       :modules="modules"
       >
-      <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
-          <div>
-            <p class="programacao" v-for="prog in chunk" :key="prog.id">
-              {{ prog.inicio }}&nbsp;{{ prog.local }}&nbsp;{{ prog.nome }}
-            </p>
-          </div>
+        <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
+          <table>
+            <tr class="line-header">
+              <th>Atração</th>
+              <th>Horário</th>
+              <th>Local</th>
+            </tr>
+            <tr class="header-space">
+              <td></td>
+              <td class="middle-column"></td>
+              <td></td>
+            </tr>
+            <tr class="evento" v-for="prog in chunk" :key="prog.id">
+              <td class="atracao">{{ prog.nome }}</td>
+              <td class="middle-column">{{ prog.inicio }}</td>
+              <td>{{ prog.local }}</td>
+            </tr>
+          </table>
         </swiper-slide>
-    </swiper-->
+      </swiper>
+    </div>
   </MrCard>
 </template>
 
@@ -40,8 +44,8 @@ import "swiper/css/autoplay";
 export default defineComponent({
   name: 'MrLineup',
   components: {
-    //Swiper,
-    //SwiperSlide,
+    Swiper,
+    SwiperSlide,
     MrCard,
   },
   inject: ['prog_now'],
@@ -80,6 +84,26 @@ tr {
   width: 100%;
   align-items: center;
   justify-content: center;
+}
+td {
+  line-height: 20px;
+  font-size: 12px;
+  width: 34px;
+}
+.header-space {
+  height: 8px;
+}
+.middle-column {
+  border-left: 1px solid var(--ion-background-color);
+  border-right: 1px solid var(--ion-background-color);
+}
+.evento {
+  border-bottom: 1px solid var(--ion-background-color);
+  height: 34px;
+}
+.atracao {
+  text-align: left;
+  color: var(--ion-color-primary);
 }
 .line-header {
   background-color: var(--ion-color-secondary);

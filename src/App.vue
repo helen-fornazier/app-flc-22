@@ -41,8 +41,8 @@ function get_prog_now(programacoes) {
       }
   }
 
-  // Group by chunk of 3
-  let chunk_size = 3;
+  // Group by chunk of 4
+  let chunk_size = 4;
   for (i = 0; i < Math.ceil(prog_now.length/chunk_size); i++) {
     let chunk: any[] = [];
     for (var j = 0; j < chunk_size && i * chunk_size + j < prog_now.length; j++) {
