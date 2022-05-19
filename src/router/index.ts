@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'perfil',
-        component: () => import('@/views/MrPageMain.vue')
+        component: () => import('@/views/MrPerfil.vue')
       }
     ]
   }
