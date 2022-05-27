@@ -1,7 +1,7 @@
 <template>
   <ion-app>
-    <MrLogin v-if="!fastdata.user.tel" @telefone="update_telefone"/>
-    <ion-router-outlet v-else/>
+    <ion-router-outlet v-if="fastdata.user.tel && is_logged"/>
+    <MrLogin v-else @telefone="update_telefone"/>
   </ion-app>
 </template>
 
@@ -10,6 +10,7 @@ import { defineComponent, computed } from 'vue';
 import { IonRouterOutlet, IonApp } from '@ionic/vue';
 import MrLogin from './views/MrLogin.vue'
 import { Storage } from '@ionic/storage';
+import mitt from 'mitt';
 
 const store = new Storage();
 
@@ -67,6 +68,8 @@ async function retrieve_saveddata(c) {
     if (s_fastdata) {
       try {
         c.fastdata = JSON.parse(s_fastdata);
+        if (c.fastdata.user.tel)
+          c.is_logged = true;
       } catch (error) {
         console.log(error);
       }
@@ -122,6 +125,8 @@ export default defineComponent({
         ads: [],
       },
       prog_now: [{}],
+      is_logged: false,
+      bus: mitt(),
     }
   },
   provide() {
@@ -129,7 +134,11 @@ export default defineComponent({
       fastdata: computed(() => this.fastdata),
       slowdata: computed(() => this.slowdata),
       prog_now: computed(() => this.prog_now),
+      bus: computed(() => this.bus),
     }
+  },
+  mounted() {
+    this.bus.on("logout", this.logout);
   },
   async created() {
     await retrieve_saveddata(this);
@@ -143,8 +152,10 @@ export default defineComponent({
   methods: {
     update_telefone(tel) {
       this.fastdata.user.tel = tel;
+      this.is_logged = true;
     },
     logout() {
+      this.is_logged = false;
       this.fastdata.user = {
         nome: '',
         tel: '',

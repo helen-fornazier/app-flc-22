@@ -1,6 +1,6 @@
 <template>
   <MrCard>
-    <ion-button fill="clear">Sair</ion-button>
+    <ion-button href="/" @click="this.bus.emit('logout')" fill="clear">Sair</ion-button>
   </MrCard>
 </template>
 
@@ -14,7 +14,8 @@ export default defineComponent({
   components: {
     IonButton,
     MrCard,
-  }
+  },
+  inject: ["bus"],
 });
 </script>
 
