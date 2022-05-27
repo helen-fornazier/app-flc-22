@@ -14,11 +14,11 @@
               <ion-input type="text" v-model="telefone" placeholder="Insira o telefone aqui"></ion-input>
             </ion-item>
             <ion-item lines="none">
-              <ion-checkbox></ion-checkbox>
+              <ion-checkbox v-model="check_term"></ion-checkbox>
               <ion-label>Condordo com o <a href="https://mundorecicladores.com.br">termo de uso</a> </ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-checkbox></ion-checkbox>
+              <ion-checkbox v-model="check_priv"></ion-checkbox>
               <ion-label>Condordo com a <a href="https://mundorecicladores.com.br">politica de privacidade</a> </ion-label>
             </ion-item>
             <ion-button @click="submit">Entrar</ion-button>
@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonContent, IonPage, IonItem, IonInput, IonLabel, IonCheckbox } from '@ionic/vue';
+import { IonContent, IonPage, IonItem, IonInput, IonLabel, IonCheckbox, IonButton } from '@ionic/vue';
 
 export default defineComponent({
   name: 'MrLogin',
@@ -42,16 +42,22 @@ export default defineComponent({
     IonInput,
     IonLabel,
     IonCheckbox,
+    IonButton,
   },
   emits: ["telefone"],
   data() {
       return {
-          telefone: ""
+          telefone: "",
+          check_term: false,
+          check_priv: false,
       }
   },
   methods: {
       submit() {
+          if (!this.telefone || !this.check_term || !this.check_priv)
+            return;
           this.$emit('telefone', this.telefone);
+          console.log("Login");
       }
   }
 });
