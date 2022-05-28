@@ -4,78 +4,10 @@
   :slidesPerView="1.5"
   :freeMode="true"
   >
-    <swiper-slide>
+    <swiper-slide v-for="nivel in slowdata.niveis" :key="nivel.id">
         <MrCard>
             <div class=card-header>Benefícios</div>
-            <div class="card-content">
-                <ul>
-                    <li>Coffee 1</li>
-                    <li>Tea</li>
-                    <li>Tea</li>
-                    <li>Tea</li>
-                    <li>Tea</li>
-                    <li>Tea</li>
-                </ul> 
-            </div>
-        </MrCard>
-    </swiper-slide>
-    <swiper-slide>
-        <MrCard>
-            <div class=card-header>Benefícios</div>
-            <div class="card-content">
-                <ul>
-                    <li>Coffee 2</li>
-                    <li>Tea</li>
-                    <li>Milk</li>
-                </ul> 
-            </div>
-        </MrCard>
-    </swiper-slide>
-    <swiper-slide>
-        <MrCard>
-            <div class=card-header>Benefícios</div>
-            <div class="card-content">
-                <ul>
-                    <li>Coffee 3</li>
-                    <li>Tea</li>
-                    <li>Milk</li>
-                </ul> 
-            </div>
-        </MrCard>
-    </swiper-slide>
-    <swiper-slide>
-        <MrCard>
-            <div class=card-header>Benefícios</div>
-            <div class="card-content">
-                <ul>
-                    <li>Coffee 3</li>
-                    <li>Tea testando palavras longas lalalal alalal alalal </li>
-                    <li>Milk</li>
-                </ul> 
-            </div>
-        </MrCard>
-    </swiper-slide>
-    <swiper-slide>
-        <MrCard>
-            <div class=card-header>Benefícios</div>
-            <div class="card-content">
-                <ul>
-                    <li>Coffee 3</li>
-                    <li>Tea</li>
-                    <li>Milk</li>
-                </ul> 
-            </div>
-        </MrCard>
-    </swiper-slide>
-    <swiper-slide>
-        <MrCard>
-            <div class=card-header>Benefícios</div>
-            <div class="card-content">
-                <ul>
-                    <li>Coffee 3</li>
-                    <li>Tea</li>
-                    <li>Milk</li>
-                </ul> 
+            <div class="card-content" v-html="nivel.beneficios">
             </div>
         </MrCard>
     </swiper-slide>
@@ -101,7 +33,7 @@ export default defineComponent({
     Swiper,
     SwiperSlide,
   },
-  inject: ["fastdata"],
+  inject: ["slowdata"],
   setup() {
     return {
         modules: [FreeMode]
@@ -120,20 +52,31 @@ export default defineComponent({
   font-weight: bold;
 }
 .card-content {
-  height: 200px;
-}
-ul {
-  width: 100%;
+  min-height: 200px;
   text-align: left;
-  font-size: 12px;
-  list-style: none; /* Remove default bullets */
+  padding: 10px 20px 10px 20px; /* top right bottom left */
+  align-items: center;
+  justify-content: center;
 }
-ul li::before {
-  content: "\2022";
+/deep/ .card-content ul {
   color: var(--ion-color-primary);
-  display: inline-block; 
-  width: 1em;
-  margin-left: -1em;
-  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+/deep/ .card-content li {
+  color: var(--ion-color-primary);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 1em;
+  text-align: left;
+}
+/deep/ .card-content p {
+  font-size: 12px;
+  color: black;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 </style>
