@@ -20,6 +20,7 @@ import { defineComponent } from 'vue';
 import { IonContent, IonPage, } from '@ionic/vue';
 import MrPerfilCard from '@/components/MrPerfilCard.vue'
 import MrSair from '@/components/MrSair.vue'
+import MrColeta from '@/components/MrColeta.vue'
 
 export default defineComponent({
   name: 'MrPageMain',
@@ -28,6 +29,7 @@ export default defineComponent({
     IonPage,
     MrPerfilCard,
     MrSair,
+    MrColeta,
   }
 });
 </script>
