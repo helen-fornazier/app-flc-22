@@ -50,7 +50,7 @@ export default defineComponent({
 
 <style scoped>
 ion-content {
-  --padding-bottom: 0;
+  --padding-bottom: -100%;
 }
 #container {
   text-align: center;

@@ -75,10 +75,12 @@ export default defineComponent({
   padding: 20px;
 }
 .primeira-metade {
+  height: 45%;
   background-color: var(--ion-color-primary);
   justify-content: flex-end;
 }
 .segunda-metade {
+  height: 55%;
   background-color: var(--ion-color-primary-contrast);
   justify-content: flex-start;
 }
@@ -107,7 +109,7 @@ ion-checkbox {
   --border-width: 0px;
 }
 ion-button {
-  margin-top: 50px;
+  margin-top: 30px;
   width: 200px;
 }
 .telefone-title {
