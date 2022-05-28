@@ -83,6 +83,12 @@ table {
   justify-content: center;
   margin-bottom: 25px;
 }
+/deep/ .swiper-pagination-bullets {
+  bottom: -5px;
+}
+/deep/ .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--ion-color-secondary) !important;
+}
 tr {
   width: 100%;
   align-items: center;
