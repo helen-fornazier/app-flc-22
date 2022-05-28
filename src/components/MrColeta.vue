@@ -1,54 +1,14 @@
 <template>
   <MrCard>
     <div class=card-header>Minha Reciclagem</div>
-    <div class="total-kg">Você já reciclou 10kg</div>
+    <div class="total">Você já reciclou {{ fastdata.user.total }}</div>
     <hr />
 
     <ion-content scroll="true">
     <table>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
-        </tr>
-        <tr>
-            <td class="date">Qua 17:30</td>
-            <td class="quantity"><span>300g</span></td>
+        <tr v-for="coleta in fastdata.user.coleta" :key="coleta.id">
+            <td class="date">{{ coleta.data }}</td>
+            <td class="quantity"><span>{{ coleta.qtd }}</span></td>
         </tr>
     </table>
     </ion-content>
@@ -87,7 +47,7 @@ ion-content {
   width: 100%;
   font-weight: bold;
 }
-.total-kg {
+.total {
   color: var(--ion-color-primary);
   font-weight: bold;
   text-align: center;

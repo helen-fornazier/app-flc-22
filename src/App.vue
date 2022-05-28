@@ -114,7 +114,7 @@ export default defineComponent({
           pts: 0,
           nivel: 0,
           proximo_nivel: 0,
-          tot_kg: 0,
+          total: "0kg",
           coleta: [],
         },
         noticias: [],
@@ -123,6 +123,7 @@ export default defineComponent({
         programacao: [],
         mapa: [],
         ads: [],
+        beneficios: [],
       },
       prog_now: [{}],
       is_logged: false,
@@ -162,7 +163,7 @@ export default defineComponent({
         pts: 0,
         nivel: 0,
         proximo_nivel: 0,
-        tot_kg: 0,
+        total: "0kg",
         coleta: [],
       };
       store.remove('fastdata');
