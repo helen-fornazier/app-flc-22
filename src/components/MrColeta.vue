@@ -2,7 +2,6 @@
   <MrCard>
     <div class=card-header>Minha Reciclagem</div>
     <div class="total">Você já reciclou {{ fastdata.user.total }}</div>
-    <hr />
 
     <ion-content scroll="true">
     <table>
@@ -12,8 +11,6 @@
         </tr>
     </table>
     </ion-content>
-
-    <hr />
 
   </MrCard>
 </template>
@@ -36,7 +33,7 @@ export default defineComponent({
 <style scoped>
 ion-content {
     max-height: 300px;
-    min-height: 100px;
+    min-height: 125px;
     --background: var(--ion-color-secondary-contrast);
 }
 .card-header {
@@ -61,13 +58,6 @@ ion-item {
   justify-content: center;
   --background: var(--ion-color-secondary-contrast);
 }
-hr {
-  height: 1px;
-  padding: 0;
-  margin: 0;
-  margin-inline: 20px;
-  background-color: var(--ion-background-color);
-}
 ion-list {
     background: var(--ion-color-secondary-contrast);
 }
@@ -78,7 +68,7 @@ ion-list {
   font-weight: bold;
   padding-inline: 15px;
   width: 70px;
-  height: 40px;
+  height: 32px;
 }
 table {
   text-align: center;
