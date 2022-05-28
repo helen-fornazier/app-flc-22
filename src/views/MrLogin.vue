@@ -7,21 +7,25 @@
     </div>
     <div class="metade segunda-metade">
       <div class="horizontal-size-limit">
-        <form>
+        <form action="javascript:void(0);" @submit="submit">
             <!-- Inputs with labels -->
             <ion-item class="telefone-item">
               <ion-label class="telefone-title" position="stacked" color="primary">Telefone</ion-label>
-              <ion-input type="text" v-model="telefone" placeholder="Insira o telefone aqui"></ion-input>
+              <ion-input
+                        autocomplete="tel" autofocus="true" clear-input="true"
+                        pattern="([0-9]{10}[0-9]?)" inputmode="number" maxlength="11" minlength="10"
+                        enterkeyhint="next" required="true"
+                        v-model="telefone" placeholder="Insira o telefone aqui"></ion-input>
             </ion-item>
             <ion-item lines="none">
-              <ion-checkbox v-model="check_term"></ion-checkbox>
+              <ion-checkbox enterkeyhint="next" required="true" v-model="check_term"></ion-checkbox>
               <ion-label>Condordo com o <a href="https://mundorecicladores.com.br">termo de uso</a> </ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-checkbox v-model="check_priv"></ion-checkbox>
+              <ion-checkbox enterkeyhint="next" required="true" v-model="check_priv"></ion-checkbox>
               <ion-label>Condordo com a <a href="https://mundorecicladores.com.br">politica de privacidade</a> </ion-label>
             </ion-item>
-            <ion-button @click="submit">Entrar</ion-button>
+            <ion-button type="submit">Entrar</ion-button>
         </form>
       </div>
     </div>
@@ -55,9 +59,10 @@ export default defineComponent({
   methods: {
       submit() {
           if (!this.telefone || !this.check_term || !this.check_priv)
-            return;
+            return false;
           this.$emit('telefone', this.telefone);
           console.log("Login");
+          return true;
       }
   }
 });
