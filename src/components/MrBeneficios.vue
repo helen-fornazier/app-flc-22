@@ -1,7 +1,7 @@
 <template>
   <swiper
   :modules="modules"
-  :slidesPerView="2.2"
+  :slidesPerView="1.5"
   :freeMode="true"
   >
     <swiper-slide>
@@ -49,7 +49,7 @@
             <div class="card-content">
                 <ul>
                     <li>Coffee 3</li>
-                    <li>Tea</li>
+                    <li>Tea testando palavras longas lalalal alalal alalal </li>
                     <li>Milk</li>
                 </ul> 
             </div>
@@ -113,7 +113,7 @@ export default defineComponent({
 <style scoped>
 .card-header {
   font-size: 12px;
-  line-height: 40px;
+  line-height: 25px;
   background-color: var(--ion-color-secondary);
   color: var(--ion-color-secondary-contrast);
   width: 100%;

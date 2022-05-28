@@ -71,7 +71,7 @@ h4 {
 }
 .card-header {
   font-size: 12px;
-  line-height: 40px;
+  line-height: 25px;
   background-color: var(--ion-color-primary);
   color: var(--ion-color-primary-contrast);
   width: 100%;
@@ -81,7 +81,7 @@ table {
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 /deep/ .swiper-pagination-bullets {
   bottom: -5px;
@@ -100,7 +100,7 @@ td {
   width: 34px;
 }
 .header-space {
-  height: 8px;
+  height: 0px;
 }
 .middle-column {
   border-left: 1px solid var(--ion-background-color);
@@ -117,8 +117,8 @@ td {
 .line-header {
   background-color: var(--ion-color-secondary);
   color: var(--ion-color-secondary-contrast);
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 12px;
+  line-height: 20px;
 }
 .linup-table {
   width: 100%;

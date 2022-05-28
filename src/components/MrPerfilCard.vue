@@ -111,6 +111,7 @@ ion-icon {
   position: relative;
   text-align: left;
   margin-inline: 30px;
+  font-size: 12px;
 }
 .vertical {
   display: flex;

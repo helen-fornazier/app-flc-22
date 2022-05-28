@@ -81,7 +81,7 @@ ion-content {
 }
 .card-header {
   font-size: 12px;
-  line-height: 40px;
+  line-height: 25px;
   background-color: var(--ion-color-secondary);
   color: var(--ion-color-secondary-contrast);
   width: 100%;
