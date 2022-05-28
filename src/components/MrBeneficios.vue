@@ -6,7 +6,20 @@
   >
     <swiper-slide v-for="nivel in slowdata.niveis" :key="nivel.id">
         <MrCard>
-            <div class=card-header>Benefícios</div>
+            <div class=card-header>
+                <table>
+                    <tr>
+                        <td>
+                <div class="nivel">Nível {{ nivel.nivel }}</div>
+
+                        </td>
+                        <td>
+                <div class="pontos">{{ nivel.pontos }} pontos</div>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div class="card-content" v-html="nivel.beneficios">
             </div>
         </MrCard>
@@ -44,12 +57,14 @@ export default defineComponent({
 
 <style scoped>
 .card-header {
-  font-size: 12px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 35px;
   background-color: var(--ion-color-secondary);
   color: var(--ion-color-secondary-contrast);
   width: 100%;
   font-weight: bold;
+  text-align: left;
+  padding-inline: 25px;
 }
 .card-content {
   min-height: 200px;
@@ -78,5 +93,14 @@ export default defineComponent({
   margin: 0;
   padding: 0;
   text-align: left;
+}
+table {
+    width: 100%;
+}
+.pontos {
+    font-weight: normal;
+    font-size: 8px;
+    width: 100%;
+    text-align: right;
 }
 </style>
