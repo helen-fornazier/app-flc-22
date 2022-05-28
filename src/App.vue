@@ -1,6 +1,6 @@
 <template>
   <ion-app>
-    <ion-router-outlet v-if="fastdata.user.tel && is_logged"/>
+    <ion-router-outlet v-if="is_logged"/>
     <MrLogin v-else @telefone="update_telefone"/>
   </ion-app>
 </template>
