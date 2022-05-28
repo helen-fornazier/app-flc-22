@@ -12,12 +12,12 @@
             <div class="chart"><MrProgress /></div>
             <ion-button class="progress-button" shape=round fill=clear size=small>
                 <div class="vertical">
-                <span class="pts">50</span>
-                <span class="missing-pts">/100</span>
+                <span class="pts">{{ this.fastdata.user.pts }}</span>
+                <span class="nivel-pts">/{{ this.fastdata.user.proximo_nivel }}</span>
                 </div>
             </ion-button>
         </div>
-        <div class="progress-text">Alcance o nível 3 acumulando mais 50 pontos.</div>
+        <div class="progress-text">Alcance o próximo nível acumulando mais {{ this.fastdata.user.proximo_nivel - this.fastdata.user.pts }} pontos.</div>
     </div>
   </MrCard>
 </template>
@@ -61,7 +61,7 @@ export default defineComponent({
   padding: 0;
   letter-spacing: 0px;
 }
-.missing-pts {
+.nivel-pts {
   font-size: 10px;
   margin: 0;
   padding: 0;
