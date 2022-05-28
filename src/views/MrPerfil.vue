@@ -3,11 +3,13 @@
     <div id="container">
 
     <ion-content :fullscreen="true">
-    <div id="container_view">
+    <div class="container_view">
               <MrPerfilCard />
               <MrMeuImpacto />
               <MrColeta />
-              <MrBeneficios />
+    </div>
+    <MrBeneficios />
+    <div class="container_view">
               <MrSair/>
     </div>
     </ion-content>
@@ -21,6 +23,7 @@ import { IonContent, IonPage, } from '@ionic/vue';
 import MrPerfilCard from '@/components/MrPerfilCard.vue'
 import MrSair from '@/components/MrSair.vue'
 import MrColeta from '@/components/MrColeta.vue'
+import MrBeneficios from '@/components/MrBeneficios.vue'
 
 export default defineComponent({
   name: 'MrPageMain',
@@ -30,6 +33,7 @@ export default defineComponent({
     MrPerfilCard,
     MrSair,
     MrColeta,
+    MrBeneficios,
   }
 });
 </script>
@@ -45,7 +49,7 @@ ion-content {
   right: 0;
   top: 0;
 }
-#container_view {
+.container_view {
   max-width: 700px;
   margin: auto;
 }
