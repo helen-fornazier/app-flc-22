@@ -1,7 +1,7 @@
 <template>
   <ion-app>
     <ion-router-outlet v-if="is_logged"/>
-    <MrLogin v-else @telefone="update_telefone"/>
+    <MrLogin v-else @telefone="login"/>
   </ion-app>
 </template>
 
@@ -213,6 +213,15 @@ export default defineComponent({
       this.storage.set(data, JSON.stringify(obj));
       this.app_data[data] = obj;
     },
+    login(tel) {
+      this.app_data.fastdata.simple.user.tel = tel;
+      this.is_logged = true;
+    },
+    logout(tel) {
+      this.is_logged = false;
+      this.app_data.fastdata.simple.user.tel = clone_obj(default_app_data.fastdata.simple.user);
+      this.storage.set("fastdata", JSON.stringify(this.app_data.fastdata));
+    }
   }
 });
 </script>
