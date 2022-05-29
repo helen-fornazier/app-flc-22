@@ -6,18 +6,18 @@
             <ion-icon :icon=personOutline fill=clear></ion-icon>
         </ion-button>
     </div>
-    <div class="main-text"><span>{{ fastdata.user.nome}}, você está no nível {{ fastdata.user.nivel }}</span></div>
+    <div class="main-text"><span>{{ user.nome}}, você está no nível {{ user.nivel }}</span></div>
     <div class="horizontal">
         <div class="progress">
             <div class="chart"><MrProgress /></div>
             <ion-button class="progress-button" shape=round fill=clear size=small>
                 <div class="vertical">
-                <span class="pts">{{ this.fastdata.user.pts }}</span>
-                <span class="nivel-pts">/{{ this.fastdata.user.proximo_nivel }}</span>
+                <span class="pts">{{ this.user.pts }}</span>
+                <span class="nivel-pts">/{{ this.user.proximo_nivel }}</span>
                 </div>
             </ion-button>
         </div>
-        <div class="progress-text">Alcance o próximo nível acumulando mais {{ this.fastdata.user.proximo_nivel - this.fastdata.user.pts }} pontos.</div>
+        <div class="progress-text">Alcance o próximo nível acumulando mais {{ this.user.proximo_nivel - this.user.pts }} pontos.</div>
     </div>
   </MrCard>
 </template>
@@ -37,7 +37,7 @@ export default defineComponent({
     IonIcon,
     MrProgress,
   },
-  inject: ["fastdata"],
+  inject: ["user"],
   setup() {
     return {
       personOutline,

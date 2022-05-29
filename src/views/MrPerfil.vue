@@ -5,7 +5,6 @@
     <ion-content :fullscreen="true">
     <div class="container_view">
               <MrPerfilCard />
-              <MrMeuImpacto />
               <MrColeta />
     </div>
     <MrBeneficios />

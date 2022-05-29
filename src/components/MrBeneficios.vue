@@ -4,7 +4,7 @@
   :slidesPerView="1.5"
   :freeMode="true"
   >
-    <swiper-slide v-for="nivel in slowdata.niveis" :key="nivel.id">
+    <swiper-slide v-for="nivel in niveis" :key="nivel.id">
         <MrCard>
             <div class=card-header>
                 <table>
@@ -46,7 +46,7 @@ export default defineComponent({
     Swiper,
     SwiperSlide,
   },
-  inject: ["slowdata"],
+  inject: ["niveis"],
   setup() {
     return {
         modules: [FreeMode]

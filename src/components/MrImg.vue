@@ -2,7 +2,6 @@
   <img
     v-if="pathToFile"
     :src="pathToFile"
-    :alt="alt"
   />
 </template>
 
@@ -11,6 +10,9 @@ import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { defineComponent, computed } from 'vue';
 
 async function fetch_img_b64(url) {
+  if(url.startsWith('wix'))
+    url =`https://static.wixstatic.com/media/${url.split('/')[3]}`;
+
   const response = await fetch(url);
   const blob = await response.blob();
   const base64Data = await convertBlobToBase64(blob) as string;
@@ -36,10 +38,6 @@ export default defineComponent({
       type: String,
       required: true
     },
-    alt: {
-      type: String,
-      required: true
-    }
   },
   data: function () {
     return {

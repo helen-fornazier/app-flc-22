@@ -9,8 +9,8 @@
             </div>
             <div class="text">
                 <p>
-                    <span class="perfil-text"><b>Olá, {{ fastdata.user.nome }}</b> - Tel. {{ fastdata.user.tel }}</span><br>
-                    <span class="nivel-text"><b>nível {{ fastdata.user.nivel }} - {{ fastdata.user.titulo }}</b></span>
+                    <span class="perfil-text"><b>Olá, {{ user.nome }}</b> - Tel. {{ user.tel }}</span><br>
+                    <span class="nivel-text"><b>nível {{ user.nivel }} - {{ user.titulo }}</b></span>
                 </p>
             </div>
         </div>
@@ -32,7 +32,7 @@ export default defineComponent({
     MrProgress,
     MrCard,
   },
-  inject: ["fastdata"],
+  inject: ["user"],
   setup() {
     return {
       personOutline,

@@ -10,7 +10,7 @@
       :modules="modules" class="mySwiper">
         <swiper-slide>
           <div class="swiper-zoom-container">
-              <img src="assets/guia-digital.png">
+              <MrImg src="assets/guia-digital.png"/>
           </div>
         </swiper-slide>
       </swiper>
@@ -26,6 +26,7 @@ import { defineComponent } from 'vue';
 import { IonContent, IonPage } from '@ionic/vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Zoom } from "swiper";
+import MrImg from '@/components/MrImg.vue';
 
 // Import Swiper styles
 import "swiper/css";
@@ -39,6 +40,7 @@ export default defineComponent({
     IonPage,
     Swiper,
     SwiperSlide,
+    MrImg,
   },
   setup() {
     return {

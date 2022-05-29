@@ -23,12 +23,12 @@ import { ref } from 'vue'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
-export default defineComponent<{fastdata: any}>({
+export default defineComponent<{user: any}>({
   name: 'MrProgress',
   components: {
     Doughnut
   },
-  inject: ["fastdata"],
+  inject: ["user"],
   setup() {
     const chartOptions = {
       responsive: true,
@@ -42,8 +42,8 @@ export default defineComponent<{fastdata: any}>({
   },
   computed: {
     chartData() {
-      const pts = this.fastdata.user.pts;
-      const missing = this.fastdata.user.proximo_nivel - pts;
+      const pts = this.user.pts;
+      const missing = this.user.proximo_nivel - pts;
       const color_pts = useCssVar(ref('--ion-color-secondary'), ref(null)).value;
       const color_missing = useCssVar(ref('--ion-background-color'), ref(null)).value;
       return {
