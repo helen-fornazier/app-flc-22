@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
   "appName": "app-flc22",
-  "webDir": "public",
+  "webDir": "dist",
   "bundledWebRuntime": false
 }
