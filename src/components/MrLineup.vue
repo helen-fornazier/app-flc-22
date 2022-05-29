@@ -43,19 +43,54 @@ import '@ionic/vue/css/ionic-swiper.css';
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
 
-export default defineComponent({
+export default defineComponent<{programacao: any}>({
   name: 'MrLineup',
   components: {
     Swiper,
     SwiperSlide,
     MrCard,
   },
-  inject: ['prog_now'],
+  inject: ['programacao'],
   setup() {
     return {
         modules: [Autoplay, Pagination]
     }
   },
+  computed: {
+    prog_now() {
+      let now = new Date();
+      let margin_min = 10;
+      let prog_now: any[] = [];
+      let prog_now_chunked: any[] = [];
+
+      for (var i = 0; i < this.programacao.length; i++) {
+          let prog = this.programacao[i];
+          let inicio = new Date(prog.inicio);
+          inicio.setMinutes(inicio.getMinutes() - margin_min)
+          let fim = new Date(prog.inicio)
+          fim.setMinutes(fim.getMinutes() + prog.duracao_min + margin_min)
+
+          //console.log("Analisando", prog, inicio.toLocaleString(), fim.toLocaleString(), now.toLocaleString(), now > inicio, now < fim);
+          if (now > inicio && now < fim) {
+            prog_now.push(prog);
+          }
+      }
+
+      // Group by chunk of 4
+      let chunk_size = 4;
+      for (i = 0; i < Math.ceil(prog_now.length/chunk_size); i++) {
+        let chunk: any[] = [];
+        for (var j = 0; j < chunk_size && i * chunk_size + j < prog_now.length; j++) {
+          chunk.push(prog_now[i * chunk_size + j]);
+        }
+        prog_now_chunked.push(chunk);
+      }
+      if (prog_now_chunked.length == 0)
+        return [[{nome: "Nada rolando"}, {nome: "Relaxa"}, {nome: "Curte a natureza"}]];
+
+      return prog_now_chunked;
+    }
+  }
 });
 </script>
 
