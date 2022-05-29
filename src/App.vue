@@ -186,6 +186,7 @@ export default defineComponent({
       let fastdata_url = this.base_url + "fastdata/" + user.tel;
 
       let fastdata = await fetch_obj(fastdata_url);
+      this.storage.set("fastdata", JSON.stringify(fastdata));
       // Update fastdata view
       this.app_data.fastdata = fastdata;
 
