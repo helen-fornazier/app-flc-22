@@ -12,90 +12,125 @@ import MrLogin from './views/MrLogin.vue'
 import { Storage } from '@ionic/storage';
 import mitt from 'mitt';
 
-const store = new Storage();
+const default_app_data = {
+  fastdata: {
+    simple: {
+      user: {
+        nome: '',
+        tel: '',
+        pts: 0,
+        nivel: 0,
+        proximo_nivel: 0,
+        total: "0kg",
+        coleta: [],
+      },
+      noticias: [],
+      impactometro: {},
+    },
+    complex: {
+      guia_digital: {
+        ver: 1,
+        img: "assets/guia-digital.png",
+      },
+      mapas: {
+        ver: 0,
+        imgs: {},
+      },
+      ads: {
+        ver: 0,
+        imgs: [],
+      },
+      niveis: { ver: 0 },
+      programacao: { ver: 0 },
+    }
+  },
+  guia_digital: {
+    ver: 0,
+    img_b64: "",
+  },
+  mapas: {
+    ver: 0,
+    imgs_b64: {}
+  },
+  ads: {
+    ver: 0,
+    imgs_b64: []
+  },
+  niveis: {
+    ver: 0,
+    content: [],
+  },
+  programacao: {
+    ver: 0,
+    content: [],
+  }
+};
 
-async function fetch_userdata(url, store_key) {
+function clone_obj(obj: any) {
+  // TODO: use structuredClone(), requires node v17
+  return JSON.parse(JSON.stringify(obj));
+}
+
+async function fetch_obj(url) {
   //const response = await fetch("https://www.mundorecicladores.com.br/_functions/userdata/" + telefone);
   const response = await fetch(url);
   const json = await response.json();
   console.log("json", json);
-  await store.set(store_key, JSON.stringify(json));
   return json;
 }
 
-function get_prog_now(programacoes) {
-  let now = new Date();
-  let margin_min = 10;
-  let prog_now: any[] = [];
-  let prog_now_chunked: any[] = [];
-
-  for (var i = 0; i < programacoes.length; i++) {
-      let prog = programacoes[i];
-      let inicio = new Date(prog.inicio);
-      inicio.setMinutes(inicio.getMinutes() - margin_min)
-      let fim = new Date(prog.inicio)
-      fim.setMinutes(fim.getMinutes() + prog.duracao_min + margin_min)
-
-      //console.log("Analisando", prog, inicio.toLocaleString(), fim.toLocaleString(), now.toLocaleString(), now > inicio, now < fim);
-      if (now > inicio && now < fim) {
-        prog_now.push(prog);
-      }
-  }
-
-  // Group by chunk of 4
-  let chunk_size = 4;
-  for (i = 0; i < Math.ceil(prog_now.length/chunk_size); i++) {
-    let chunk: any[] = [];
-    for (var j = 0; j < chunk_size && i * chunk_size + j < prog_now.length; j++) {
-      chunk.push(prog_now[i * chunk_size + j]);
-    }
-    prog_now_chunked.push(chunk);
-  }
-  if (prog_now_chunked.length == 0)
-    return [[{nome: "Nada rolando"}, {nome: "Relaxa"}, {nome: "Curte a natureza"}]];
-
-  return prog_now_chunked;
+async function fetch_img_b64(url) {
+  console.log(url);
+  const response = await fetch(url);
+  const blob = await response.blob();
+  const base64Data = await convertBlobToBase64(blob) as string;
+  return 'data:image/png;base64,'+ base64Data;
 }
 
-async function retrieve_saveddata(c) {
-    // Retrieved saved data
-    await store.create();
-    //await store.clear();
+// Ref: https://forum.ionicframework.com/t/how-to-download-an-image-then-store-it-on-the-device/199841
+const convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
+  const reader = new FileReader;
+  reader.onerror = reject;
+  reader.onload = () => {
+    resolve(reader.result);
+  };
+ reader.readAsDataURL(blob);
+});
 
-    let s_fastdata = await store.get('fastdata');
-    let s_slowdata = await store.get('slowdata');
-
-    if (s_fastdata) {
-      try {
-        c.fastdata = JSON.parse(s_fastdata);
-        if (c.fastdata.user.tel)
-          c.is_logged = true;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    if (s_slowdata) {
-      try {
-        c.slowdata = JSON.parse(s_slowdata);
-      } catch (error) {
-        console.log(error);
-      }
-    }
+async function fn_parse_guiadigital(obj) {
+  let img_b64 = await fetch_img_b64(obj.img);
+  return {
+    img_u46: img_b64,
+    ver: obj.ver
+  }
 }
 
-async function pool_data(c) {
-    const base_url = "https://www.mundorecicladores.com.br/_functions/"
+async function fn_parse_mapas(obj) {
+	let imgs_b64 = {}
+  for (let key in obj.mapas.imgs) {
+		let img = await fetch_img_b64(obj.mapas.imgs[key]);
+		imgs_b64[key] = img;
+  }
+	return {
+		ver: obj.ver,
+		imgs_b64: imgs_b64
+	}
+}
 
-    c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.fastdata.user.tel, "fastdata");
-    setInterval(async () => {
-      c.fastdata = await fetch_userdata(base_url + "fastdata/" + c.fastdata.user.tel, "fastdata");
-    }, 3*1000);
+async function fn_parse_ads(obj) {
+	let imgs_b64: string[] = []
+  obj.imgs.forEach(async (img) => {
+		let img_b64 = await fetch_img_b64(img);
+		imgs_b64.push(img_b64);
+  });
+	return {
+		ver: obj.ver,
+		imgs_b64: imgs_b64
+	}
+}
 
-    c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.fastdata.user.tel, "slowdata");
-    setInterval(async () => {
-      c.slowdata = await fetch_userdata(base_url + "slowdata/" + c.fastdata.user.tel, "slowdata");
-    }, 10*1000);
+async function fn_parse_simple(obj) {
+	return obj
 }
 
 export default defineComponent({
@@ -106,67 +141,76 @@ export default defineComponent({
     MrLogin,
   },
   data() {
+    let app_data = clone_obj(default_app_data);
     return {
-      fastdata: {
-        user: {
-          nome: '',
-          tel: '',
-          pts: 0,
-          nivel: 0,
-          proximo_nivel: 0,
-          total: "0kg",
-          coleta: [],
-        },
-        noticias: [],
-      },
-      slowdata: {
-        programacao: [],
-        mapa: [],
-        ads: [],
-        beneficios: [],
-      },
-      prog_now: [{}],
+      app_data: app_data,
       is_logged: false,
-      bus: mitt(),
     }
   },
-  provide() {
+  setup() {
+    const storage = new Storage();
+    const complex_data_keys = ["guia_digital", "mapas", "ads", "niveis", "programacao"];
+    const storage_keys = complex_data_keys.concat(["fastdata"]);
+    const base_url = "https://www.mundorecicladores.com.br/_functions/"
     return {
-      fastdata: computed(() => this.fastdata),
-      slowdata: computed(() => this.slowdata),
-      prog_now: computed(() => this.prog_now),
-      bus: computed(() => this.bus),
+      storage: storage,
+      complex_data_keys: complex_data_keys,
+      storage_keys: storage_keys,
+      base_url: base_url,
     }
   },
-  mounted() {
-    this.bus.on("logout", this.logout);
-  },
-  async created() {
-    await retrieve_saveddata(this);
-    await pool_data(this);
+  async beforeCreate(): Promise<void> {
+    await this.storage.create();
+    //await this.storage.clear();
+    this.storage_keys.forEach(async (data) => {
+      let s_data = await this.storage.get(data);
+      if (s_data) {
+        try {
+          let obj = JSON.parse(s_data);
+          this.app_data[data] = obj;
+        } catch (error) {
+          console.log("Error when loading data from storage", error);
+        }
+      }
+    });
+    let user = this.app_data.fastdata.simple.user;
+    if (user.tel)
+      this.is_logged = true;
 
-    this.prog_now = get_prog_now(this.slowdata.programacao);
-    setInterval(() => {
-      this.prog_now = get_prog_now(this.slowdata.programacao);
-    }, 1*60*1000)
+    this.get_data_from_server();
+    setInterval(this.get_data_from_server, 3*1000)
   },
   methods: {
-    update_telefone(tel) {
-      this.fastdata.user.tel = tel;
-      this.is_logged = true;
+    async get_data_from_server() {
+      let user = this.app_data.fastdata.simple.user;
+      let fastdata_url = this.base_url + "fastdata/" + user.tel;
+
+      let fastdata = await fetch_obj(fastdata_url);
+      // Update fastdata view
+      this.app_data.fastdata = fastdata;
+
+      // check which complex data we need to update
+      this.complex_data_keys.forEach(async (data) => {
+        if (this.app_data[data].ver != this.app_data.fastdata.complex[data].ver) {
+          console.log("fetch complex", data, this.app_data[data].ver, this.app_data.fastdata.complex[data].ver);
+          await this.fetch_complex_data(data)
+        }
+      });
     },
-    logout() {
-      this.is_logged = false;
-      this.fastdata.user = {
-        nome: '',
-        tel: '',
-        pts: 0,
-        nivel: 0,
-        proximo_nivel: 0,
-        total: "0kg",
-        coleta: [],
+    async fetch_complex_data(data) {
+      const parsers = {
+        guia_digital: fn_parse_guiadigital,
+        mapas: fn_parse_mapas,
+        ads: fn_parse_ads,
+        niveis: fn_parse_simple,
+        programacao: fn_parse_simple,
       };
-      store.remove('fastdata');
+      let complexdata_url = this.base_url + "complexdata/" + data;
+      let obj = await fetch_obj(complexdata_url);
+      obj = await parsers[data](obj)
+
+      this.storage.set(data, JSON.stringify(obj));
+      this.app_data[data] = obj;
     },
   }
 });
