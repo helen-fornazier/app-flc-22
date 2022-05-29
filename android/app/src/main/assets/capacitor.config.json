@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "app-flc22",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
