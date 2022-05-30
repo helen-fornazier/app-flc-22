@@ -10,7 +10,7 @@
       :modules="modules" class="mySwiper">
         <swiper-slide>
           <div class="swiper-zoom-container">
-              <MrImg src="assets/guia-digital.png"/>
+              <MrImg :src="guia_digital"/>
           </div>
         </swiper-slide>
       </swiper>
@@ -34,7 +34,7 @@ import '@ionic/vue/css/ionic-swiper.css';
 import "swiper/css/zoom";
 
 export default defineComponent({
-  name: 'MrPageMain',
+  name: 'MrGuia',
   components: {
     IonContent,
     IonPage,
@@ -42,6 +42,7 @@ export default defineComponent({
     SwiperSlide,
     MrImg,
   },
+  inject: ["guia_digital"],
   setup() {
     return {
         modules: [Zoom]
