@@ -73,13 +73,13 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
 }
-/deep/ .card-content ul {
+:deep() .card-content ul {
   color: var(--ion-color-primary);
   margin: 0;
   padding: 0;
   text-align: left;
 }
-/deep/ .card-content li {
+:deep() .card-content li {
   color: var(--ion-color-primary);
   margin: 0;
   padding: 0;
@@ -87,7 +87,7 @@ export default defineComponent({
   left: 1em;
   text-align: left;
 }
-/deep/ .card-content p {
+:deep() .card-content p {
   font-size: 12px;
   color: black;
   margin: 0;

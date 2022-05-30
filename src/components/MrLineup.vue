@@ -118,10 +118,10 @@ table {
   justify-content: center;
   margin-bottom: 15px;
 }
-/deep/ .swiper-pagination-bullets {
+:deep() .swiper-pagination-bullets {
   bottom: -5px;
 }
-/deep/ .swiper-pagination-bullet.swiper-pagination-bullet-active {
+:deep() .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: var(--ion-color-secondary) !important;
 }
 tr {
