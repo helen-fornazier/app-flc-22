@@ -1,6 +1,10 @@
 <template>
+  <ion-img
+    v-if="pathToFile && use_ion"
+    :src="pathToFile"
+  />
   <img
-    v-if="pathToFile"
+    v-if="pathToFile && !use_ion"
     :src="pathToFile"
   />
 </template>
@@ -8,6 +12,7 @@
 <script lang="ts">
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { defineComponent, computed } from 'vue';
+import { IonImg } from '@ionic/vue';
 
 async function fetch_img_b64(url) {
   const response = await fetch(url);
@@ -30,11 +35,17 @@ const convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
 
 export default defineComponent({
   name: 'MrImg',
+  components: {
+    IonImg,
+  },
   props: {
     src: {
       type: String,
       required: true
     },
+    use_ion: {
+        type: Boolean,
+    }
   },
   data: function () {
     return {
