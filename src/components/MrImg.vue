@@ -1,11 +1,13 @@
 <template>
   <ion-img
-    v-if="pathToFile && use_ion"
+    v-if="use_ion"
     :src="pathToFile"
+    :ignore="force_reac"
   />
   <img
-    v-if="pathToFile && !use_ion"
+    v-if="!use_ion"
     :src="pathToFile"
+    :ignore="force_reac"
   />
 </template>
 
@@ -45,6 +47,7 @@ export default defineComponent({
     },
     use_ion: {
         type: Boolean,
+        default: () => false,
     }
   },
   data: function () {
@@ -74,6 +77,20 @@ export default defineComponent({
       });
       console.log("MrImg: saved", this.fileNameEncoded);
       this.pathToFile = img;
+    },
+    async getImg() {
+        try {
+            await this.getImageFromAppData();
+            console.log("MrImg: loaded from cache", this.src);
+        } catch (error) {
+            try {
+                await this.saveImageToAppData();
+                console.log("MrImg: saved to cache", this.src);
+            } catch (error) {
+                this.pathToFile = this.url;
+                console.log("MrImg: from web", this.url);
+            }
+        }
     }
   },
   computed: {
@@ -100,21 +117,12 @@ export default defineComponent({
         if(this.src.startsWith('wix'))
             return `https://static.wixstatic.com/media/${this.src.split('/')[3]}`;
         return this.src;
+    },
+    force_reac: function() {
+        console.log("MrImg: force_react");
+        this.getImg();
+        return this.src;
     }
   },
-  created: async function () {
-    try {
-        await this.getImageFromAppData(); 
-        console.log("MrImg: loaded from cache", this.src);
-    } catch (error) {
-        try {
-           await this.saveImageToAppData(); 
-           console.log("MrImg: saved to cache", this.src);
-        } catch (error) {
-            this.pathToFile = this.url;
-            console.log("MrImg: from web", this.url);
-        }
-    }
-  }
 });
 </script>

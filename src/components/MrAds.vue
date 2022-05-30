@@ -6,7 +6,7 @@
       >
       <swiper-slide v-for="ad in ads" :key="ad.id">
         <div class="keep_aspect_ratio">
-          <MrImg use_ion="true" :src="ad"/>
+          <MrImg use_ion :src="ad"/>
         </div>
       </swiper-slide>
     </swiper>
