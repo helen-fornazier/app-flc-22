@@ -10,9 +10,6 @@ import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { defineComponent, computed } from 'vue';
 
 async function fetch_img_b64(url) {
-  if(url.startsWith('wix'))
-    url =`https://static.wixstatic.com/media/${url.split('/')[3]}`;
-
   const response = await fetch(url);
   const blob = await response.blob();
   const base64Data = await convertBlobToBase64(blob) as string;
@@ -57,7 +54,7 @@ export default defineComponent({
       this.pathToFile = contents.data;
     },
     async saveImageToAppData() {
-      let img = await fetch_img_b64(this.src);
+      let img = await fetch_img_b64(this.url);
       let res = await Filesystem.writeFile({
           path: this.fileNameEncoded,
           data: img,
@@ -88,6 +85,11 @@ export default defineComponent({
       url = url.split('|').join('[pipe]');
       return url;
     },
+    url: function() {
+        if(this.src.startsWith('wix'))
+            return `https://static.wixstatic.com/media/${this.src.split('/')[3]}`;
+        return this.src;
+    }
   },
   created: async function () {
     try {
@@ -98,8 +100,8 @@ export default defineComponent({
            await this.saveImageToAppData(); 
            console.log("MrImg: saved to cache", this.src);
         } catch (error) {
-            this.pathToFile = this.src;
-            console.log("MrImg: from web", this.src);
+            this.pathToFile = this.url;
+            console.log("MrImg: from web", this.url);
         }
     }
   }
