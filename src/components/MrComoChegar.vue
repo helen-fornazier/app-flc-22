@@ -116,6 +116,7 @@ ion-icon {
   max-width: 99%;
   height: 20px;
   margin: 0;
+  font-weight: bold;
 }
 table {
   width: 100%;

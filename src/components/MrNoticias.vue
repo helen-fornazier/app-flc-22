@@ -39,7 +39,8 @@ h4 {
   max-width: 99%;
   height: 20px;
   margin: 0;
-  margin-left: var(--mr-side-margin)
+  margin-left: var(--mr-side-margin);
+  font-weight: bold;
 }
 ion-grid {
   --ion-grid-padding: 0;
