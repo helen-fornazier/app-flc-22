@@ -110,14 +110,17 @@ export default defineComponent({
         if (s_data) {
             let obj = JSON.parse(s_data);
             this.app_data[data] = obj;
+            if (data == "fastdata") {
+              console.log(data, s_data);
+              let user = this.app_data.fastdata.simple.user;
+              if (user.tel)
+                this.is_logged = true;
+            }
         }
       } catch (error) {
           console.log("Error when loading data from storage", error);
       }
     }
-    let user = this.app_data.fastdata.simple.user;
-    if (user.tel)
-      this.is_logged = true;
 
     this.get_data_from_server();
     setInterval(this.get_data_from_server, 3*1000)
