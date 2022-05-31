@@ -9,14 +9,8 @@
             <div class=card-header>
                 <table>
                     <tr>
-                        <td>
-                <div class="nivel">Nível {{ nivel.nivel }}</div>
-
-                        </td>
-                        <td>
-                <div class="pontos">{{ nivel.pontos }} pontos</div>
-
-                        </td>
+                        <td class="nivel"> Nível {{ nivel.nivel }}</td>
+                        <td class="pontos">{{ nivel.pontos }} pontos </td>
                     </tr>
                 </table>
             </div>
@@ -100,7 +94,6 @@ table {
 .pontos {
     font-weight: normal;
     font-size: 8px;
-    width: 100%;
     text-align: right;
 }
 </style>

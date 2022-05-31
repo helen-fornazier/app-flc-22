@@ -107,10 +107,9 @@ ion-icon {
   position: relative;
 }
 .progress-text {
-  display: flex;
   position: relative;
   text-align: left;
-  margin-inline: 30px;
+  padding-inline: 30px;
   font-size: 12px;
 }
 .vertical {
@@ -118,12 +117,13 @@ ion-icon {
   flex-direction: column;
 }
 .horizontal {
-  display: flex;
-  flex-direction: row;
-  margin-inline: 25px;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  justify-content: left;
+  display: flex;
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 20px;
 }
 .chart {
   height: 90px;
