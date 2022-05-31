@@ -24,7 +24,6 @@ const default_app_data = {
         total: "0kg",
         coleta: [],
       },
-      noticias: [],
       impactometro: {},
       guia_digital: "assets/guia-digital.png",
       mapas: {},
@@ -32,10 +31,15 @@ const default_app_data = {
     },
     complex: {
       niveis: { ver: 0 },
+      noticias: { ver: 0 },
       programacao: { ver: 0 },
     }
   },
   niveis: {
+    ver: 0,
+    content: [],
+  },
+  noticias: {
     ver: 0,
     content: [],
   },
@@ -76,7 +80,7 @@ export default defineComponent({
   provide() {
     return {
       user: computed(() => this.app_data.fastdata.simple.user),
-      noticias: computed(() => this.app_data.fastdata.simple.noticias),
+      noticias: computed(() => this.app_data.noticias.content),
       impactometro: computed(() => this.app_data.fastdata.simple.impactometro),
       guia_digital: computed(() => this.app_data.fastdata.simple.guia_digital),
       mapas: computed(() => this.app_data.fastdata.simple.mapas),
@@ -91,7 +95,7 @@ export default defineComponent({
   },
   setup() {
     const storage = new Storage();
-    const complex_data_keys = ["niveis", "programacao"];
+    const complex_data_keys = ["noticias", "niveis", "programacao"];
     const storage_keys = complex_data_keys.concat(["fastdata"]);
     const base_url = "https://www.mundorecicladores.com.br/_functions/"
     return {

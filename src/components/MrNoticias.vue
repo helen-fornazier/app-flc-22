@@ -5,7 +5,7 @@
         <ion-col>
           <MrCard>
             <div class=card-header>{{ noticia.data }}: {{ noticia.titulo }}</div>
-            <div class="descricao">{{ noticia.descricao }} asdf oasidfu oaisduf oius lkj sdfl;aksjdf iu awdf;klj asdf;oiuas dfl asdflkj asdf osdiuf klj asdfoiu j</div>
+            <div class="descricao" v-html="noticia.descricao"></div>
           </MrCard>
         </ion-col>
           </ion-row>
