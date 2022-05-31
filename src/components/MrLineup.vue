@@ -58,6 +58,18 @@ export default defineComponent<{programacao: any}>({
   },
   computed: {
     prog_now() {
+      function clone_obj(obj: any) {
+        // TODO: use structuredClone(), requires node v17
+        return JSON.parse(JSON.stringify(obj));
+      }
+      function formate_date(d: Date) {
+        // TODO: use structuredClone(), requires node v17
+        const week_days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
+        const week = d.getDay();
+        const hours = d.getHours()
+        const minutes = ("0" + d.getMinutes()).slice(-2)
+        return `${week_days[week]} ${hours}:${minutes}`
+      }
       let now = new Date();
       let margin_min = 10;
       let prog_now: any[] = [];
@@ -70,9 +82,11 @@ export default defineComponent<{programacao: any}>({
           let fim = new Date(prog.inicio)
           fim.setMinutes(fim.getMinutes() + prog.duracao_min + margin_min)
 
-          //console.log("Analisando", prog, inicio.toLocaleString(), fim.toLocaleString(), now.toLocaleString(), now > inicio, now < fim);
+          console.log("Analisando", prog, inicio.toLocaleString(), fim.toLocaleString(), now.toLocaleString(), now > inicio, now < fim);
           if (now > inicio && now < fim) {
-            prog_now.push(prog);
+            let obj = clone_obj(prog);
+            obj.inicio = formate_date(new Date(prog.inicio));
+            prog_now.push(obj);
           }
       }
 
