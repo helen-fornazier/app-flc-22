@@ -90,9 +90,6 @@ export default defineComponent({
       bus: computed(() => this.bus),
     }
   },
-  mounted() {                                                                                                                                                                                                
-    this.bus.on("logout", this.logout);                                                                                                                                                                      
-  },
   setup() {
     const storage = new Storage();
     const complex_data_keys = ["noticias", "niveis", "programacao"];
@@ -105,31 +102,37 @@ export default defineComponent({
       base_url: base_url,
     }
   },
-  async beforeCreate(): Promise<void> {
-    await this.storage.create();
-    //await this.storage.clear();
-    for (let data of this.storage_keys) {
-      try {
-        let s_data = await this.storage.get(data);
-        if (s_data) {
-            let obj = JSON.parse(s_data);
-            this.app_data[data] = obj;
-            if (data == "fastdata") {
-              console.log(data, s_data);
-              let user = this.app_data.fastdata.simple.user;
-              if (user.tel)
-                this.is_logged = true;
-            }
-        }
-      } catch (error) {
-          console.log("Error when loading data from storage", error);
-      }
-    }
-
+  async mounted(): Promise<void> {
+    this.bus.on("logout", this.logout);
+    await this.load_from_storage();
     this.get_data_from_server();
     setInterval(this.get_data_from_server, 3*1000)
   },
   methods: {
+    async load_from_storage() {
+      await this.storage.create();
+      //await this.storage.clear();
+      for (let data of this.storage_keys) {
+        try {
+          let s_data = await this.storage.get(data);
+          if (s_data) {
+            let obj = JSON.parse(s_data);
+            this.app_data[data] = obj;
+            if (data == "fastdata") {
+              //console.log(data, s_data);
+              let user = this.app_data.fastdata.simple.user;
+              if (user.tel) {
+                console.log("Login from storage -", user.tel);
+                this.is_logged = true;
+              }
+            }
+          }
+        } catch (error) {
+            console.log("Error when loading data from storage", error);
+        }
+      }
+      LOAD_STORAGE_CALLED_ONCE = true;
+    },
     async get_data_from_server() {
       let user = this.app_data.fastdata.simple.user;
       let fastdata_url = this.base_url + "fastdata/" + user.tel;
@@ -154,14 +157,14 @@ export default defineComponent({
       this.app_data[data] = obj;
     },
     login(tel) {
-      console.log("Login")
+      console.log("Login", tel)
       this.app_data.fastdata.simple.user.tel = tel;
       this.is_logged = true;
     },
-    logout(tel) {
-      this.is_logged = false;
+    async logout(tel) {
       this.app_data.fastdata.simple.user = clone_obj(default_app_data.fastdata.simple.user);
-      this.storage.set("fastdata", JSON.stringify(this.app_data.fastdata));
+      await this.storage.set("fastdata", JSON.stringify(this.app_data.fastdata));
+      this.is_logged = false;
     }
   }
 });
