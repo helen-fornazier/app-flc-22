@@ -133,7 +133,6 @@ export default defineComponent({
             console.log("Error when loading data from storage", error);
         }
       }
-      LOAD_STORAGE_CALLED_ONCE = true;
     },
     async get_data_from_server() {
       let user = this.app_data.fastdata.simple.user;
