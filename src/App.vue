@@ -16,7 +16,7 @@ const default_app_data = {
   fastdata: {
     simple: {
       user: {
-        nome: '',
+        nome: 'Forrozeir@',
         tel: '',
         pts: 0,
         nivel: 0,
@@ -41,7 +41,9 @@ const default_app_data = {
   },
   noticias: {
     ver: 0,
-    content: [],
+    content: [
+      {data: "31/5/22 10:00", titulo: "Bem vind@s!", descricao: "Preparados para mais um Forró?"}
+    ],
   },
   programacao: {
     ver: 0,
