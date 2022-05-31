@@ -4,7 +4,16 @@
       <ion-row v-for="noticia in noticias" :key="noticia.id">
         <ion-col>
           <MrCard>
-            <div class=card-header>{{ noticia.data }}: {{ noticia.titulo }}</div>
+            <div class=card-header>
+
+              <table>
+                  <tr>
+                      <td class="date">{{ noticia.data }}</td>
+                      <td class="news_titulo"><span>{{ noticia.titulo }}</span></td>
+                  </tr>
+              </table>
+
+            </div>
             <div class="descricao" v-html="noticia.descricao"></div>
           </MrCard>
         </ion-col>
@@ -33,6 +42,7 @@ export default defineComponent({
 h4 {
   font-size: 12px;
   line-height: 15px;
+  font-weight: bold;
 }
 .titulo {
   text-align: left;
@@ -49,8 +59,6 @@ ion-col {
   --ion-grid-column-padding: 0;
 }
 .card-header {
-  font-size: 12px;
-  line-height: 25px;
   background-color: var(--ion-color-primary);
   color: var(--ion-color-primary-contrast);
   width: 100%;
@@ -60,5 +68,41 @@ ion-col {
   font-size: 12px;
   margin: 10px;
   text-align: justify;
+}
+table {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+td {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+tr {
+  border-top: 1px solid var(--ion-background-color);
+}
+.date {
+  padding-left: 15px;
+  font-size: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.news_titulo {
+  font-size: 16px;
+  line-height: 28px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.news_titulo span {
+    position: relative;
+    left: -25px;
 }
 </style>

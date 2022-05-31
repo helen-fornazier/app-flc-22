@@ -91,6 +91,7 @@ export default defineComponent({
 h4 {
   font-size: 12px;
   line-height: 15px;
+  font-weight: bold;
 }
 p {
   font-size: 8px;

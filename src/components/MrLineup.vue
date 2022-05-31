@@ -119,8 +119,8 @@ h4 {
   line-height: 15px;
 }
 .card-header {
-  font-size: 12px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 28px;
   background-color: var(--ion-color-primary);
   color: var(--ion-color-primary-contrast);
   width: 100%;
