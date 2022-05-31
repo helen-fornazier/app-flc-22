@@ -1,6 +1,9 @@
 <template>
   <MrCard>
-    <div class=card-header>Rolando agora</div>
+    <div class=card-header>
+      Rolando agora
+      <ion-icon @click="show_info" slot="icon-only" :icon="informationCircleOutline" fill=clear></ion-icon>
+    </div>
     <div class=linup-table>
       <swiper
       :autoplay="{delay:4500, disableOnInteraction: true}"
@@ -36,6 +39,8 @@ import { defineComponent } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination } from "swiper";
 import MrCard from '@/components/MrCard.vue';
+import { informationCircleOutline } from 'ionicons/icons';
+import { IonIcon, alertController } from '@ionic/vue';
 
 // Import Swiper styles
 import "swiper/css";
@@ -49,11 +54,13 @@ export default defineComponent<{programacao: any}>({
     Swiper,
     SwiperSlide,
     MrCard,
+    IonIcon,
   },
   inject: ['programacao'],
   setup() {
     return {
-        modules: [Autoplay, Pagination]
+        modules: [Autoplay, Pagination],
+        informationCircleOutline,
     }
   },
   computed: {
@@ -104,6 +111,21 @@ export default defineComponent<{programacao: any}>({
 
       return prog_now_chunked;
     }
+  },
+  methods: {
+    async show_info() {
+      const alert = await alertController
+        .create({
+          cssClass: 'my-custom-class',
+          header: 'Nota',
+          message: 'A programação está sujeita a mudanças. Fazemos o possível para manter a programação atualizada, mas sempre verifique para não perder sua atração favorita!',
+          buttons: ['OK'],
+        });
+      await alert.present();
+
+      const { role } = await alert.onDidDismiss();
+      console.log('onDidDismiss resolved with role', role);
+    },
   }
 });
 </script>
