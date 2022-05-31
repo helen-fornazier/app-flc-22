@@ -19,11 +19,11 @@
             </ion-item>
             <ion-item lines="none">
               <ion-checkbox enterkeyhint="next" required="true" v-model="check_term"></ion-checkbox>
-              <ion-label>Condordo com o <a href="https://mundorecicladores.com.br">termo de uso</a> </ion-label>
+              <ion-label>Condordo com o <a href="https://www.mundorecicladores.com.br/termos-flc22">termo de uso</a> </ion-label>
             </ion-item>
             <ion-item lines="none">
               <ion-checkbox enterkeyhint="next" required="true" v-model="check_priv"></ion-checkbox>
-              <ion-label>Condordo com a <a href="https://mundorecicladores.com.br">politica de privacidade</a> </ion-label>
+              <ion-label>Condordo com a <a href="https://www.mundorecicladores.com.br/termos-flc22">politica de privacidade</a> </ion-label>
             </ion-item>
             <ion-button type="submit">Entrar</ion-button>
         </form>
