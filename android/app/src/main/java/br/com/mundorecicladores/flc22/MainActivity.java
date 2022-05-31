@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package br.com.mundorecicladores.flc22;
 
 import com.getcapacitor.BridgeActivity;
 
