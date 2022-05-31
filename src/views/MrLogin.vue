@@ -12,9 +12,9 @@
             <ion-item class="telefone-item">
               <ion-label class="telefone-title" position="stacked" color="primary">Telefone</ion-label>
               <ion-input
-                        autocomplete="tel" autofocus="true" clear-input="true"
-                        pattern="([0-9]{10}[0-9]?)" inputmode="number" maxlength="11" minlength="10"
-                        enterkeyhint="next" required="true"
+                        autocomplete="on" autofocus="true" clear-input="true"
+                        pattern="([0-9]{10}[0-9]?)" inputmode="numeric" maxlength="11" minlength="10"
+                        enterkeyhint="next" required="true" type="tel"
                         v-model="telefone" placeholder="Insira o telefone aqui"></ion-input>
             </ion-item>
             <ion-item lines="none">
