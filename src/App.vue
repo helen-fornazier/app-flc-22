@@ -11,6 +11,44 @@ import { IonRouterOutlet, IonApp } from '@ionic/vue';
 import MrLogin from './views/MrLogin.vue'
 import { Storage } from '@ionic/storage';
 import mitt from 'mitt';
+import { PushNotifications } from '@capacitor/push-notifications';
+
+const addListeners = async () => {
+  await PushNotifications.addListener('registration', token => {
+    console.info('Registration token: ', token.value);
+  });
+
+  await PushNotifications.addListener('registrationError', err => {
+    console.error('Registration error: ', err.error);
+  });
+
+  await PushNotifications.addListener('pushNotificationReceived', notification => {
+    console.log('Push notification received: ', JSON.stringify(notification));
+  });
+
+  await PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+    console.log('Push notification action performed', notification.actionId, notification.inputValue);
+  });
+}
+
+const registerNotifications = async () => {
+  let permStatus = await PushNotifications.checkPermissions();
+
+  if (permStatus.receive === 'prompt') {
+    permStatus = await PushNotifications.requestPermissions();
+  }
+
+  if (permStatus.receive !== 'granted') {
+    throw new Error('User denied permissions!');
+  }
+
+  await PushNotifications.register();
+}
+
+const getDeliveredNotifications = async () => {
+  const notificationList = await PushNotifications.getDeliveredNotifications();
+  console.log('delivered notifications', notificationList);
+}
 
 const default_app_data = {
   fastdata: {
@@ -122,6 +160,9 @@ export default defineComponent({
     await this.load_from_storage();
     this.get_data_from_server();
     setInterval(this.get_data_from_server, 3*1000)
+    await registerNotifications()
+    addListeners();
+    getDeliveredNotifications();
   },
   methods: {
     async load_from_storage() {
