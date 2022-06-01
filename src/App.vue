@@ -197,6 +197,9 @@ export default defineComponent({
       let user = this.app_data.fastdata.simple.user;
       let fastdata_url = this.base_url + "fastdata/" + user.tel;
       let fastdata = await fetch_obj(fastdata_url);
+      // If user logged in while we were waiting for data, restore tel
+      if (user.tel && !fastdata.simple.user.tel)
+        fastdata.simple.user.tel = user.tel;
       this.storage.set("fastdata", JSON.stringify(fastdata));
       // Update fastdata view
       this.app_data.fastdata = fastdata;
