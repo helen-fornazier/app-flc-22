@@ -2,7 +2,7 @@
   <MrCard>
     <div class=card-header>
       Rolando agora
-      <ion-icon @click="show_info" slot="icon-only" :icon="informationCircleOutline" fill=clear></ion-icon>
+      <ion-icon @click="show_info('$geral')" slot="icon-only" :icon="informationCircleOutline" fill=clear></ion-icon>
     </div>
     <div class=linup-table>
       <swiper
@@ -23,7 +23,11 @@
               <td></td>
             </tr>
             <tr class="evento" v-for="prog in chunk" :key="prog.id">
-              <td class="atracao">{{ prog.nome }}</td>
+              <td  @click="show_info(prog.notas)" class="atracao">
+                {{ prog.nome }}
+                <ion-icon v-if="prog.notas" slot="icon-only" :icon="informationCircleOutline" fill=clear></ion-icon>
+
+              </td>
               <td class="middle-column">{{ prog.inicio }}</td>
               <td>{{ prog.local }}</td>
             </tr>
@@ -113,12 +117,17 @@ export default defineComponent<{programacao: any}>({
     }
   },
   methods: {
-    async show_info() {
+    async show_info(type: any) {
+      if (!type)
+        return;
+      var msg = type;
+      if (type == "$geral")
+        msg = 'A programação está sujeita a mudanças. Fazemos o possível para manter a programação atualizada, mas sempre verifique para não perder sua atração favorita!';
       const alert = await alertController
         .create({
           cssClass: 'my-custom-class',
           header: 'Nota',
-          message: 'A programação está sujeita a mudanças. Fazemos o possível para manter a programação atualizada, mas sempre verifique para não perder sua atração favorita!',
+          message: msg,
           buttons: ['OK'],
         });
       await alert.present();
