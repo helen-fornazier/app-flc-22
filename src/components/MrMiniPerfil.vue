@@ -67,7 +67,7 @@ ion-icon {
   margin-left: 10px;
 }
 .perfil-text {
-  font-size: 8px;
+  font-size: 10px;
   font-weight: normal;
 }
 .icon {

@@ -126,7 +126,7 @@ export default defineComponent({
 }
 ion-item {
   --background: var(--ion-color-primary-contrast);
-  font-size: 10px;
+  font-size: 12px;
   padding: 0;
   margin: 0;
 }
