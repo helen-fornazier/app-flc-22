@@ -3,7 +3,7 @@
     <ion-content :fullscreen="true">
     <div class="metade primeira-metade ">
       <ion-icon @click="show_info" slot="icon-only" :icon="helpCircleOutline" fill=clear></ion-icon>
-      <span class="bem-vindo-title">Bem Vind@!</span>
+      <span class="bem-vindo-title">Bem Vinde!</span>
       <span class="bem-vindo-texto">Preencha os campos de telefone para ter informações do evento</span>
     </div>
     <div class="metade segunda-metade">
