@@ -5,7 +5,7 @@
 
     <ion-content scroll="true">
     <table>
-        <tr v-for="coleta in user.coleta" :key="coleta.id">
+        <tr v-for="coleta in coletas" :key="coleta.id">
             <td class="date">{{ coleta.data }}</td>
             <td class="quantity"><span>{{ coleta.qtd }}</span></td>
         </tr>
@@ -26,7 +26,7 @@ export default defineComponent({
     MrCard,
     IonContent,
   },
-  inject: ["user"],
+  inject: ["user", "coletas"],
 });
 </script>
 

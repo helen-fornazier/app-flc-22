@@ -60,7 +60,6 @@ const default_app_data = {
         nivel: 0,
         proximo_nivel: 0,
         total: "0kg",
-        coleta: [],
       },
       impactometro: {},
       guia_digital: "assets/guia-digital.png",
@@ -84,6 +83,7 @@ const default_app_data = {
       niveis: { ver: 0 },
       noticias: { ver: 0 },
       programacao: { ver: 0 },
+      coletas: { ver: 0 },
     }
   },
   niveis: {
@@ -97,6 +97,10 @@ const default_app_data = {
     ],
   },
   programacao: {
+    ver: 0,
+    content: [],
+  },
+  coletas: {
     ver: 0,
     content: [],
   }
@@ -140,12 +144,13 @@ export default defineComponent({
       ads: computed(() => this.app_data.fastdata.simple.ads),
       niveis: computed(() => this.app_data.niveis.content),
       programacao: computed(() => this.app_data.programacao.content),
+      coletas: computed(() => this.app_data.coletas.content),
       bus: computed(() => this.bus),
     }
   },
   setup() {
     const storage = new Storage();
-    const complex_data_keys = ["noticias", "niveis", "programacao"];
+    const complex_data_keys = ["noticias", "niveis", "programacao", "coletas"];
     const storage_keys = complex_data_keys.concat(["fastdata"]);
     const base_url = "https://www.mundorecicladores.com.br/_functions/"
     return {
@@ -205,10 +210,12 @@ export default defineComponent({
       }
     },
     async fetch_complex_data(data) {
-      let complexdata_url = this.base_url + "complexdata/" + data;
+      let tel = this.app_data.fastdata.simple.user.tel;
+      let complexdata_url = this.base_url + "complexdata/" + data + "/" + tel;
       let obj = await fetch_obj(complexdata_url);
-
-      this.storage.set(data, JSON.stringify(obj));
+      let obj_s = JSON.stringify(obj);
+      console.log(complexdata_url, obj_s);
+      this.storage.set(data, obj_s);
       this.app_data[data] = obj;
     },
     login(tel) {
