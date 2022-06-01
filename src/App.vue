@@ -27,7 +27,20 @@ const default_app_data = {
       impactometro: {},
       guia_digital: "assets/guia-digital.png",
       mapas: {},
-      ads: [],
+      ads: [
+        {
+          img: "assets/banner1.png",
+          link: "https://mundorecicladores.com.br/"
+        },
+        {
+          img: "assets/banner2.png",
+          link: "https://mundorecicladores.com.br/"
+        },
+        {
+          img: "assets/banner3.png",
+          link: "https://mundorecicladores.com.br/"
+        },
+      ],
     },
     complex: {
       niveis: { ver: 0 },
