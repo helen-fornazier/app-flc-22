@@ -2,6 +2,7 @@
   <ion-page>
     <ion-content :fullscreen="true">
     <div class="metade primeira-metade ">
+      <ion-icon @click="show_info" slot="icon-only" :icon="helpCircleOutline" fill=clear></ion-icon>
       <span class="bem-vindo-title">Bem Vind@!</span>
       <span class="bem-vindo-texto">Preencha os campos de telefone para ter informações do evento</span>
     </div>
@@ -35,7 +36,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonContent, IonPage, IonItem, IonInput, IonLabel, IonCheckbox, IonButton } from '@ionic/vue';
+import { IonContent, IonPage, IonItem, IonInput, IonLabel, IonCheckbox, IonButton, IonIcon, alertController } from '@ionic/vue';
+import { helpCircleOutline } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'MrLogin',
@@ -47,6 +49,7 @@ export default defineComponent({
     IonLabel,
     IonCheckbox,
     IonButton,
+    IonIcon,
   },
   emits: ["telefone"],
   data() {
@@ -56,6 +59,11 @@ export default defineComponent({
           check_priv: false,
       }
   },
+  setup() {
+    return {
+        helpCircleOutline,
+    }
+  },
   methods: {
       submit() {
           if (!this.telefone || !this.check_term || !this.check_priv)
@@ -63,8 +71,21 @@ export default defineComponent({
           this.$emit('telefone', this.telefone);
           console.log("Login");
           return true;
-      }
-  }
+      },
+      async show_info() {
+        const alert = await alertController
+          .create({
+            cssClass: 'my-custom-class',
+            header: 'Por que precisamos do seu telefone?',
+            message: 'Durante o evento, vamos identificar a sua reciclagem pelo seu telefone, onde você pode ganhar prêmios e brindes, além de contribuir com a natureza! Usaremos o seu telefone para informá-lo também dos brindes que ganharam e outras eventuais informações sobre o evento. Mais detalhes nos nossos termos de uso e política de privacidade.',
+            buttons: ['OK'],
+          });
+        await alert.present();
+
+        const { role } = await alert.onDidDismiss();
+        console.log('onDidDismiss resolved with role', role);
+      },
+    }
 });
 </script>
 
@@ -124,6 +145,15 @@ ion-button {
 }
 .telefone-item {
   margin-bottom: 15px;
+}
+ion-icon {
+  color: var(--ion-color-primary-contrast);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 50px;
+  margin: 30px;
 }
 
 </style>
