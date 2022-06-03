@@ -1,20 +1,21 @@
 <template>
   <MrCard>
     <div class=card-header>
-      Rolando agora
+      Shows
       <ion-icon @click="show_info('$geral')" slot="icon-only" :icon="informationCircleOutline" fill=clear></ion-icon>
     </div>
+    <ion-input placeholder="Buscar" v-model="search" clear-input="true"></ion-input>
     <div class=linup-table>
       <swiper
       :autoplay="{delay:4500, disableOnInteraction: true}"
-      :pagination="true"
+      :pagination="{clickable: true}"
       :modules="modules"
       >
         <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
           <table>
             <tr class="line-header">
               <th>Atração</th>
-              <th>Horário</th>
+              <th>Dia</th>
               <th>Local</th>
             </tr>
             <tr class="header-space">
@@ -44,7 +45,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination } from "swiper";
 import MrCard from '@/components/MrCard.vue';
 import { informationCircleOutline } from 'ionicons/icons';
-import { IonIcon, alertController } from '@ionic/vue';
+import { IonIcon, alertController, IonInput } from '@ionic/vue';
 
 // Import Swiper styles
 import "swiper/css";
@@ -52,19 +53,25 @@ import '@ionic/vue/css/ionic-swiper.css';
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
 
-export default defineComponent<{programacao: any}>({
+export default defineComponent<{programacao: any, search: string}>({
   name: 'MrLineup',
   components: {
     Swiper,
     SwiperSlide,
     MrCard,
     IonIcon,
+    IonInput,
   },
   inject: ['programacao'],
   setup() {
     return {
         modules: [Autoplay, Pagination],
         informationCircleOutline,
+    }
+  },
+  data() {
+    return {
+      search: ""
     }
   },
   computed: {
@@ -76,42 +83,43 @@ export default defineComponent<{programacao: any}>({
       function formate_date(d: Date) {
         // TODO: use structuredClone(), requires node v17
         const week_days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
-        const week = d.getDay();
+        let week = d.getDay();
         const hours = d.getHours()
         const minutes = ("0" + d.getMinutes()).slice(-2)
-        return `${week_days[week]} ${hours}:${minutes}`
+
+        // Considers previous day if before 6h in the morning
+        if (hours < 6)
+          week = (((week-1) % week_days.length) + week_days.length) % week_days.length
+        return `${week_days[week]}`
       }
-      let now = new Date();
-      let margin_min = 10;
       let prog_now: any[] = [];
       let prog_now_chunked: any[] = [];
 
-      for (var i = 0; i < this.programacao.length; i++) {
-          let prog = this.programacao[i];
+      for (let prog of this.programacao) {
           let inicio = new Date(prog.inicio);
-          inicio.setMinutes(inicio.getMinutes() - margin_min)
-          let fim = new Date(prog.inicio)
-          fim.setMinutes(fim.getMinutes() + prog.duracao_min + margin_min)
+          let obj = clone_obj(prog);
+          obj.inicio = formate_date(inicio);
 
-          console.log("Analisando", prog, inicio.toLocaleString(), fim.toLocaleString(), now.toLocaleString(), now > inicio, now < fim);
-          if (now > inicio && now < fim) {
-            let obj = clone_obj(prog);
-            obj.inicio = formate_date(new Date(prog.inicio));
+          if (!this.search || this.search == "") {
             prog_now.push(obj);
+            continue
           }
+          let search = this.search.toLowerCase();
+          if (obj.local.toLowerCase().includes(search)
+              || obj.nome.toLowerCase().includes(search)
+              || obj.inicio.toLowerCase().includes(search))
+            prog_now.push(obj);
       }
 
       // Group by chunk of 4
       let chunk_size = 4;
-      for (i = 0; i < Math.ceil(prog_now.length/chunk_size); i++) {
+      for (let i = 0; i < Math.ceil(prog_now.length/chunk_size); i++) {
         let chunk: any[] = [];
         for (var j = 0; j < chunk_size && i * chunk_size + j < prog_now.length; j++) {
           chunk.push(prog_now[i * chunk_size + j]);
         }
         prog_now_chunked.push(chunk);
       }
-      if (prog_now_chunked.length == 0)
-        return [[{nome: "Nada rolando"}, {nome: "Relaxa"}, {nome: "Curte a natureza"}]];
 
       return prog_now_chunked;
     }
@@ -162,6 +170,7 @@ table {
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+  margin-top: 0;
 }
 :deep() .swiper-pagination-bullets {
   bottom: -5px;
@@ -185,6 +194,7 @@ td {
 .middle-column {
   border-left: 1px solid var(--ion-background-color);
   border-right: 1px solid var(--ion-background-color);
+  width: 10px;
 }
 .evento {
   border-bottom: 1px solid var(--ion-background-color);
@@ -203,5 +213,15 @@ td {
 .linup-table {
   width: 100%;
   padding: 10px;
+  margin-top: 0;
+  padding-top: 0;
+}
+ion-input {
+  margin: 0;
+  padding: 0;
+  --padding-bottom: 0;
+  --padding-top: 0;
+  text-align: left;
+  --padding-start: 15px;
 }
 </style>
