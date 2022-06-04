@@ -3,9 +3,9 @@
         <div class=content>
             <div class="icon">
                 <div class="chart"><MrProgress /></div>
-                <ion-button shape=round fill=clear size=small>
+                <div class="circle">
                     <ion-icon :icon=personOutline fill=clear></ion-icon>
-                </ion-button>
+                </div>
             </div>
             <div class="text">
                 <p>
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButton, IonIcon } from '@ionic/vue';
+import { IonIcon } from '@ionic/vue';
 import { personOutline } from 'ionicons/icons';
 import MrProgress from '@/components/MrProgress.vue';
 import MrCard from '@/components/MrCard.vue';
@@ -28,7 +28,6 @@ export default defineComponent({
   name: 'MrMiniPerfil',
   components: {
     IonIcon,
-    IonButton,
     MrProgress,
     MrCard,
   },
@@ -57,10 +56,10 @@ ion-button {
   height: 50px;
 }
 ion-icon {
-  color: var(--ion-color-primary-contrast);
-  z-index: 20;
-  font-size: 64px;
+  color:  var(--ion-color-primary-contrast);
   --ionicon-stroke-width: 50px;
+  height: 100%;
+  width: 50%;
 }
 .text {
   text-align: left;
@@ -84,5 +83,15 @@ ion-icon {
   position: absolute;
   top: 0;
   z-index: 60;
+}
+.circle {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  background-color: var(--ion-color-primary);
+  border-radius: 50%;
 }
 </style>
