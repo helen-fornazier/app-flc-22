@@ -27,6 +27,7 @@ export default defineComponent({
   justify-content: center;
   display: flex;
   width: 100%;
+  padding: 0;
 }
 ion-card {
   align-items: center;
@@ -34,7 +35,9 @@ ion-card {
   background-color: var(--ion-color-primary-contrast);
   border-radius: 8px;
   width: 100%;
-  color: var(--ion-color-dark)
+  color: var(--ion-color-dark);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 ion-card-content {
   margin: 0;
