@@ -2,9 +2,9 @@
   <MrCard>
     <div class=card-header></div>
     <div class="icon">
-        <ion-button class="icon-button" shape=round fill=clear size=small>
+        <div class="circle">
             <ion-icon :icon=personOutline fill=clear></ion-icon>
-        </ion-button>
+        </div>
     </div>
     <div class="main-text"><span>{{ user.nome}}, você está no nível {{ user.nivel }}</span></div>
     <div class="horizontal">
@@ -73,29 +73,38 @@ ion-button {
   --background: var(--ion-background-color);
   color: var(--ion-color-medium);
 }
-.icon-button {
-  width: 60px;
-  height: 60px;
-  position: relative;
-  top: -30px
-}
 .progress-button {
   width: 70px;
   height: 70px;
   position: relative;
 }
 ion-icon {
-  color: var(--ion-color-primary);
-  z-index: 20;
-  font-size: 64px;
+  color:  var(--ion-color-primary);
   --ionicon-stroke-width: 50px;
+  height: 100%;
+  width: 50%;
+}
+.circle {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  height: 60px;
+  width: 60px;
+  background-color: var(--ion-background-color);
+  border-radius: 50%;
+  position: absolute;
 }
 .icon {
-  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .main-text {
   width: 100%;
   margin-bottom: 20px;
+  margin-top: 30px;
   font-size: 20px;
   color: var(--ion-color-primary);
   font-weight: bold;
