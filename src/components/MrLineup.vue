@@ -53,7 +53,7 @@ import '@ionic/vue/css/ionic-swiper.css';
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
 
-export default defineComponent<{programacao: any, search: string}>({
+export default defineComponent<{update_now: any, programacao: any, search: string, now: Date}>({
   name: 'MrLineup',
   components: {
     Swiper,
@@ -71,11 +71,16 @@ export default defineComponent<{programacao: any, search: string}>({
   },
   data() {
     return {
-      search: ""
+      search: "",
+      now: new Date(),
     }
+  },
+  mounted() {
+    setInterval(this.update_now, 1*60*1000);
   },
   computed: {
     prog_now() {
+      console.log("PROG_NOW");
       function clone_obj(obj: any) {
         // TODO: use structuredClone(), requires node v17
         return JSON.parse(JSON.stringify(obj));
@@ -85,25 +90,36 @@ export default defineComponent<{programacao: any, search: string}>({
         const week_days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
         let week = d.getDay();
         const hours = d.getHours()
-        const minutes = ("0" + d.getMinutes()).slice(-2)
-
         // Considers previous day if before 6h in the morning
         if (hours < 6)
           week = (((week-1) % week_days.length) + week_days.length) % week_days.length
         return `${week_days[week]}`
       }
+      function is_passed(now, inicio) {
+        let turn_point = now;
+        if (turn_point.getHours() < 6) {
+          turn_point.setDate(turn_point.getDate() - 1);
+        }
+        turn_point.setHours(6,0,0,0);
+        return inicio < turn_point;
+      }
+
       let prog_now: any[] = [];
       let prog_now_chunked: any[] = [];
 
       for (let prog of this.programacao) {
           let inicio = new Date(prog.inicio);
+          if (is_passed(this.now, inicio))
+            continue;
+
           let obj = clone_obj(prog);
           obj.inicio = formate_date(inicio);
-
+          // Don't filter if there is no search
           if (!this.search || this.search == "") {
             prog_now.push(obj);
             continue
           }
+          // Filter based on search
           let search = this.search.toLowerCase();
           if (obj.local.toLowerCase().includes(search)
               || obj.nome.toLowerCase().includes(search)
@@ -143,6 +159,9 @@ export default defineComponent<{programacao: any, search: string}>({
       const { role } = await alert.onDidDismiss();
       console.log('onDidDismiss resolved with role', role);
     },
+    update_now() {
+      this.now = new Date();
+    }
   }
 });
 </script>
