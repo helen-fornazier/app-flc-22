@@ -192,7 +192,7 @@ table {
   margin-top: 0;
 }
 :deep() .swiper-pagination-bullets {
-  bottom: -5px;
+  bottom: -5px !important;
 }
 :deep() .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: var(--ion-color-secondary) !important;
