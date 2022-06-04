@@ -1,79 +1,67 @@
 <template>
-  <table>
-      <tr>
-        <th class=table_margin></th>
-        <th>
-          <div class=titulo><h4>Como chegar</h4></div>
-        </th>
-        <th class=table_margin></th>
-      </tr>
+  <div class=titulo><h4>Como chegar</h4></div>
+  <swiper
+  :modules="modules"
+  :slidesPerView="5"
+  :freeMode="true"
+  >
+    <swiper-slide>
+      <div class="circle">
+        <ion-icon :icon=mapOutline fill=clear></ion-icon>
+        <p class="sub">Mapa</p>
+      </div>
+    </swiper-slide>
 
-      <tr>
-        <th></th>
+    <swiper-slide>
+      <div class="circle">
+        <ion-icon :icon=restaurantOutline fill=clear></ion-icon>
+        <p class="sub">Restaurantes</p>
+      </div>
+    </swiper-slide>
 
-        <th>
-        <ion-grid>
-          <ion-row>
+    <swiper-slide>
+      <div class="circle">
+        <ion-icon :icon=constructOutline fill=clear></ion-icon>
+        <p class="sub">Oficinas</p>
+      </div>
+    </swiper-slide>
 
-            <ion-col>
-              <ion-button shape=round fill=clear size=small>
-                  <ion-icon :icon=mapOutline fill=clear></ion-icon>
-              </ion-button>
-              <p>Mapa</p>
-            </ion-col>
+    <swiper-slide>
+      <div class="circle">
+        <ion-icon :icon=triangleOutline fill=clear></ion-icon>
+        <p class="sub">Camping</p>
+      </div>
+    </swiper-slide>
 
-            <ion-col>
-              <ion-button shape=round fill=clear size=small>
-                  <ion-icon :icon=restaurantOutline></ion-icon>
-              </ion-button>
-              <p>Restaurantes</p>
-            </ion-col>
-
-            <ion-col>
-              <ion-button shape=round fill=clear size=small>
-                  <ion-icon :icon=constructOutline></ion-icon>
-              </ion-button>
-              <p>Oficinas</p>
-            </ion-col>
-
-            <ion-col>
-              <ion-button shape=round fill=clear size=small>
-                  <ion-icon :icon=triangleOutline></ion-icon>
-              </ion-button>
-              <p>Camping</p>
-            </ion-col>
-
-
-            <ion-col>
-              <ion-button shape=round fill=clear size=small>
-                  <ion-icon :icon=maleFemaleOutline></ion-icon>
-              </ion-button>
-              <p>Banheiros</p>
-            </ion-col>
-
-          </ion-row>
-        </ion-grid>
-        </th>
-
-        <th></th>
-      </tr>
-    </table>
+    <swiper-slide>
+      <div class="circle">
+        <ion-icon :icon=maleFemaleOutline fill=clear></ion-icon>
+        <p class="sub">Banheiros</p>
+      </div>
+    </swiper-slide>
+  </swiper>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButton, IonIcon } from '@ionic/vue';
+import { IonIcon } from '@ionic/vue';
 import { IonGrid, IonCol, IonRow,  IonNote } from '@ionic/vue';
 import { mapOutline, restaurantOutline, constructOutline, triangleOutline, maleFemaleOutline } from 'ionicons/icons';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { FreeMode } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import '@ionic/vue/css/ionic-swiper.css';
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 export default defineComponent({
   name: 'MrLineup',
   components: {
     IonIcon,
-    IonButton,
-    IonGrid,
-    IonCol,
-    IonRow,
+    Swiper,
+    SwiperSlide,
   },
   setup() {
     return {
@@ -82,6 +70,7 @@ export default defineComponent({
         constructOutline,
         triangleOutline,
         maleFemaleOutline,
+        modules: [FreeMode]
     };
   },
 });
@@ -98,16 +87,6 @@ p {
   line-height: 10px;
   font-weight: normal;
 }
-ion-button {
-  margin: 0;
-  padding: 0;
-  --background: var(--ion-color-primary);
-  width: 50px;
-  height: 50px;
-}
-ion-icon {
-  color: var(--ion-color-primary-contrast);
-}
 .table_margin {
   width: var(--mr-side-margin);
   margin: 0;
@@ -117,20 +96,32 @@ ion-icon {
   max-width: 99%;
   height: 20px;
   margin: 0;
+  margin-left: var(--mr-side-margin);
   font-weight: bold;
 }
-table {
-  width: 100%;
+.circle {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  background-color: var(--ion-color-primary);
+  border-radius: 50%;
   margin: 0;
   padding: 0;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
-ion-grid {
-  padding-inline: 0;
+ion-icon {
+  color:  var(--ion-color-primary-contrast);
+  height: 100%;
+  width: 50%;
 }
-ion-row {
-  padding-inline: 0;
+.sub {
+  position: absolute;
+  top: 60px;
 }
-ion-col {
-  padding-inline: 0;
+swiper {
 }
 </style>
