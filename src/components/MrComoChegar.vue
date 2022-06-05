@@ -1,11 +1,11 @@
 <template>
-  <div class=titulo><h4>Como chegar</h4></div>
+  <div v-if="Object.keys(mapas).length" class=titulo><h4>Como chegar</h4></div>
   <swiper
   :modules="modules"
   :slidesPerView="5.4"
   :freeMode="true"
   >
-    <swiper-slide>
+    <swiper-slide v-if="mapas['recicladores']">
       <a :href="'tabs/img?img=' + mapas['recicladores']">
         <div class="circle">
           <ion-icon :icon=syncOutline fill=clear></ion-icon>
@@ -13,7 +13,7 @@
         </div>
       </a>
     </swiper-slide>
-    <swiper-slide>
+    <swiper-slide v-if="mapas['palcos']">
       <a :href="'tabs/img?img=' + mapas['palcos']">
         <div class="circle">
           <ion-icon :icon=musicalNotesOutline fill=clear></ion-icon>
@@ -22,7 +22,7 @@
       </a>
     </swiper-slide>
 
-    <swiper-slide>
+    <swiper-slide v-if="mapas['praca_de_alimentacao']">
       <a :href="'tabs/img?img=' + mapas['praca_de_alimentacao']">
         <div class="circle">
           <ion-icon :icon=fastFoodOutline fill=clear></ion-icon>
@@ -31,7 +31,7 @@
       </a>
     </swiper-slide>
 
-    <swiper-slide>
+    <swiper-slide v-if=" mapas['cozinha']">
       <a :href="'tabs/img?img=' + mapas['cozinha']">
         <div class="circle">
           <ion-icon :icon=restaurantOutline fill=clear></ion-icon>
@@ -40,7 +40,7 @@
       </a>
     </swiper-slide>
 
-    <swiper-slide>
+    <swiper-slide v-if="mapas['campings']">
       <a :href="'tabs/img?img=' + mapas['campings']">
         <div class="circle">
           <ion-icon :icon=triangleOutline fill=clear></ion-icon>
@@ -49,7 +49,7 @@
       </a>
     </swiper-slide>
 
-    <swiper-slide>
+    <swiper-slide v-if="mapas['banheiros']">
       <a :href="'tabs/img?img=' + mapas['banheiros']">
         <div class="circle">
           <ion-icon :icon=maleFemaleOutline fill=clear></ion-icon>
