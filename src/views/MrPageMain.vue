@@ -5,9 +5,9 @@
     <ion-content :fullscreen="true">
     <div id="container_view">
               <MrMiniPerfil />
-              <MrLineup />
-              <MrComoChegar />
               <MrAds />
+              <MrComoChegar />
+              <MrLineup />
               <MrNoticias />
     </div>
     </ion-content>
