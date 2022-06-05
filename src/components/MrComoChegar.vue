@@ -2,42 +2,60 @@
   <div class=titulo><h4>Como chegar</h4></div>
   <swiper
   :modules="modules"
-  :slidesPerView="5"
+  :slidesPerView="5.4"
   :freeMode="true"
   >
     <swiper-slide>
-      <div class="circle">
-        <ion-icon :icon=mapOutline fill=clear></ion-icon>
-        <p class="sub">Mapa</p>
-      </div>
+      <a :href="'tabs/img?img=' + mapas['recicladores']">
+        <div class="circle">
+          <ion-icon :icon=syncOutline fill=clear></ion-icon>
+          <p class="sub">Recicladores</p>
+        </div>
+      </a>
+    </swiper-slide>
+    <swiper-slide>
+      <a :href="'tabs/img?img=' + mapas['palcos']">
+        <div class="circle">
+          <ion-icon :icon=musicalNotesOutline fill=clear></ion-icon>
+          <p class="sub">Palcos</p>
+        </div>
+      </a>
     </swiper-slide>
 
     <swiper-slide>
-      <div class="circle">
-        <ion-icon :icon=restaurantOutline fill=clear></ion-icon>
-        <p class="sub">Restaurantes</p>
-      </div>
+      <a :href="'tabs/img?img=' + mapas['praca_de_alimentacao']">
+        <div class="circle">
+          <ion-icon :icon=fastFoodOutline fill=clear></ion-icon>
+          <p class="sub">Praça de Alimentação</p>
+        </div>
+      </a>
     </swiper-slide>
 
     <swiper-slide>
-      <div class="circle">
-        <ion-icon :icon=constructOutline fill=clear></ion-icon>
-        <p class="sub">Oficinas</p>
-      </div>
+      <a :href="'tabs/img?img=' + mapas['cozinha']">
+        <div class="circle">
+          <ion-icon :icon=restaurantOutline fill=clear></ion-icon>
+          <p class="sub">Cozinha</p>
+        </div>
+      </a>
     </swiper-slide>
 
     <swiper-slide>
-      <div class="circle">
-        <ion-icon :icon=triangleOutline fill=clear></ion-icon>
-        <p class="sub">Camping</p>
-      </div>
+      <a :href="'tabs/img?img=' + mapas['campings']">
+        <div class="circle">
+          <ion-icon :icon=triangleOutline fill=clear></ion-icon>
+          <p class="sub">Campings</p>
+        </div>
+      </a>
     </swiper-slide>
 
     <swiper-slide>
-      <div class="circle">
-        <ion-icon :icon=maleFemaleOutline fill=clear></ion-icon>
-        <p class="sub">Banheiros</p>
-      </div>
+      <a :href="'tabs/img?img=' + mapas['banheiros']">
+        <div class="circle">
+          <ion-icon :icon=maleFemaleOutline fill=clear></ion-icon>
+          <p class="sub">Banheiros</p>
+        </div>
+      </a>
     </swiper-slide>
   </swiper>
 </template>
@@ -46,7 +64,8 @@
 import { defineComponent } from 'vue';
 import { IonIcon } from '@ionic/vue';
 import { IonGrid, IonCol, IonRow,  IonNote } from '@ionic/vue';
-import { mapOutline, restaurantOutline, constructOutline, triangleOutline, maleFemaleOutline } from 'ionicons/icons';
+import { restaurantOutline, triangleOutline, maleFemaleOutline } from 'ionicons/icons';
+import { musicalNotesOutline, syncOutline, fastFoodOutline } from 'ionicons/icons';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { FreeMode } from "swiper";
 
@@ -63,11 +82,13 @@ export default defineComponent({
     Swiper,
     SwiperSlide,
   },
+  inject: ["mapas"],
   setup() {
     return {
-        mapOutline,
+        fastFoodOutline,
+        syncOutline,
+        musicalNotesOutline,
         restaurantOutline,
-        constructOutline,
         triangleOutline,
         maleFemaleOutline,
         modules: [FreeMode]
