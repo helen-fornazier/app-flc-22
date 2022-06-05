@@ -8,7 +8,7 @@
     <div class=linup-table>
       <swiper
       :autoplay="{delay:4500, disableOnInteraction: true}"
-      :pagination="{clickable: true}"
+      :pagination="{clickable: true, dynamicBullets: true}"
       :modules="modules"
       >
         <swiper-slide v-for="chunk in prog_now" :key="chunk.id">
@@ -188,11 +188,11 @@ table {
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   margin-top: 0;
 }
 :deep() .swiper-pagination-bullets {
-  bottom: -5px !important;
+  bottom: 0px !important;
 }
 :deep() .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: var(--ion-color-secondary) !important;
