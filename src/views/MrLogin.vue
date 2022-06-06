@@ -28,6 +28,7 @@
             </ion-item>
             <ion-button type="submit">Entrar</ion-button>
         </form>
+        <a class="pular" v-on:click="this.$emit('telefone', '00000000000')">Pular</a>
       </div>
     </div>
     </ion-content>
@@ -154,6 +155,10 @@ ion-icon {
   width: 30px;
   height: 50px;
   margin: 30px;
+}
+.pular {
+  position: relative;
+  top: 30px;
 }
 
 </style>
