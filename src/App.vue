@@ -62,7 +62,7 @@ const default_app_data = {
         total: "0kg",
       },
       impactometro: {},
-      guia_digital: "assets/guia-digital.png",
+      guia_digital: "assets/em-breve.jpeg",
       mapas: {},
       ads: [
         {
