@@ -2,7 +2,6 @@
   <MrCard>
     <div class=card-header>
       Shows
-      <ion-icon @click="show_info('$geral')" slot="icon-only" :icon="informationCircleOutline" fill=clear></ion-icon>
     </div>
     <ion-input placeholder="Buscar" v-model="search" clear-input="true"></ion-input>
     <div class=linup-table>
@@ -15,7 +14,9 @@
           <table>
             <tr class="line-header">
               <th>Atração</th>
-              <th>Dia</th>
+              <th><span class="dia">Dia</span>
+                <ion-icon class="warning" @click="show_info('$geral')" slot="icon-only" :icon="warningOutline" fill=clear></ion-icon>
+              </th>
               <th>Local</th>
             </tr>
             <tr class="header-space">
@@ -44,7 +45,7 @@ import { defineComponent } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination } from "swiper";
 import MrCard from '@/components/MrCard.vue';
-import { informationCircleOutline } from 'ionicons/icons';
+import { warningOutline } from 'ionicons/icons';
 import { IonIcon, alertController, IonInput } from '@ionic/vue';
 
 // Import Swiper styles
@@ -66,7 +67,7 @@ export default defineComponent<{update_now: any, programacao: any, search: strin
   setup() {
     return {
         modules: [Autoplay, Pagination],
-        informationCircleOutline,
+        warningOutline,
     }
   },
   data() {
@@ -90,10 +91,11 @@ export default defineComponent<{update_now: any, programacao: any, search: strin
         const week_days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
         let week = d.getDay();
         const hours = d.getHours()
+        const minutes = ("0" + d.getMinutes()).slice(-2)
         // Considers previous day if before 6h in the morning
         if (hours < 6)
           week = (((week-1) % week_days.length) + week_days.length) % week_days.length
-        return `${week_days[week]}`
+        return `${week_days[week]} ${hours}:${minutes}`
       }
       function is_passed(now, inicio) {
         let turn_point = now;
@@ -146,7 +148,7 @@ export default defineComponent<{update_now: any, programacao: any, search: strin
         return;
       var msg = type;
       if (type == "$geral")
-        msg = 'A programação está sujeita a mudanças. Fazemos o possível para manter a programação atualizada, mas sempre verifique para não perder sua atração favorita!';
+        msg = 'A programação está sujeita a mudanças.</br></br>Fazemos o possível para manter a programação atualizada, mas sempre verifique para não perder sua atração favorita!';
       const alert = await alertController
         .create({
           cssClass: 'my-custom-class',
@@ -242,5 +244,16 @@ ion-input {
   --padding-top: 0;
   text-align: left;
   --padding-start: 15px;
+}
+.warning {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: 1px;
+}
+.dia {
+  position: relative;
+  top: -1px;
 }
 </style>
