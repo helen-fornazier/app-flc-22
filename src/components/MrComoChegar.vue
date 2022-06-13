@@ -57,6 +57,15 @@
         </div>
       </a>
     </swiper-slide>
+
+    <swiper-slide v-if="mapas['ambulatorio']">
+      <a :href="'tabs/img?img=' + mapas['ambulatorio']">
+        <div class="circle">
+          <ion-icon :icon=medkitOutline fill=clear></ion-icon>
+          <p class="sub">Ambulatório</p>
+        </div>
+      </a>
+    </swiper-slide>
   </swiper>
 </template>
 
@@ -65,7 +74,7 @@ import { defineComponent } from 'vue';
 import { IonIcon } from '@ionic/vue';
 import { IonGrid, IonCol, IonRow,  IonNote } from '@ionic/vue';
 import { restaurantOutline, triangleOutline, maleFemaleOutline } from 'ionicons/icons';
-import { musicalNotesOutline, syncOutline, fastFoodOutline } from 'ionicons/icons';
+import { musicalNotesOutline, syncOutline, fastFoodOutline, medkitOutline } from 'ionicons/icons';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { FreeMode } from "swiper";
 
@@ -91,6 +100,7 @@ export default defineComponent({
         restaurantOutline,
         triangleOutline,
         maleFemaleOutline,
+        medkitOutline,
         modules: [FreeMode]
     };
   },
