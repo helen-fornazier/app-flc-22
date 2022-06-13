@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import MrTabs from '../components/MrTabs.vue'
+import MrPageMain from '@/views/MrPageMain.vue'
+import MrGuia from '@/views/MrGuia.vue'
+import MrPerfil from '@/views/MrPerfil.vue'
+import MrImgPage from '@/views/MrImgPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -17,19 +21,19 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'inicio',
-        component: () => import('@/views/MrPageMain.vue')
+        component: MrPageMain
       },
       {
         path: 'guia',
-        component: () => import('@/views/MrGuia.vue')
+        component: MrGuia
       },
       {
         path: 'perfil',
-        component: () => import('@/views/MrPerfil.vue')
+        component: MrPerfil
       },
       {
         path: 'img',
-        component: () => import('@/views/MrImgPage.vue')
+        component: MrImgPage
       },
     ]
   }
