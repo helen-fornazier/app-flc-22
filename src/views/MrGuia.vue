@@ -5,12 +5,13 @@
     <ion-content :fullscreen="true">
     <div id="container_view">
 
-      <swiper
+      <swiper  v-for="page in guia_digital_pages" :key="page.id"
       :zoom="{enabled:true, maxRatio: 6}"
+      :freeMode="true"
       :modules="modules" class="mySwiper">
-        <swiper-slide>
+        <swiper-slide >
           <div class="swiper-zoom-container">
-              <MrImg :src="guia_digital"/>
+              <MrImg :src="page"/>
           </div>
         </swiper-slide>
       </swiper>
@@ -27,11 +28,13 @@ import { IonContent, IonPage } from '@ionic/vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Zoom } from "swiper";
 import MrImg from '@/components/MrImg.vue';
+import { FreeMode } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import '@ionic/vue/css/ionic-swiper.css';
 import "swiper/css/zoom";
+import "swiper/css/free-mode";
 
 export default defineComponent({
   name: 'MrGuia',
@@ -42,10 +45,10 @@ export default defineComponent({
     SwiperSlide,
     MrImg,
   },
-  inject: ["guia_digital"],
+  inject: ["guia_digital_pages"],
   setup() {
     return {
-        modules: [Zoom]
+        modules: [Zoom, FreeMode]
     };
   },
 });
