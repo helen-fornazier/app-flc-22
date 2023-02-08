@@ -654,7 +654,7 @@ async function fetch_obj(url) {
   //const response = await fetch("https://www.mundorecicladores.com.br/_functions/userdata/" + telefone);
   const response = await fetch(url);
   const json = await response.json();
-  console.log("json", json);
+  //console.log("json", json);
   return json;
 }
 
@@ -757,7 +757,7 @@ export default defineComponent({
       let complexdata_url = this.base_url + "complexdata/" + data + "/" + tel;
       let obj = await fetch_obj(complexdata_url);
       let obj_s = JSON.stringify(obj);
-      console.log(complexdata_url, obj_s);
+      //console.log(complexdata_url, obj_s);
       this.storage.set(data, obj_s);
       this.app_data[data] = obj;
     },
