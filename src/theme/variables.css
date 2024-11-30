@@ -2,6 +2,19 @@
 http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
+
+@font-face {
+  font-family: VisbyCFBold;
+  src: url('../../public/assets/VisbyCF-Bold.otf');
+}
+
+@font-face {
+  font-family: VisbyCFRegular;
+  src: url('../../public/assets/VisbyCF-Regular.otf');
+}
+*{
+  font-family: VisbyCFRegular;
+}
 :root {
   /** side margin **/
     --mr-side-margin: 15px;
@@ -11,7 +24,7 @@ http://ionicframework.com/docs/theming/ */
     --ion-background-color-rgb: 228, 224, 216;
 
   /** primary **/
-  --ion-color-primary: #e4586d;
+  --ion-color-primary: #11AC60;
   --ion-color-primary-rgb: 197, 76, 95;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;

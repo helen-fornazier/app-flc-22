@@ -89,8 +89,8 @@ ion-icon {
   align-content: center;
   justify-content: center;
   text-align: center;
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   background-color: var(--ion-background-color);
   border-radius: 50%;
   position: absolute;
@@ -119,6 +119,7 @@ ion-icon {
   position: relative;
   text-align: left;
   padding-inline: 30px;
+  margin-left: 25px;
   font-size: 12px;
 }
 .vertical {

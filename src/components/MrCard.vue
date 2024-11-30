@@ -33,7 +33,7 @@ ion-card {
   align-items: center;
   justify-content: center;
   background-color: var(--ion-color-primary-contrast);
-  border-radius: 8px;
+  border-radius: 25px;
   width: 100%;
   color: var(--ion-color-dark);
   margin-top: 10px;

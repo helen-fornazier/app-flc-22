@@ -124,6 +124,7 @@ export default defineComponent<{update_now: any, programacao: any, search: strin
           // Filter based on search
           let search = this.search.toLowerCase();
           if (obj.local.toLowerCase().includes(search)
+              || obj.local.toLowerCase().includes(search)
               || obj.nome.toLowerCase().includes(search)
               || obj.inicio.toLowerCase().includes(search))
             prog_now.push(obj);

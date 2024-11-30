@@ -152,6 +152,7 @@ ion-icon {
 .sub {
   position: absolute;
   top: 60px;
+  color:  var(--ion-color-warning-contrast);
 }
 swiper {
 }

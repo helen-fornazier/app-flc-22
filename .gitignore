@@ -36,3 +36,10 @@ resources/ios/icon
 resources/ios/splash
 resources/windows/icon
 resources/windows/splash
+
+app-data-logix.txt
+google-services.json
+mundorecicladores-android-appstore-key
+my-release-key.keystore
+notas.txt
+private_key.pepk

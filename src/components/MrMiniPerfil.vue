@@ -10,7 +10,6 @@
             <div class="text">
                 <p>
                     <span class="perfil-text"><b>Olá, {{ user.nome }}</b> - Tel. {{ user.tel }}</span><br>
-                    <span class="nivel-text"><b>nível {{ user.nivel }} - {{ user.titulo }}</b></span>
                 </p>
             </div>
         </div>
@@ -65,9 +64,14 @@ ion-icon {
   text-align: left;
   margin-left: 10px;
 }
+.nivel-text{
+  font-family: 'VisbyCFBold';
+  font-size: 12px;
+}
 .perfil-text {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: normal;
+  font-family: 'VisbyCFRegular';
 }
 .icon {
   align-items: center;

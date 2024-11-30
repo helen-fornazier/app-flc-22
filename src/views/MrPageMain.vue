@@ -6,7 +6,7 @@
     <div id="container_view">
               <MrMiniPerfil />
               <MrAds />
-              <MrComoChegar />
+              <!-- <MrComoChegar /> -->
               <MrLineup />
               <MrNoticias />
     </div>
@@ -19,7 +19,7 @@
 import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import MrLineup from '@/components/MrLineup.vue'
-import MrComoChegar from '@/components/MrComoChegar.vue'
+// import MrComoChegar from '@/components/MrComoChegar.vue'
 import MrAds from '@/components/MrAds.vue'
 import MrNoticias from '@/components/MrNoticias.vue'
 import MrMiniPerfil from '@/components/MrMiniPerfil.vue'
@@ -30,7 +30,7 @@ export default defineComponent({
     IonContent,
     IonPage,
     MrLineup,
-    MrComoChegar,
+    // MrComoChegar,
     MrAds,
     MrNoticias,
     MrMiniPerfil,
@@ -52,9 +52,10 @@ ion-content {
 #container_view {
   max-width: 700px;
   margin: auto;
+  padding-top: 20px;
 }
 .separator {
   width: 100%;
-  height: 20px;
+  height: 30px;
 }
 </style>

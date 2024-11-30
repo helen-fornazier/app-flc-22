@@ -1,11 +1,14 @@
 {
   "appId": "br.com.mundorecicladores.flc22",
-  "appName": "Forró 22",
+  "appName": "Festival da Lua Cheia",
   "webDir": "dist",
   "bundledWebRuntime": false,
   "plugins": {
     "PushNotifications": {
       "presentationOptions": ["badge", "sound", "alert"]
+    },
+    "android": {
+      "path": "/snap/android-studio/126/android-studio/bin/studio.sh"
     }
   }
 }

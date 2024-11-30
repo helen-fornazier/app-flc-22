@@ -4,6 +4,7 @@ import MrTabs from '../components/MrTabs.vue'
 import MrPageMain from '@/views/MrPageMain.vue'
 import MrGuia from '@/views/MrGuia.vue'
 import MrPerfil from '@/views/MrPerfil.vue'
+import MrHelp from '@/views/MrHelp.vue'
 import MrImgPage from '@/views/MrImgPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -30,6 +31,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'perfil',
         component: MrPerfil
+      },
+      {
+        path: 'help',
+        component: MrHelp
       },
       {
         path: 'img',

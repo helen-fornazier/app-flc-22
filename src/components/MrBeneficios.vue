@@ -95,5 +95,9 @@ table {
     font-weight: normal;
     font-size: 8px;
     text-align: right;
+    padding-right: 10px;
+}
+.nivel{
+  padding-left: 10px;
 }
 </style>
